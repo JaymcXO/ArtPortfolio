@@ -14,8 +14,7 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 100vh;
+            min-height: 100vh; /* Ensure body takes at least full height */
         }
 
         /* Navigation Bar */
@@ -36,11 +35,12 @@
 
         /* Gallery */
         .gallery-container {
-            flex-grow: 1;
+            flex-grow: 1; /* Allow this section to take up remaining space */
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 10px;
+            overflow: auto; /* Allow scrolling if needed */
         }
         .gallery {
             display: grid;
@@ -48,7 +48,6 @@
             grid-template-rows: repeat(3, 1fr);
             grid-gap: 10px;
             width: 90%;
-            height: 85%;
             max-width: 1000px;
             max-height: 700px;
             box-sizing: border-box;
@@ -138,6 +137,8 @@
             padding: 10px;
             text-align: center;
             font-size: 0.9em;
+            position: relative;
+            margin-top: auto; /* Push footer to bottom */
         }
     </style>
 </head>
@@ -213,7 +214,7 @@
         <video id="modalVideo" src="" controls></video>
     </div>
 
-   <script>
+    <script>
         const modal = document.getElementById('modal');
         const modalImage = document.getElementById('modalImage');
         const modalVideo = document.getElementById('modalVideo');
