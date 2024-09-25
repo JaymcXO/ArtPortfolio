@@ -15,18 +15,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Ensure the body takes up full screen height */
+            height: 100vh;
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
             grid-template-rows: repeat(3, 1fr);    /* 3 rows */
-            grid-gap: 10px; /* Smaller gap to fit more pieces */
+            grid-gap: 10px;
             width: 100%;
-            height: 100%;   /* Make the grid take up the full viewport height */
-            max-width: 100vw; /* Ensure the gallery takes the full width of the screen */
-            max-height: 100vh; /* Ensure the gallery takes the full height of the screen */
-            padding: 20px; /* Padding to avoid touching edges */
+            height: 100%;
+            max-width: 100vw;
+            max-height: 100vh;
+            padding: 20px;
             box-sizing: border-box;
         }
         .art-piece {
@@ -37,12 +37,13 @@
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
             transition: transform 0.3s;
         }
         .art-piece img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensure the image fits within its container */
+            object-fit: cover;
             transition: transform 0.3s;
         }
         .art-piece:hover img {
@@ -64,67 +65,121 @@
         .art-piece:hover .description {
             opacity: 1;
         }
-        /* Responsive grid adjustments */
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(5, 1fr); /* Adjust to accommodate fewer columns */
-            }
+        .video-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
         }
-        @media (max-width: 480px) {
-            .gallery {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(9, 1fr); /* Stack vertically on small screens */
-            }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .show-video .video-container {
+            display: flex;
         }
     </style>
 </head>
 <body>
     <div class="gallery">
-        <div class="art-piece">
-                     <img src="/art/imgs/background.png" alt="Art Piece 1">
+        <!-- Art Piece 1 -->
+        <div class="art-piece" onclick="showVideo(this)">
+            <img src="/art/imgs/background.png" alt="Art Piece 1">
             <div class="description">"Full art valentines piece" - Created 2024</div>
+            <div class="video-container">
+                <video src="path-to-your-video1.mp4" controls></video>
+            </div>
         </div>
 
-        <div class="art-piece">
-           <img src="/art/imgs/loving.png" alt="Art Piece 2">
+        <!-- Art Piece 2 -->
+        <div class="art-piece" onclick="showVideo(this)">
+            <img src="/art/imgs/loving.png" alt="Art Piece 2">
             <div class="description">"Carrying Anniversary Piece" - Created 2024</div>
+            <div class="video-container">
+                <video src="path-to-your-video2.mp4" controls></video>
+            </div>
         </div>
 
-        <div class="art-piece">
+        <!-- Art Piece 3 -->
+        <div class="art-piece" onclick="showVideo(this)">
             <img src="/art/imgs/background2.png" alt="Art Piece 3">
             <div class="description">"Cozy Autumn" - Created 2024</div>
+            <div class="video-container">
+                <video src="path-to-your-video3.mp4" controls></video>
+            </div>
         </div>
-
-        <div class="art-piece">
-            <img src="/art/imgs/vertical1.png" alt="Art Piece 4">
+        
+        <div class="art-piece" onclick="showVideo(this)">
+        <img src="/art/imgs/vertical1.png" alt="Art Piece 4">
             <div class="description">"Mammon" - Created 2024</div>
+        <div class="video-container">
+                <video src="path-to-your-video3.mp4" controls></video>
+            </div>
         </div>
-
-        <div class="art-piece">
-            <img src="/art/imgs/background 3.png" alt="Art Piece 5">
+        
+        <div class="art-piece" onclick="showVideo(this)">
+        <img src="/art/imgs/background 3.png" alt="Art Piece 5">
             <div class="description">"Obey Me, full piece" - Created 2024</div>
+            <div class="video-container">
+                <video src="path-to-your-video3.mp4" controls></video>
+            </div>
         </div>
 
-        <div class="art-piece">
-            <img src="/art/imgs/vertical2.png" alt="Art Piece 6">
+        <div class="art-piece" onclick="showVideo(this)">
+        <img src="/art/imgs/vertical2.png" alt="Art Piece 6">
             <div class="description">"Ren Amamiya" - Created 2024</div>
+            <div class="video-container">
+                <video src="path-to-your-video3.mp4" controls></video>
+            </div>
         </div>
 
-        <div class="art-piece">
-            <img src="/art/imgs/horizontal3.jfif" alt="Art Piece 7">
+        <div class="art-piece" onclick="showVideo(this)">
+        <img src="/art/imgs/horizontal3.jfif" alt="Art Piece 7">
             <div class="description">"Halloween" - Created 2024</div>
+            <div class="video-container">
+                <video src="path-to-your-video3.mp4" controls></video>
+            </div>
         </div>
 
-        <div class="art-piece">
-            <img src="/art/imgs/blue.jfif" alt="Art Piece 8">
+        <div class="art-piece" onclick="showVideo(this)">
+         <img src="/art/imgs/blue.jfif" alt="Art Piece 8">
             <div class="description">"Blue" - Created 2024</div>
+            <div class="video-container">
+                <video src="path-to-your-video3.mp4" controls></video>
+            </div>
         </div>
 
-        <div class="art-piece">
-            <img src="/art/imgs/horizonal1.jfif" alt="Art Piece 9">
+        <div class="art-piece" onclick="showVideo(this)">
+        <img src="/art/imgs/horizonal1.jfif" alt="Art Piece 9">
             <div class="description">"Birthday Piece" - Created 2024</div>
+            <div class="video-container">
+                <video src="path-to-your-video3.mp4" controls></video>
+            </div>
         </div>
     </div>
+
+    <script>
+        function showVideo(element) {
+            const img = element.querySelector('img');
+            const videoContainer = element.querySelector('.video-container');
+            const video = videoContainer.querySelector('video');
+            
+            // Expand the image briefly for 2 seconds
+            img.style.transition = 'transform 1s';
+            img.style.transform = 'scale(1.2)';
+            
+            // Show the video after 2 seconds
+            setTimeout(() => {
+                videoContainer.classList.add('show-video');
+                video.play();
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
