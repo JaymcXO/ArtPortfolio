@@ -9,56 +9,72 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #fafafa;
+            padding: 0;
+            background: linear-gradient(135deg, #3b82f6, #9333ea); /* Blue to Purple Gradient */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .gallery {
+            width: 80%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .art-piece {
-            margin-bottom: 50px;
-            text-align: center;
+            position: relative;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 600px;
         }
         .art-piece img {
-            width: 60%;
-            max-width: 600px;
+            width: 100%;
             height: auto;
-            border: 5px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .art-piece:hover img {
+            transform: scale(1.05);
         }
         .description {
-            margin-top: 10px;
-            font-size: 1.1em;
-            color: #666;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 1.2em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 0 0 8px 8px;
+            text-align: center;
         }
-        .date {
-            font-style: italic;
-            color: #999;
+        .art-piece:hover .description {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <h1 style="text-align:center;">Artist Portfolio</h1>
+    <div class="gallery">
+        <!-- Art Piece 1 -->
+        <div class="art-piece">
+            <img src="path-to-your-art1.jpg" alt="Art Piece 1">
+            <div class="description">"Title of Art Piece 1" - Created on Date</div>
+        </div>
 
-    <!-- Artwork Section 1 -->
-    <div class="art-piece">
-        <img src="path/to/art1.jpg" alt="Artwork 1">
-        <p class="description">This piece is inspired by nature and explores the relationship between light and shadow.</p>
-        <p class="date">Created: January 2022</p>
+        <!-- Art Piece 2 -->
+        <div class="art-piece">
+            <img src="path-to-your-art2.jpg" alt="Art Piece 2">
+            <div class="description">"Title of Art Piece 2" - Created on Date</div>
+        </div>
+
+        <!-- Add more art pieces similarly -->
     </div>
-
-    <!-- Artwork Section 2 -->
-    <div class="art-piece">
-        <img src="path/to/art2.jpg" alt="Artwork 2">
-        <p class="description">A study in abstract form and color, reflecting the chaos of urban life.</p>
-        <p class="date">Created: March 2022</p>
-    </div>
-
-    <!-- Artwork Section 3 -->
-    <div class="art-piece">
-        <img src="path/to/art3.jpg" alt="Artwork 3">
-        <p class="description">A peaceful landscape showcasing the serenity of rural countryside.</p>
-        <p class="date">Created: June 2022</p>
-    </div>
-
-    <!-- Add more sections for additional artworks -->
-    
 </body>
 </html>
-
