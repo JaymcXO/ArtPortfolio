@@ -13,50 +13,20 @@
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
             display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Ensure body takes at least full height */
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            width: 100%;
-            padding: 20px;
-            background: transparent; /* Transparent background */
-            text-align: center;
-            font-size: 1.2em;
-            position: sticky;
-            top: 0;
-            box-shadow: none; /* Remove shadow */
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-        .navbar a:hover {
-            color: #f0f0f0; /* Lighten color on hover */
-        }
-
-        /* Gallery Container */
-        .gallery-container {
-            flex-grow: 1; /* Allow this section to take up remaining space */
-            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
-            overflow: hidden; /* Prevent scrolling */
-            height: calc(100vh - 120px); /* Full height minus navbar and footer */
+            height: 100vh;
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             grid-gap: 10px;
-            width: 100%; /* Full width of the container */
-            height: 100%; /* Full height of the container */
-            max-width: 1000px;
-            max-height: 700px;
+            width: 100%;
+            height: 100%;
+            max-width: 100vw;
+            max-height: 100vh;
+            padding: 20px;
             box-sizing: border-box;
         }
         .art-piece {
@@ -136,31 +106,11 @@
             border-radius: 50%;
             cursor: pointer;
         }
-
-        /* Footer for copyright */
-        .footer {
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9em;
-            position: relative;
-            margin-top: auto; /* Push footer to bottom */
-        }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="https://ryunekoru.com">Home</a>
-        <a href="https://ryunekoru.com/art">Gallery</a>
-        <a href="#">Contact</a>
-    </div>
-
-    <!-- Gallery Section -->
-    <div class="gallery-container">
-        <div class="gallery">
-            <!-- Art Piece 1 -->
+    <div class="gallery">
+        <!-- Art Piece 1 -->
         <div class="art-piece" onclick="openModal('art1')">
             <img src="/art/imgs/background.png" alt="Art Piece 1">
             <div class="description">"Full art valentines piece" - Created 2024</div>
@@ -208,11 +158,6 @@
             <div class="description">"Birthday Piece" - Created 2024</div>
         </div> 
     </div>
-        
-    <!-- Footer for copyright -->
-    <div class="footer">
-        &copy; 2024 All artworks are exclusively the property of Ryunekoru.
-    </div>
 
     <!-- Modal for showcasing the artwork and playing the video -->
     <div id="modal" class="modal">
@@ -221,7 +166,7 @@
         <video id="modalVideo" src="" controls></video>
     </div>
 
-    <script>
+   <script>
         const modal = document.getElementById('modal');
         const modalImage = document.getElementById('modalImage');
         const modalVideo = document.getElementById('modalVideo');
@@ -266,7 +211,6 @@
                     modalVideo.src = 'path-to-your-video3.mp4';
                     break;
             }
-
             // Show the modal and the image
             modal.classList.add('show');
             modalImage.style.opacity = '1';
