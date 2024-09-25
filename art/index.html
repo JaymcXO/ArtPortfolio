@@ -74,7 +74,7 @@
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.8);
-            display: none;
+            display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -82,22 +82,19 @@
         .modal img, .modal video {
             max-width: 90%;
             max-height: 90%;
-            object-fit: contain; /* Ensures both image and video fit without stretching */
+            object-fit: contain;
+            position: absolute;
         }
         .modal img {
             transition: opacity 1s ease;
         }
         .modal video {
             display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         .modal.show {
             display: flex;
-        }
-        .modal.show img {
-            opacity: 1;
-        }
-        .modal.show video {
-            display: block;
         }
         .close-btn {
             position: absolute;
@@ -113,7 +110,7 @@
 </head>
 <body>
     <div class="gallery">
-        <!-- Art Piece 1 -->
+       <!-- Art Piece 1 -->
         <div class="art-piece" onclick="openModal('art1')">
             <img src="/art/imgs/background.png" alt="Art Piece 1">
             <div class="description">"Full art valentines piece" - Created 2024</div>
@@ -167,7 +164,8 @@
         <div class="close-btn" onclick="closeModal()">×</div>
         <img id="modalImage" src="" alt="Full Art Piece">
         <video id="modalVideo" src="" controls></video>
-    </div>
+    </div> 
+
 
    <script>
         const modal = document.getElementById('modal');
@@ -217,15 +215,18 @@
 
             // Show the modal and the image
             modal.classList.add('show');
+            modalImage.style.opacity = '1';
+            modalVideo.style.opacity = '0';
+            modalVideo.style.display = 'none';  // Ensure video is hidden initially
 
             // After 2 seconds, hide the image and show the video
             setTimeout(() => {
                 modalImage.style.opacity = '0';  // Fade out the image
                 setTimeout(() => {
                     modalVideo.style.display = 'block';
-                    modalVideo.style.opacity = '1';  // Ensure video is visible
+                    modalVideo.style.opacity = '1';  // Fade in the video
                     modalVideo.play();
-                }, 1000);  // Delay to ensure the fade effect looks smooth
+                }, 500);  // Short delay to ensure smooth fade transition
             }, 2000);  // Wait 2 seconds before transitioning to the video
         }
 
