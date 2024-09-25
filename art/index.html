@@ -21,16 +21,21 @@
         .navbar {
             width: 100%;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            background: transparent; /* Transparent background */
             text-align: center;
             font-size: 1.2em;
             position: sticky;
             top: 0;
+            box-shadow: none; /* Remove shadow */
         }
         .navbar a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #f0f0f0; /* Lighten color on hover */
         }
 
         /* Gallery */
@@ -40,14 +45,15 @@
             justify-content: center;
             align-items: center;
             padding: 10px;
-            overflow: auto; /* Allow scrolling if needed */
+            overflow: hidden; /* Prevent scrolling */
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             grid-gap: 10px;
-            width: 90%;
+            width: 100%; /* Full width of the container */
+            height: 100%; /* Full height of the container */
             max-width: 1000px;
             max-height: 700px;
             box-sizing: border-box;
@@ -145,8 +151,8 @@
 <body>
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="#">Home</a>
-        <a href="#">Gallery</a>
+        <a href="https://ryunekoru.com">Home</a>
+        <a href="https://ryunekoru.com/art">Gallery</a>
         <a href="#">Contact</a>
     </div>
 
