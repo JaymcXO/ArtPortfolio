@@ -29,7 +29,10 @@
             position: relative;
             margin-bottom: 30px;
             width: 100%;
-            max-width: 720px; /* Increased size by 20% */
+            max-width: 720px; /* Default size for horizontal pieces */
+        }
+        .vertical-art-piece {
+            max-width: 400px; /* Smaller width for vertical pieces */
         }
         .art-piece img {
             width: 100%;
@@ -62,15 +65,15 @@
 </head>
 <body>
     <div class="gallery">
-        <!-- Art Piece 1 -->
+        <!-- Art Piece 1 (Horizontal) -->
         <div class="art-piece">
-            <img src="/art/imgs/background.png" alt="Art Piece 1">
+           <img src="/art/imgs/background.png" alt="Art Piece 1">
             <div class="description">"Full art valentines piece" - Created on Date</div>
         </div>
 
-        <!-- Art Piece 2 -->
-        <div class="art-piece">
-            <img src="/art/imgs/loving.png" alt="Art Piece 2">
+        <!-- Art Piece 2 (Vertical) -->
+        <div class="art-piece vertical-art-piece">
+                    <img src="/art/imgs/loving.png" alt="Art Piece 2">
             <div class="description">"Carrying Anniversary Piece" - Created on Date</div>
         </div>
 
