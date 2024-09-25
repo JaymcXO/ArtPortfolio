@@ -96,15 +96,24 @@
         .modal.show {
             display: flex;
         }
+        /* Updated Close Button */
         .close-btn {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: white;
-            color: black;
-            padding: 10px;
-            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7); /* Transparent black */
+            color: white;
+            padding: 10px 20px; /* More rectangular shape */
+            border-radius: 6px; /* Slight rounding for smooth corners */
+            font-size: 1.2em;
             cursor: pointer;
+            border: none;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.9); /* Darker on hover */
         }
     </style>
 </head>
