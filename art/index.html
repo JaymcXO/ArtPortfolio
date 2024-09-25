@@ -74,7 +74,7 @@
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.8);
-            display: none; /* Hidden by default */
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -82,6 +82,7 @@
         .modal img, .modal video {
             max-width: 90%;
             max-height: 90%;
+            object-fit: contain; /* Ensures both image and video fit without stretching */
         }
         .modal img {
             transition: opacity 1s ease;
@@ -168,7 +169,7 @@
         <video id="modalVideo" src="" controls></video>
     </div>
 
-    <script>
+   <script>
         const modal = document.getElementById('modal');
         const modalImage = document.getElementById('modalImage');
         const modalVideo = document.getElementById('modalVideo');
@@ -222,6 +223,7 @@
                 modalImage.style.opacity = '0';  // Fade out the image
                 setTimeout(() => {
                     modalVideo.style.display = 'block';
+                    modalVideo.style.opacity = '1';  // Ensure video is visible
                     modalVideo.play();
                 }, 1000);  // Delay to ensure the fade effect looks smooth
             }, 2000);  // Wait 2 seconds before transitioning to the video
