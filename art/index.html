@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #3b82f6, #9333ea); /* Blue to Purple Gradient */
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
             display: flex;
             justify-content: center;
@@ -19,8 +19,8 @@
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns */
-            grid-template-rows: repeat(3, 1fr);    /* 3 rows */
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
             grid-gap: 10px;
             width: 100%;
             height: 100%;
@@ -65,120 +65,174 @@
         .art-piece:hover .description {
             opacity: 1;
         }
-        .video-container {
-            display: none;
-            position: absolute;
+
+        /* Modal Overlay */
+        .modal {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8);
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .modal img, .modal video {
+            max-width: 90%;
+            max-height: 90%;
         }
-        .show-video .video-container {
+        .modal img {
+            transition: opacity 1s ease;
+        }
+        .modal video {
+            display: none;
+        }
+        .modal.show {
             display: flex;
+        }
+        .modal.show img {
+            opacity: 1;
+        }
+        .modal.show video {
+            display: block;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: black;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="gallery">
         <!-- Art Piece 1 -->
-        <div class="art-piece" onclick="showVideo(this)">
+        <div class="art-piece" onclick="openModal('art1')">
             <img src="/art/imgs/background.png" alt="Art Piece 1">
             <div class="description">"Full art valentines piece" - Created 2024</div>
-            <div class="video-container">
-                <video src="path-to-your-video1.mp4" controls></video>
-            </div>
         </div>
 
         <!-- Art Piece 2 -->
-        <div class="art-piece" onclick="showVideo(this)">
+        <div class="art-piece" onclick="openModal('art2')">
             <img src="/art/imgs/loving.png" alt="Art Piece 2">
             <div class="description">"Carrying Anniversary Piece" - Created 2024</div>
-            <div class="video-container">
-                <video src="path-to-your-video2.mp4" controls></video>
-            </div>
         </div>
 
         <!-- Art Piece 3 -->
-        <div class="art-piece" onclick="showVideo(this)">
-            <img src="/art/imgs/background5.png" alt="Art Piece 3">
+        <div class="art-piece" onclick="openModal('art3')">
+             <img src="/art/imgs/background5.png" alt="Art Piece 3">
             <div class="description">"Flower Piece" - Created 2024</div>
-            <div class="video-container">
-                <video src="/art/vids/oneyear_1.mp4" controls></video>
-            </div>
         </div>
-        
-        <div class="art-piece" onclick="showVideo(this)">
+
+        <div class="art-piece" onclick="openModal('art4')">
         <img src="/art/imgs/vertical1.png" alt="Art Piece 4">
             <div class="description">"Mammon" - Created 2024</div>
-        <div class="video-container">
-                <video src="path-to-your-video3.mp4" controls></video>
-            </div>
-        </div>
-        
-        <div class="art-piece" onclick="showVideo(this)">
-        <img src="/art/imgs/background 3.png" alt="Art Piece 5">
-            <div class="description">"Obey Me, full piece" - Created 2024</div>
-            <div class="video-container">
-                <video src="path-to-your-video3.mp4" controls></video>
-            </div>
         </div>
 
-        <div class="art-piece" onclick="showVideo(this)">
+        <div class="art-piece" onclick="openModal('art5')">
+         <img src="/art/imgs/background 3.png" alt="Art Piece 5">
+            <div class="description">"Obey Me, full piece" - Created 2024</div>
+        </div>
+
+        <div class="art-piece" onclick="openModal('art6')">
         <img src="/art/imgs/vertical2.png" alt="Art Piece 6">
             <div class="description">"Ren Amamiya" - Created 2024</div>
-            <div class="video-container">
-                <video src="path-to-your-video3.mp4" controls></video>
-            </div>
         </div>
 
-        <div class="art-piece" onclick="showVideo(this)">
-        <img src="/art/imgs/horizontal3.jfif" alt="Art Piece 7">
+        <div class="art-piece" onclick="openModal('art7')">
+         <img src="/art/imgs/horizontal3.jfif" alt="Art Piece 7">
             <div class="description">"Halloween" - Created 2024</div>
-            <div class="video-container">
-                <video src="path-to-your-video3.mp4" controls></video>
-            </div>
         </div>
 
-        <div class="art-piece" onclick="showVideo(this)">
-         <img src="/art/imgs/blue.jfif" alt="Art Piece 8">
+        <div class="art-piece" onclick="openModal('art8')">
+        <img src="/art/imgs/blue.jfif" alt="Art Piece 8">
             <div class="description">"Blue" - Created 2024</div>
-            <div class="video-container">
-                <video src="path-to-your-video3.mp4" controls></video>
-            </div>
         </div>
 
-        <div class="art-piece" onclick="showVideo(this)">
+        <div class="art-piece" onclick="openModal('art9')">
         <img src="/art/imgs/horizonal1.jfif" alt="Art Piece 9">
             <div class="description">"Birthday Piece" - Created 2024</div>
-            <div class="video-container">
-                <video src="path-to-your-video3.mp4" controls></video>
-            </div>
-        </div>
+        </div> 
+    </div>
+
+    <!-- Modal for showcasing the artwork and playing the video -->
+    <div id="modal" class="modal">
+        <div class="close-btn" onclick="closeModal()">×</div>
+        <img id="modalImage" src="" alt="Full Art Piece">
+        <video id="modalVideo" src="" controls></video>
     </div>
 
     <script>
-        function showVideo(element) {
-            const img = element.querySelector('img');
-            const videoContainer = element.querySelector('.video-container');
-            const video = videoContainer.querySelector('video');
-            
-            // Expand the image briefly for 2 seconds
-            img.style.transition = 'transform 1s';
-            img.style.transform = 'scale(1.2)';
-            
-            // Show the video after 2 seconds
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
+
+        function openModal(artId) {
+            // Set the image and video for the clicked art piece
+            switch (artId) {
+                case 'art1':
+                    modalImage.src = '/art/imgs/background.png';
+                    modalVideo.src = 'path-to-your-video1.mp4';
+                    break;
+                case 'art2':
+                    modalImage.src = '/art/imgs/loving.png';
+                    modalVideo.src = 'path-to-your-video2.mp4';
+                    break;
+                case 'art3':
+                    modalImage.src = '/art/imgs/background5.png';
+                    modalVideo.src = '/art/vids/oneyear_1.mp4';
+                    break;
+                case 'art4':
+                    modalImage.src = '/art/imgs/vertical1.png';
+                    modalVideo.src = 'path-to-your-video3.mp4';
+                    break;
+                case 'art5':
+                    modalImage.src = '/art/imgs/background 3.png';
+                    modalVideo.src = 'path-to-your-video3.mp4';
+                    break;
+                case 'art6':
+                    modalImage.src = '/art/imgs/vertical2.png';
+                    modalVideo.src = 'path-to-your-video3.mp4';
+                    break;
+                case 'art7':
+                    modalImage.src = '/art/imgs/horizontal3.jfif';
+                    modalVideo.src = 'path-to-your-video3.mp4';
+                    break;
+                case 'art8':
+                    modalImage.src = '/art/imgs/blue.jfif';
+                    modalVideo.src = 'path-to-your-video3.mp4';
+                    break;
+                case 'art9':
+                    modalImage.src = '/art/imgs/horizonal1.jfif';
+                    modalVideo.src = 'path-to-your-video3.mp4';
+                    break;
+            }
+
+            // Show the modal and the image
+            modal.classList.add('show');
+
+            // After 2 seconds, hide the image and show the video
             setTimeout(() => {
-                videoContainer.classList.add('show-video');
-                video.play();
-            }, 2000);
+                modalImage.style.opacity = '0';  // Fade out the image
+                setTimeout(() => {
+                    modalVideo.style.display = 'block';
+                    modalVideo.play();
+                }, 1000);  // Delay to ensure the fade effect looks smooth
+            }, 2000);  // Wait 2 seconds before transitioning to the video
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            modalImage.style.opacity = '1';
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.currentTime = 0;  // Reset the video time to the beginning
         }
     </script>
 </body>
