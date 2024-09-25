@@ -17,7 +17,7 @@
             flex-direction: column;
         }
 
-        /* Navigation Bar */
+        /* Hidden Navbar */
         .navbar {
             width: 100%;
             padding: 20px;
@@ -25,7 +25,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: fixed;
+            top: -100px; /* Hidden initially */
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: top 0.5s ease; /* Slide-in effect */
         }
+        
+        /* Show the navbar when user hovers near the top */
+        body:hover .navbar {
+            top: 0; /* Slide down the navbar */
+        }
+        
+        /* Navbar buttons */
         .navbar a {
             color: white;
             text-decoration: none;
@@ -215,6 +228,11 @@
         <img src="/art/imgs/horizonal1.jfif" alt="Art Piece 9">
             <div class="description">"Birthday Piece" - Created 2024</div>
         </div> 
+    </div>
+        
+    <!-- Footer for copyright -->
+    <div class="footer">
+        &copy; 2024 All artworks are exclusively the property of Ryunekoru.
     </div>
 
     <!-- Modal for showcasing the artwork and playing the video -->
