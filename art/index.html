@@ -299,4 +299,16 @@
                     modalVideo.style.opacity = '1';  // Fade in the video
                     modalVideo.play();
                 }, 500);  // Short delay to ensure smooth fade transition
-            }, 2000
+            }, 2000);
+ }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            modalImage.style.opacity = '1';
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.currentTime = 0;  // Reset the video time to the beginning
+        }
+    </script>
+</body>
+</html>
