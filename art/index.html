@@ -15,35 +15,34 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
+            height: 100vh; /* Ensure the body takes up full screen height */
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
-            grid-gap: 20px; /* Spacing between grid items */
-            width: 80%;
-            max-width: 1200px;
+            grid-template-rows: repeat(3, 1fr);    /* 3 rows */
+            grid-gap: 10px; /* Smaller gap to fit more pieces */
+            width: 100%;
+            height: 100%;   /* Make the grid take up the full viewport height */
+            max-width: 100vw; /* Ensure the gallery takes the full width of the screen */
+            max-height: 100vh; /* Ensure the gallery takes the full height of the screen */
+            padding: 20px; /* Padding to avoid touching edges */
+            box-sizing: border-box;
         }
         .art-piece {
             position: relative;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        .horizontal-art {
-            max-width: 720px; /* Increased size for horizontal pieces */
-            grid-column: span 2; /* Span across 2 columns */
-        }
-        .vertical-art {
-            max-width: 400px; /* Smaller size for vertical pieces */
-            grid-column: span 1; /* Span across 1 column */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
         }
         .art-piece img {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            object-fit: cover; /* Ensure the image fits within its container */
             transition: transform 0.3s;
         }
         .art-piece:hover img {
@@ -56,26 +55,26 @@
             right: 0;
             background: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 10px;
-            font-size: 1.2em;
+            padding: 5px;
+            font-size: 1em;
             opacity: 0;
             transition: opacity 0.3s;
-            border-radius: 0 0 8px 8px;
             text-align: center;
         }
         .art-piece:hover .description {
             opacity: 1;
         }
+        /* Responsive grid adjustments */
         @media (max-width: 768px) {
-            /* For smaller screens, show 2 columns */
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(5, 1fr); /* Adjust to accommodate fewer columns */
             }
         }
         @media (max-width: 480px) {
-            /* For mobile, show 1 column */
             .gallery {
                 grid-template-columns: 1fr;
+                grid-template-rows: repeat(9, 1fr); /* Stack vertically on small screens */
             }
         }
     </style>
@@ -126,7 +125,7 @@
 
         <!-- Art Piece 8 (Vertical) -->
         <div class="art-piece vertical-art">
-            <img src="path-to-your-art8.jpg" alt="Art Piece 8">
+            <img src="/art/imgs/blue.jfif" alt="Art Piece 8">
             <div class="description">"Title of Art Piece 8" - Created on Date</div>
         </div>
 
