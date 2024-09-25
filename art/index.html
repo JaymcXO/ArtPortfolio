@@ -13,20 +13,44 @@
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            font-size: 1.2em;
+            position: sticky;
+            top: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        /* Gallery */
+        .gallery-container {
+            flex-grow: 1;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 10px;
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             grid-gap: 10px;
-            width: 100%;
-            height: 100%;
-            max-width: 100vw;
-            max-height: 100vh;
-            padding: 20px;
+            width: 90%;
+            height: 85%;
+            max-width: 1000px;
+            max-height: 700px;
             box-sizing: border-box;
         }
         .art-piece {
@@ -106,11 +130,29 @@
             border-radius: 50%;
             cursor: pointer;
         }
+
+        /* Footer for copyright */
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
-    <div class="gallery">
-       <!-- Art Piece 1 -->
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery-container">
+        <div class="gallery">
+            <!-- Art Piece 1 -->
         <div class="art-piece" onclick="openModal('art1')">
             <img src="/art/imgs/background.png" alt="Art Piece 1">
             <div class="description">"Full art valentines piece" - Created 2024</div>
@@ -118,8 +160,8 @@
 
         <!-- Art Piece 2 -->
         <div class="art-piece" onclick="openModal('art2')">
-            <img src="/art/imgs/horizonal2.jfif" alt="Art Piece 2">
-            <div class="description">"Contest Piece" - Created 2024</div>
+            <img src="/art/imgs/loving.png" alt="Art Piece 2">
+            <div class="description">"Carrying Anniversary Piece" - Created 2024</div>
         </div>
 
         <!-- Art Piece 3 -->
@@ -158,14 +200,18 @@
             <div class="description">"Birthday Piece" - Created 2024</div>
         </div> 
     </div>
+        
+    <!-- Footer for copyright -->
+    <div class="footer">
+        &copy; 2024 All artworks are exclusively the property of Ryunekoru.
+    </div>
 
     <!-- Modal for showcasing the artwork and playing the video -->
     <div id="modal" class="modal">
         <div class="close-btn" onclick="closeModal()">×</div>
         <img id="modalImage" src="" alt="Full Art Piece">
         <video id="modalVideo" src="" controls></video>
-    </div> 
-
+    </div>
 
    <script>
         const modal = document.getElementById('modal');
@@ -181,7 +227,7 @@
                     break;
                 case 'art2':
                     modalImage.src = '/art/imgs/horizonal2.jfif';
-                    modalVideo.src = '/art/vids/flower.mp4';
+                    modalVideo.src = 'flower.mp4';
                     break;
                 case 'art3':
                     modalImage.src = '/art/imgs/background5.png';
