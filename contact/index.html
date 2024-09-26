@@ -4,32 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <!-- Title for the Browser Tab -->
-    <title>Ryunekoru</title>
-    
-    <!-- Favicon for the Browser Tab -->
-    <link rel="icon" href="/pics/socials.png" type="image/png">
+
+    <title>Ryunekoru - Artist Portfolio and Custom Art Commissions</title>
+
+    <meta name="description" content="Contact Ryunekoru for custom art commissions or inquiries about the captivating art collection. Reach out today.">
+
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <meta property="og:title" content="Ryunekoru - Captivating Digital and Traditional Art">
+    <meta property="og:description" content="Explore Ryunekoru's unique art collection. Commission your own custom piece of digital or traditional artwork.">
+    <meta property="og:image" content="https://ryunekoru.com/images/art-preview.jpg">
+    <meta property="og:url" content="https://ryunekoru.com">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ryunekoru",
+      "jobTitle": "Artist",
+      "url": "https://ryunekoru.com",
+      "sameAs": [
+        "https://x.com/ryunekoru",
+        "https://www.instagram.com/ryunekoru/?hl=en",
+        "https://www.youtube.com/channel/UC_2mIraP_Ksh4cM1SrKcjsA"
+        "https://tiktok.com/@ryunekoru"
+      ]
+    }
+    </script>
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
-            height: 100vh;
             display: flex;
             flex-direction: column;
+            height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Fixed Navbar */
+        /* Navbar Styling */
         .navbar {
             width: 100%;
             height: 60px;
             background-color: white;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            padding: 0 20px;
             position: fixed;
             top: 0;
             left: 0;
@@ -37,39 +62,48 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .navbar a {
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-logo h1 {
+            font-size: 1.5em;
             color: #333;
-            background-color: white;
+            margin: 0;
+        }
+
+        .navbar-links a {
+            color: #333;
             text-decoration: none;
-            margin: 0 15px;
             padding: 10px 20px;
             border-radius: 8px;
             font-weight: bold;
             transition: background 0.3s, color 0.3s;
-            text-align: center;
-            min-width: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .navbar a:hover {
+        .navbar-links a:hover {
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
         }
 
-        /* Contact and Pricing Container */
+        /* Contact and Pricing Section */
         .content-container {
-            flex-grow: 1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            width: 100vw;
-            height: calc(100vh - 60px);
-            padding: 20px;
-            box-sizing: border-box;
-            margin-top: 60px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 100px 20px 20px; /* Adjusted padding to avoid overlap with navbar */
             gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
 
         /* Styling for Both Boxes */
@@ -80,18 +114,13 @@
             border-radius: 12px;
             max-width: 500px;
             width: 100%;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            min-width: 280px;
         }
 
         .box h2 {
             margin-bottom: 20px;
             color: white;
-        }
-
-        .box p, .box label, .box input, .box textarea {
-            color: white;
-            margin-bottom: 20px;
         }
 
         .contact-form input,
@@ -134,16 +163,12 @@
             color: white;
         }
 
-        /* Responsive Adjustments with Clean Padding */
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .navbar a {
-                padding: 8px 16px;
-                font-size: 0.9em;
-                min-width: 100px;
-            }
-
             .content-container {
                 flex-direction: column;
+                align-items: center;
+                padding: 100px 15px 20px;
                 gap: 20px;
             }
 
@@ -163,23 +188,41 @@
             .content-container {
                 padding-left: 10px;
                 padding-right: 10px;
-                gap: 10px;
             }
 
             .box {
-                padding: 20px;
+                padding: 15px;
+            }
+
+            .contact-form button {
+                font-size: 1em;
+            }
+
+            .pricing-box ul li {
+                font-size: 1em;
+                padding: 8px;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- Navbar -->
     <div class="navbar">
-        <a href="https://ryunekoru.com">Home</a>
-        <a href="https://ryunekoru.com/art">Gallery</a>
-        <a href="https://ryunekoru.com/contact">Contact</a>
+        <div class="navbar-logo">
+            <img src="path-to-your-logo.png" alt="Logo">
+            <h1>Ryunekoru</h1>
+        </div>
+        <div class="navbar-links">
+            <a href="https://ryunekoru.com">Home</a>
+            <a href="https://ryunekoru.com/art">Gallery</a>
+            <a href="https://ryunekoru.com/contact">Contact</a>
+        </div>
     </div>
 
+    <!-- Contact and Pricing Section -->
     <div class="content-container">
+        <!-- Contact Form Box -->
         <div class="box contact-form">
             <h2>Contact the Artist</h2>
             <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
@@ -196,6 +239,7 @@
             </form>
         </div>
 
+        <!-- Pricing Information Box -->
         <div class="box pricing-box">
             <h2>Pricing Information</h2>
             <ul>
