@@ -69,9 +69,12 @@
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Three columns for the gallery */
-            grid-gap: 20px;
+            grid-template-rows: repeat(3, 1fr); /* Three rows for the gallery */
+            grid-gap: 20px; /* Gap between artworks */
             width: 100%;
             max-width: 1200px;
+            height: 100%;
+            max-height: calc(100vh - 100px); /* Keep it within viewport */
         }
 
         .gallery img {
@@ -80,6 +83,7 @@
             border-radius: 8px;
             object-fit: cover;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer; /* Make it clickable */
         }
 
         /* Modal Styling */
@@ -129,6 +133,21 @@
         .close-btn:hover {
             background: rgba(0, 0, 0, 0.9);
         }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+                grid-template-rows: repeat(5, 1fr); /* Five rows for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr; /* Single column for mobile */
+                grid-template-rows: repeat(9, 1fr); /* Nine rows for mobile */
+            }
+        }
     </style>
 </head>
 <body>
@@ -146,7 +165,12 @@
             <img src="/art/imgs/background.png" alt="Art Piece 1" onclick="openModal('art1')">
             <img src="/art/imgs/horizonal2.jfif" alt="Art Piece 2" onclick="openModal('art2')">
             <img src="/art/imgs/background5.png" alt="Art Piece 3" onclick="openModal('art3')">
-            <!-- Add more images as needed -->
+            <img src="/art/imgs/vertical1.png" alt="Art Piece 4" onclick="openModal('art4')">
+            <img src="/art/imgs/background 3.png" alt="Art Piece 5" onclick="openModal('art5')">
+            <img src="/art/imgs/vertical2.png" alt="Art Piece 6" onclick="openModal('art6')">
+            <img src="/art/imgs/horizontal3.jfif" alt="Art Piece 7" onclick="openModal('art7')">
+            <img src="/art/imgs/blue.jfif" alt="Art Piece 8" onclick="openModal('art8')">
+            <img src="/art/imgs/horizonal1.jfif" alt="Art Piece 9" onclick="openModal('art9')">
         </div>
     </div>
 
@@ -175,13 +199,36 @@
                     break;
                 case 'art2':
                     modalImage.src = '/art/imgs/horizonal2.jfif';
-                    modalVideo.src = '/art/vids/video2.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/flower.mp4';  // Set the appropriate video
                     break;
                 case 'art3':
                     modalImage.src = '/art/imgs/background5.png';
-                    modalVideo.src = '/art/vids/video3.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/oneyear_1.mp4';  // Set the appropriate video
                     break;
-                // Add more cases as needed for each artwork
+                case 'art4':
+                    modalImage.src = '/art/imgs/vertical1.png';
+                    modalVideo.src = '/art/vids/video4.mp4';  // Set the appropriate video
+                    break;
+                case 'art5':
+                    modalImage.src = '/art/imgs/background 3.png';
+                    modalVideo.src = '/art/vids/video5.mp4';  // Set the appropriate video
+                    break;
+                case 'art6':
+                    modalImage.src = '/art/imgs/vertical2.png';
+                    modalVideo.src = '/art/vids/video6.mp4';  // Set the appropriate video
+                    break;
+                case 'art7':
+                    modalImage.src = '/art/imgs/horizontal3.jfif';
+                    modalVideo.src = '/art/vids/video7.mp4';  // Set the appropriate video
+                    break;
+                case 'art8':
+                    modalImage.src = '/art/imgs/blue.jfif';
+                    modalVideo.src = '/art/vids/video8.mp4';  // Set the appropriate video
+                    break;
+                case 'art9':
+                    modalImage.src = '/art/imgs/horizonal1.jfif';
+                    modalVideo.src = '/art/vids/video9.mp4';  // Set the appropriate video
+                    break;
             }
 
             // Show modal
