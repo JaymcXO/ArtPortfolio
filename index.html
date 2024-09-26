@@ -113,20 +113,21 @@
 
         /* Social Media Icons */
         .social-media {
-            margin-top: 30px;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px; /* Smaller gap between icons */
         }
 
-        .social-media a {
-            color: white;
-            font-size: 2em;
-            transition: color 0.3s ease;
+        .social-media a img {
+            width: 30px; /* Reduced size */
+            height: 30px; /* Reduced size */
+            object-fit: contain;
+            transition: transform 0.3s ease; /* Smooth hover effect */
         }
 
-        .social-media a:hover {
-            color: #f0f0f0; /* Lighter color on hover */
+        .social-media a img:hover {
+            transform: scale(1.1); /* Slight zoom on hover */
         }
 
         /* Responsive Layout for smaller screens */
@@ -164,8 +165,9 @@
                 min-width: 120px;
             }
 
-            .social-media a {
-                font-size: 1.8em;
+            .social-media a img {
+                width: 25px; /* Smaller icons for tablets */
+                height: 25px;
             }
         }
 
@@ -187,8 +189,9 @@
                 padding: 10px 18px;
             }
 
-            .social-media a {
-                font-size: 1.6em;
+            .social-media a img {
+                width: 20px; /* Even smaller icons for mobile */
+                height: 20px;
             }
         }
 
