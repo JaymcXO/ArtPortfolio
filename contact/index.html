@@ -1,1 +1,140 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact the Artist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
+            color: white;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Fixed Navigation Bar */
+        .navbar {
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #333;
+            background-color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background: linear-gradient(135deg, #3b82f6, #9333ea); /* Gradient on hover */
+            color: white;
+        }
+
+        /* Contact Form Container */
+        .contact-container {
+            margin-top: 80px; /* Space for fixed navbar */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.5); /* Match background style */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-container h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        /* Form Styling */
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            color: #333;
+            background-color: #f0f0f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            background-color: #e0e0e0;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-color: white;
+            color: #333;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Navigation Bar -->
+    <div class="navbar">
+        <a href="https://ryunekoru.com">Home</a>
+        <a href="https://ryunekoru.com/art">Gallery</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="contact-container">
+        <h2>Contact the Artist</h2>
+        <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message (e.g. commissions, work opportunities)" required></textarea>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+
+</body>
+</html>
