@@ -113,6 +113,24 @@
             color: white;
         }
 
+        /* Social Media Icons */
+        .social-media {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-media a {
+            color: white;
+            font-size: 2em;
+            transition: color 0.3s ease;
+        }
+
+        .social-media a:hover {
+            color: #f0f0f0; /* Lighter color on hover */
+        }
+
         /* Responsive Layout for smaller screens */
         @media (max-width: 768px) {
             .landing-container {
@@ -147,6 +165,10 @@
                 font-size: 0.9em;
                 min-width: 120px;
             }
+
+            .social-media a {
+                font-size: 1.8em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -166,6 +188,10 @@
                 font-size: 0.8em;
                 padding: 10px 18px;
             }
+
+            .social-media a {
+                font-size: 1.6em;
+            }
         }
 
     </style>
@@ -182,7 +208,7 @@
 
         <!-- Right Side Profile Section -->
         <div class="profile-container">
-            <img src="/pics/socials.jpg" alt="Profile Picture">
+            <img src="/pics/socials.jpeg" alt="Profile Picture">
             <h1>Ryunekoru</h1>
             <p>
                 Welcome to Ryunekoru’s world of captivating art. Dive into a collection that fuses imagination, emotion, and technical brilliance. Each piece tells a unique story, inviting you to explore and experience the creativity behind the craft.
@@ -192,6 +218,22 @@
             <div class="button-container">
                 <a href="https://ryunekoru.com/art">Enter Portfolio</a>
                 <a href="https://ryunekoru.com/contact">Contact the Artist</a>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="social-media">
+                <a href="https://tiktok.com/@yourtiktok" target="_blank" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://twitter.com/yourtwitter" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/yourinstagram" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/youryoutube" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
             </div>
         </div>
 
