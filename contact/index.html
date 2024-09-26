@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,26 +12,23 @@
             padding: 0;
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
         }
 
-        /* Fixed Navigation Bar */
         .navbar {
             width: 100%;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            height: 60px;
+            background-color: white; 
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: center; 
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
             z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
         }
 
         .navbar a {
@@ -44,95 +40,121 @@
             border-radius: 8px;
             font-weight: bold;
             transition: background 0.3s, color 0.3s;
+            text-align: center;
+            min-width: 120px;
+            display: flex;
+            align-items: center; 
+            justify-content: center;
         }
 
         .navbar a:hover {
-            background: linear-gradient(135deg, #3b82f6, #9333ea); /* Gradient on hover */
+            background: linear-gradient(135deg, #3b82f6, #9333ea); 
             color: white;
         }
 
-        /* Contact Form Container */
         .contact-container {
-            margin-top: 80px; /* Space for fixed navbar */
+            flex-grow: 1;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            width: 100vw;
+            height: calc(100vh - 60px); 
             padding: 20px;
-            width: 100%;
-            max-width: 600px;
-            background-color: rgba(0, 0, 0, 0.5); /* Match background style */
+            box-sizing: border-box;
+            margin-top: 60px; 
+        }
+
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .contact-container h2 {
-            margin-bottom: 20px;
-            font-size: 2em;
-        }
-
-        /* Form Styling */
-        form {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
         }
 
-        input, textarea {
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
+        .contact-form h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
             border-radius: 8px;
+            border: 1px solid #ccc;
             font-size: 1em;
-            color: #333;
-            background-color: #f0f0f0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            background-color: #e0e0e0;
-        }
-
-        textarea {
-            resize: vertical;
-            height: 150px;
-        }
-
-        /* Submit Button */
-        .submit-btn {
-            background-color: white;
-            color: #333;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: linear-gradient(135deg, #3b82f6, #9333ea);
+        .contact-form button {
+            background-color: #3b82f6;
             color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #9333ea;
+        }
+
+        @media (max-width: 768px) {
+            .navbar a {
+                padding: 8px 16px;
+                font-size: 0.9em;
+                min-width: 100px;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+                min-width: 90px;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Fixed Navigation Bar -->
     <div class="navbar">
         <a href="https://ryunekoru.com">Home</a>
         <a href="https://ryunekoru.com/art">Gallery</a>
-        <a href="#">Contact</a>
+        <a href="https://ryunekoru.com/contact">Contact</a>
     </div>
 
-    <!-- Contact Form Section -->
     <div class="contact-container">
-        <h2>Contact the Artist</h2>
-        <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message (e.g. commissions, work opportunities)" required></textarea>
-            <button type="submit" class="submit-btn">Send Message</button>
+        <form class="contact-form" action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+            <h2>Contact the Artist</h2>
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
         </form>
     </div>
 
