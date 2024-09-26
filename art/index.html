@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <!-- Title for the Browser Tab -->
+
     <title>Ryunekoru Gallery</title>
 
-    <!-- Favicon for the Browser Tab -->
     <link rel="icon" href="/pics/socials.png" type="image/png">
 
     <style>
-        /* General Body Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -24,7 +21,6 @@
             flex-direction: column;
         }
 
-        /* Navbar Styling */
         .navbar {
             width: 100%;
             height: 60px;
@@ -54,26 +50,25 @@
             color: white;
         }
 
-        /* Gallery Container */
         .gallery-container {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100vw;
-            height: calc(100vh - 60px); /* Full screen excluding the navbar */
+            height: calc(100vh - 60px);
             padding: 20px;
             box-sizing: border-box;
-            margin-top: 60px; /* Adjust for fixed navbar */
+            margin-top: 60px; 
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Three columns for the grid */
-            grid-gap: 20px; /* Gap between artworks */
-            width: 100%; /* Full width of the screen */
-            height: 100%; /* Full height of the container */
-            max-width: 100vw; /* Full width including large screens */
+            grid-template-columns: repeat(3, 1fr); 
+            grid-gap: 20px; 
+            width: 100%;
+            height: 100%; 
+            max-width: 100vw;
         }
 
         .gallery-item {
@@ -92,10 +87,10 @@
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05); /* Slight scaling on hover */
+            transform: scale(1.05); 
         }
 
-        /* Hover Description Styling */
+   
         .description {
             position: absolute;
             bottom: 0;
@@ -111,19 +106,17 @@
         }
 
         .gallery-item:hover .description {
-            opacity: 1; /* Show description on hover */
+            opacity: 1;
         }
 
-        /* Ensure Consistent Sizes for Both Vertical and Horizontal Pieces */
         .gallery img.horizontal {
-            aspect-ratio: 4/3; /* For horizontal images */
+            aspect-ratio: 4/3; 
         }
 
         .gallery img.vertical {
-            aspect-ratio: 3/4; /* For vertical images */
+            aspect-ratio: 3/4;
         }
 
-        /* Modal Styling */
         .modal {
             position: fixed;
             top: 0;
@@ -131,29 +124,27 @@
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.8);
-            display: none; /* Hidden by default */
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
 
         .modal.show {
-            display: flex; /* Shows the modal when triggered */
+            display: flex; 
         }
 
-        /* Image and Video Styling */
         .modal img, .modal video {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
-            margin: auto; /* Ensures video is centered */
+            margin: auto;
         }
 
         .modal video {
-            display: none; /* Initially hidden */
+            display: none;
         }
 
-        /* Close Button Styling */
         .close-btn {
             position: absolute;
             top: 20px;
@@ -171,43 +162,37 @@
             background: rgba(0, 0, 0, 0.9);
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+                grid-template-columns: repeat(2, 1fr); 
             }
         }
 
         @media (max-width: 480px) {
             .gallery {
-                grid-template-columns: 1fr; /* Single column for mobile */
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
     <div class="navbar">
         <a href="https://ryunekoru.com">Home</a>
         <a href="https://ryunekoru.com/art">Gallery</a>
         <a href="https://ryunekoru.com/contact">Contact</a>
     </div>
 
-    <!-- Gallery Container -->
     <div class="gallery-container">
         <div class="gallery">
-            <!-- Example for Vertical Art -->
             <div class="gallery-item" onclick="openModal('art1')">
                 <img src="/art/imgs/background.png" alt="Art Piece 1" class="vertical">
                 <div class="description">"Art Piece 1" - Created in 2024</div>
             </div>
-            <!-- Example for Horizontal Art -->
             <div class="gallery-item" onclick="openModal('art2')">
                 <img src="/art/imgs/horizonal2.jfif" alt="Art Piece 2" class="horizontal">
                 <div class="description">"Art Piece 2" - Created in 2024</div>
             </div>
-            <!-- Add more images with descriptions and vertical/horizontal classes -->
             <div class="gallery-item" onclick="openModal('art3')">
                 <img src="/art/imgs/background5.png" alt="Art Piece 3" class="vertical">
                 <div class="description">"Art Piece 3" - Created in 2024</div>
@@ -239,7 +224,6 @@
         </div>
     </div>
 
-    <!-- Modal for Full-Screen Image/Video -->
     <div id="modal" class="modal">
         <div class="close-btn" onclick="closeModal()">×</div>
         <img id="modalImage" src="" alt="Full Art Piece">
@@ -252,7 +236,6 @@
         const modalVideo = document.getElementById('modalVideo');
 
         function openModal(artId) {
-            // Reset video
             modalVideo.style.display = 'none';
             modalVideo.pause();
             modalVideo.currentTime = 0;
@@ -260,11 +243,11 @@
             switch (artId) {
                 case 'art1':
                     modalImage.src = '/art/imgs/background.png';
-                    modalVideo.src = '/art/vids/video1.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/video1.mp4'; 
                     break;
                 case 'art2':
                     modalImage.src = '/art/imgs/horizonal2.jfif';
-                    modalVideo.src = '/art/vids/flower.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/flower.mp4';
                     break;
                 case 'art3':
                     modalImage.src = '/art/imgs/background5.png';
@@ -296,24 +279,21 @@
                     break;
             }
 
-            // Show modal
             modal.classList.add('show');
 
-            // Show image first with a fade-in effect
             modalImage.style.display = 'block';
             modalImage.style.opacity = '1';
             modalVideo.style.opacity = '0';
 
-            // Fade-out effect for the image and transition to video after 2 seconds
             setTimeout(() => {
-                modalImage.style.opacity = '0'; // Fade out image
+                modalImage.style.opacity = '0';
                 setTimeout(() => {
                     modalImage.style.display = 'none';
-                    modalVideo.style.display = 'block'; // Show video
+                    modalVideo.style.display = 'block';
                     modalVideo.style.opacity = '1';
-                    modalVideo.play(); // Play the video
-                }, 500);  // Delay for smooth transition
-            }, 2000);  // Show the image for 2 seconds before switching to the video
+                    modalVideo.play(); 
+                }, 500); 
+            }, 2000); 
         }
 
         function closeModal() {
