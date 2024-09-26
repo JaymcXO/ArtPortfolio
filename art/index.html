@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Art Portfolio</title>
-    <!-- Load Font Awesome from CDN -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,37 +12,26 @@
             padding: 0;
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
         }
 
-        /* Navbar (Hidden initially, appears on hover) */
+        /* Fixed Navbar */
         .navbar {
             width: 100%;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.95); /* Slight transparency */
+            height: 60px; /* Fixed height for navbar */
+            background-color: white; /* White background for navbar */
             display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: -100px; /* Start off-screen */
-            transition: top 0.5s ease-in-out, background-color 0.3s ease-in-out; /* Smooth slide-in */
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+            position: fixed;
+            top: 0;
+            left: 0;
             z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
         }
 
-        /* Show navbar when hovering near the top third of the page */
-        body:hover .navbar {
-            top: 0; /* Slide down to visible */
-        }
-
-        /* Transparent background on hover */
-        .navbar:hover {
-            background-color: rgba(255, 255, 255, 0.85); /* More transparency on hover */
-        }
-
-        /* Centered Navbar Buttons with FontAwesome Icons */
         .navbar a {
             color: #333; /* Dark color for text */
             background-color: white; /* Match button background */
@@ -53,16 +40,12 @@
             padding: 10px 20px;
             border-radius: 8px;
             font-weight: bold;
-            border: none;
             transition: background 0.3s, color 0.3s;
-            display: flex;
-            justify-content: center; /* Center text horizontally */
-            align-items: center; /* Center text vertically */
+            text-align: center;
             min-width: 120px; /* Set a minimum button width for consistent size */
-        }
-
-        .navbar a i {
-            margin-right: 8px; /* Space between icon and text */
+            display: flex;
+            align-items: center; /* Center text vertically */
+            justify-content: center; /* Center text horizontally */
         }
 
         .navbar a:hover {
@@ -72,22 +55,24 @@
 
         /* Full-Screen Gallery Grid */
         .gallery-container {
-            width: 100vw;  /* Full viewport width */
-            height: 100vh; /* Full viewport height */
+            flex-grow: 1; /* Take up remaining space below navbar */
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100vw;
+            height: calc(100vh - 60px); /* Fill remaining height after navbar */
             padding: 20px;
             box-sizing: border-box;
+            margin-top: 60px; /* Account for the fixed navbar height */
         }
 
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
             grid-template-rows: repeat(3, 1fr);    /* 3 rows */
-            grid-gap: 20px;                        /* Space between grid items */
+            grid-gap: 20px;
             width: 100%;
-            height: 100%; /* Full height grid */
+            height: 100%;
             box-sizing: border-box;
         }
 
@@ -150,17 +135,6 @@
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
-            position: absolute;
-        }
-
-        .modal img {
-            transition: opacity 1s ease;
-        }
-
-        .modal video {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
         }
 
         .modal.show {
@@ -175,11 +149,9 @@
             background: rgba(0, 0, 0, 0.7); /* Transparent black */
             color: white;
             padding: 10px 20px; /* More rectangular shape */
-            border-radius: 6px; /* Slight rounding for smooth corners */
+            border-radius: 6px;
             font-size: 1.2em;
             cursor: pointer;
-            border: none;
-            text-align: center;
             transition: background 0.3s ease;
         }
 
@@ -219,11 +191,11 @@
     </style>
 </head>
 <body>
-    <!-- Navbar that appears on hover near the top of the screen -->
+    <!-- Navbar fixed at the top of the screen -->
     <div class="navbar">
-        <a href="https://ryunekoru.com"><i class="fas fa-home"></i> Home</a>
-        <a href="https://ryunekoru.com/art"><i class="fas fa-images"></i> Gallery</a>
-        <a href="https://ryunekoru.com/contact"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="https://ryunekoru.com">Home</a>
+        <a href="https://ryunekoru.com/art">Gallery</a>
+        <a href="https://ryunekoru.com/contact">Contact</a>
     </div>
 
     <!-- Gallery Section -->
@@ -238,7 +210,7 @@
         <!-- Art Piece 2 -->
         <div class="art-piece" onclick="openModal('art2')">
             <img src="/art/imgs/horizonal2.jfif" alt="Art Piece 2">
-            <div class="description">"Flower Contest Piece" - Created 2024</div>
+            <div class="description">"Carrying Anniversary Piece" - Created 2024</div>
         </div>
 
         <!-- Art Piece 3 -->
@@ -331,21 +303,19 @@
                     break;
             }
 
-            // Show the modal and the image
             modal.classList.add('show');
             modalImage.style.opacity = '1';
             modalVideo.style.opacity = '0';
-            modalVideo.style.display = 'none';  // Ensure video is hidden initially
+            modalVideo.style.display = 'none';
 
-            // After 2 seconds, hide the image and show the video
             setTimeout(() => {
-                modalImage.style.opacity = '0';  // Fade out the image
+                modalImage.style.opacity = '0';
                 setTimeout(() => {
                     modalVideo.style.display = 'block';
-                    modalVideo.style.opacity = '1';  // Fade in the video
+                    modalVideo.style.opacity = '1';
                     modalVideo.play();
-                }, 500);  // Short delay to ensure smooth fade transition
-            }, 2000);  // Wait 2 seconds before transitioning to the video
+                }, 500);
+            }, 2000);
         }
 
         function closeModal() {
@@ -353,7 +323,7 @@
             modalImage.style.opacity = '1';
             modalVideo.style.display = 'none';
             modalVideo.pause();
-            modalVideo.currentTime = 0;  // Reset the video time to the beginning
+            modalVideo.currentTime = 0;
         }
     </script>
 </body>
