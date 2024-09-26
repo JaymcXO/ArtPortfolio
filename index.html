@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Artist Landing Page</title>
+    <title>Art Portfolio</title>
     <!-- Load Font Awesome from CDN -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
@@ -18,158 +18,322 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
         }
 
-        /* Centered Box for Artist Information */
-        .info-box {
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-            padding: 20px 40px; /* Adjust padding for better proportional fit */
-            border-radius: 12px;
-            text-align: center;
-            width: 80%; /* Responsive width */
-            max-width: 600px; /* Limit max width for large screens */
-            margin-bottom: 30px;
-        }
-
-        .info-box h1 {
-            font-size: 2.5em; /* Adjusted font size */
-            margin: 0;
-        }
-
-        .info-box p {
-            font-size: 1.1em; /* Adjusted font size */
-            line-height: 1.6;
-            color: #f0f0f0;
-        }
-
-        /* Buttons for Enter Portfolio and Contact */
-        .button-container {
+        /* Navbar (Hidden initially, appears on hover) */
+        .navbar {
+            width: 100%;
+            padding: 20px;
+            background-color: white; /* White background for navbar */
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Allows buttons to wrap on small screens */
-            gap: 20px;
-            margin-bottom: 20px;
+            align-items: center;
+            position: absolute;
+            top: -100px; /* Start off-screen */
+            transition: top 0.5s ease-in-out; /* Smooth slide-in */
+            z-index: 1000;
         }
 
-        .button-container a {
-            color: #333;
-            background-color: white; /* Default white button */
+        /* Show navbar when hovering near the top third of the page */
+        body:hover .navbar {
+            top: 0; /* Slide down to visible */
+        }
+
+        /* Centered Navbar Buttons with FontAwesome Icons */
+        .navbar a {
+            color: #333; /* Dark color for text */
+            background-color: white; /* Match button background */
             text-decoration: none;
-            padding: 12px 24px; /* Standard padding */
+            margin: 0 15px;
+            padding: 10px 20px;
             border-radius: 8px;
-            transition: background 0.3s, color 0.3s;
             font-weight: bold;
-            font-size: 1em; /* Standard button text size */
             border: none;
+            transition: background 0.3s, color 0.3s;
             text-align: center;
-            min-width: 150px; /* Prevent buttons from shrinking too much */
+            min-width: 120px; /* Set a minimum button width for consistent size */
+            display: flex;
+            align-items: center; /* Align icon and text vertically */
         }
 
-        .button-container a:hover {
+        .navbar a i {
+            margin-right: 8px; /* Space between icon and text */
+        }
+
+        .navbar a:hover {
             background: linear-gradient(135deg, #3b82f6, #9333ea); /* Gradient on hover */
             color: white; /* White text on hover */
         }
 
-        /* Social Media Icons Box */
-        .social-media-box {
+        /* Full-Screen Gallery Grid */
+        .gallery-container {
+            width: 100vw;  /* Full viewport width */
+            height: 100vh; /* Full viewport height */
             display: flex;
             justify-content: center;
-            gap: 20px; /* Standard gap between icons */
-            margin-top: 20px;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* Social Media Icon Styling with FontAwesome */
-        .social-media-box a {
-            font-size: 2.5em; /* Icon size */
-            color: white; /* Default color */
-            transition: color 0.3s ease; /* Smooth color transition */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-template-rows: repeat(3, 1fr);    /* 3 rows */
+            grid-gap: 20px;                        /* Space between grid items */
+            width: 100%;
+            height: 100%; /* Full height grid */
+            box-sizing: border-box;
         }
 
-        .social-media-box a:hover {
-            color: #f0f0f0; /* Lighter color on hover */
+        .art-piece {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
         }
 
-        /* Media Queries for Smaller Devices */
+        .art-piece img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .art-piece:hover img {
+            transform: scale(1.05);
+        }
+
+        .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            font-size: 1em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+        }
+
+        .art-piece:hover .description {
+            opacity: 1;
+        }
+
+        /* Modal Overlay */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img, .modal video {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            position: absolute;
+        }
+
+        .modal img {
+            transition: opacity 1s ease;
+        }
+
+        .modal video {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        /* Updated Close Button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7); /* Transparent black */
+            color: white;
+            padding: 10px 20px; /* More rectangular shape */
+            border-radius: 6px; /* Slight rounding for smooth corners */
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.9); /* Darker on hover */
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .info-box {
-                width: 90%; /* Expand to take up more space on small screens */
-                padding: 15px 30px; /* Reduce padding on small screens */
-            }
-
-            .info-box h1 {
-                font-size: 2em; /* Smaller font size on mobile */
-            }
-
-            .info-box p {
-                font-size: 1em; /* Adjusted text size */
-            }
-
-            .button-container a {
-                font-size: 1.2em; /* Increase button text size on small screens */
-            }
-
-            .social-media-box a {
-                font-size: 2.5em; /* FontAwesome icon size on smaller screens */
-            }
-        }
-
-        /* Media Queries for Very Small Devices */
-        @media (max-width: 480px) {
-            .info-box {
-                width: 95%;
-                padding: 10px 20px; /* Further reduced padding */
-            }
-
-            .info-box h1 {
-                font-size: 1.8em;
-            }
-
-            .info-box p {
+            .navbar a {
+                padding: 8px 16px;
                 font-size: 0.9em;
+                min-width: 100px;
             }
 
-            .button-container a {
-                font-size: 1.1em;
-            }
-
-            .social-media-box a {
-                font-size: 2.3em;
+            .gallery {
+                grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for smaller screens */
+                grid-template-rows: repeat(5, 1fr);    /* Adjust for more rows */
+                grid-gap: 15px;
             }
         }
+
+        @media (max-width: 480px) {
+            .navbar a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+                min-width: 90px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr; /* Single column for very small screens */
+                grid-template-rows: repeat(9, 1fr); /* Ensure all images are visible */
+                grid-gap: 10px;
+            }
+        }
+
     </style>
 </head>
 <body>
-
-    <!-- Box with Artist Information -->
-    <div class="info-box">
-        <h1>Ryunekoru</h1>
-        <p>
-            Welcome to Ryunekoru’s world of captivating art. Dive into a collection that fuses imagination, emotion, and technical brilliance. Each piece tells a unique story, inviting you to explore and experience the creativity behind the craft.
-        </p>
+    <!-- Navbar that appears on hover near the top of the screen -->
+    <div class="navbar">
+        <a href="https://ryunekoru.com"><i class="fas fa-home"></i> Home</a>
+        <a href="https://ryunekoru.com/art"><i class="fas fa-images"></i> Gallery</a>
+        <a href="https://ryunekoru.com/contact"><i class="fas fa-envelope"></i> Contact</a>
     </div>
 
-    <!-- Buttons for Enter Portfolio and Contact -->
-    <div class="button-container">
-        <a href="https://ryunekoru.com/art">Enter Portfolio</a>
-        <a href="https://ryunekoru.com/contact">Contact the Artist</a>
+    <!-- Gallery Section -->
+    <div class="gallery-container">
+        <div class="gallery">
+            <!-- Art Piece 1 -->
+            <div class="art-piece" onclick="openModal('art1')">
+                <img src="path-to-your-art1.jpg" alt="Art Piece 1">
+                <div class="description">"Title of Art Piece 1" - Created on Date</div>
+            </div>
+
+            <!-- Art Piece 2 -->
+            <div class="art-piece" onclick="openModal('art2')">
+                <img src="path-to-your-art2.jpg" alt="Art Piece 2">
+                <div class="description">"Title of Art Piece 2" - Created on Date</div>
+            </div>
+
+            <!-- Art Piece 3 -->
+            <div class="art-piece" onclick="openModal('art3')">
+                <img src="path-to-your-art3.jpg" alt="Art Piece 3">
+                <div class="description">"Title of Art Piece 3" - Created on Date</div>
+            </div>
+
+            <!-- Art Piece 4 -->
+            <div class="art-piece" onclick="openModal('art4')">
+                <img src="path-to-your-art4.jpg" alt="Art Piece 4">
+                <div class="description">"Title of Art Piece 4" - Created on Date</div>
+            </div>
+
+            <!-- Art Piece 5 -->
+            <div class="art-piece" onclick="openModal('art5')">
+                <img src="path-to-your-art5.jpg" alt="Art Piece 5">
+                <div class="description">"Title of Art Piece 5" - Created on Date</div>
+            </div>
+
+            <!-- Art Piece 6 -->
+            <div class="art-piece" onclick="openModal('art6')">
+                <img src="path-to-your-art6.jpg" alt="Art Piece 6">
+                <div class="description">"Title of Art Piece 6" - Created on Date</div>
+            </div>
+
+            <!-- Art Piece 7 -->
+            <div class="art-piece" onclick="openModal('art7')">
+                <img src="path-to-your-art7.jpg" alt="Art Piece 7">
+                <div class="description">"Title of Art Piece 7" - Created on Date</div>
+            </div>
+
+            <!-- Art Piece 8 -->
+            <div class="art-piece" onclick="openModal('art8')">
+                <img src="path-to-your-art8.jpg" alt="Art Piece 8">
+                <div class="description">"Title of Art Piece 8" - Created on Date</div>
+            </div>
+
+            <!-- Art Piece 9 -->
+            <div class="art-piece" onclick="openModal('art9')">
+                <img src="path-to-your-art9.jpg" alt="Art Piece 9">
+                <div class="description">"Title of Art Piece 9" - Created on Date</div>
+            </div>
+        </div>
     </div>
 
-    <!-- Social Media Links with FontAwesome Icons -->
-    <div class="social-media-box">
-        <a href="https://twitter.com/yourtwitter" target="_blank" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://instagram.com/yourinstagram" target="_blank" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://tiktok.com/@yourtiktok" target="_blank" aria-label="TikTok">
-            <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://youtube.com/youryoutube" target="_blank" aria-label="YouTube">
-            <i class="fab fa-youtube"></i>
-        </a>
+    <!-- Modal for showcasing the artwork and playing the video -->
+    <div id="modal" class="modal">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        <img id="modalImage" src="" alt="Full Art Piece">
+        <video id="modalVideo" src="" controls></video>
     </div>
 
+    <script>
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
+
+        function openModal(artId) {
+            // Set the image and video for the clicked art piece
+            switch (artId) {
+                case 'art1':
+                    modalImage.src = 'path-to-your-art1.jpg';
+                    modalVideo.src = 'path-to-your-video1.mp4';
+                    break;
+                case 'art2':
+                    modalImage.src = 'path-to-your-art2.jpg';
+                    modalVideo.src = 'path-to-your-video2.mp4';
+                    break;
+                case 'art3':
+                    modalImage.src = 'path-to-your-art3.jpg';
+                    modalVideo.src = 'path-to-your-video3.mp4';
+                    break;
+                // Add more cases for additional art pieces
+            }
+
+            // Show the modal and the image
+            modal.classList.add('show');
+            modalImage.style.opacity = '1';
+            modalVideo.style.opacity = '0';
+            modalVideo.style.display = 'none';  // Ensure video is hidden initially
+
+            // After 2 seconds, hide the image and show the video
+            setTimeout(() => {
+                modalImage.style.opacity = '0';  // Fade out the image
+                setTimeout(() => {
+                    modalVideo.style.display = 'block';
+                    modalVideo.style.opacity = '1';  // Fade in the video
+                    modalVideo.play();
+                }, 500);  // Short delay to ensure smooth fade transition
+            }, 2000);  // Wait 2 seconds before transitioning to the video
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            modalImage.style.opacity = '1';
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.currentTime = 0;  // Reset the video time to the beginning
+        }
+    </script>
 </body>
 </html>
