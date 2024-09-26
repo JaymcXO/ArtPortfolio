@@ -54,36 +54,73 @@
             color: white;
         }
 
-        /* Gallery Styling */
+        /* Gallery Container */
         .gallery-container {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100vw;
+            height: calc(100vh - 60px); /* Full screen excluding the navbar */
             padding: 20px;
-            margin-top: 60px; /* Adjust for fixed navbar */
             box-sizing: border-box;
+            margin-top: 60px; /* Adjust for fixed navbar */
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Three columns for the gallery */
-            grid-template-rows: repeat(3, 1fr); /* Three rows for the gallery */
+            grid-template-columns: repeat(3, 1fr); /* Three columns for the grid */
             grid-gap: 20px; /* Gap between artworks */
             width: 100%;
-            max-width: 1200px;
             height: 100%;
-            max-height: calc(100vh - 100px); /* Keep it within viewport */
+            max-width: 1200px;
         }
 
-        .gallery img {
-            width: 100%;
-            height: auto;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
             border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer; /* Make it clickable */
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05); /* Slight scaling on hover */
+        }
+
+        /* Hover Description Styling */
+        .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 1em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+        }
+
+        .gallery-item:hover .description {
+            opacity: 1; /* Show description on hover */
+        }
+
+        /* Ensure Consistent Sizes for Both Vertical and Horizontal Pieces */
+        .gallery img.horizontal {
+            aspect-ratio: 4/3; /* For horizontal images */
+        }
+
+        .gallery img.vertical {
+            aspect-ratio: 3/4; /* For vertical images */
         }
 
         /* Modal Styling */
@@ -138,14 +175,12 @@
         @media (max-width: 768px) {
             .gallery {
                 grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
-                grid-template-rows: repeat(5, 1fr); /* Five rows for smaller screens */
             }
         }
 
         @media (max-width: 480px) {
             .gallery {
                 grid-template-columns: 1fr; /* Single column for mobile */
-                grid-template-rows: repeat(9, 1fr); /* Nine rows for mobile */
             }
         }
     </style>
@@ -162,15 +197,45 @@
     <!-- Gallery Container -->
     <div class="gallery-container">
         <div class="gallery">
-            <img src="/art/imgs/background.png" alt="Art Piece 1" onclick="openModal('art1')">
-            <img src="/art/imgs/horizonal2.jfif" alt="Art Piece 2" onclick="openModal('art2')">
-            <img src="/art/imgs/background5.png" alt="Art Piece 3" onclick="openModal('art3')">
-            <img src="/art/imgs/vertical1.png" alt="Art Piece 4" onclick="openModal('art4')">
-            <img src="/art/imgs/background 3.png" alt="Art Piece 5" onclick="openModal('art5')">
-            <img src="/art/imgs/vertical2.png" alt="Art Piece 6" onclick="openModal('art6')">
-            <img src="/art/imgs/horizontal3.jfif" alt="Art Piece 7" onclick="openModal('art7')">
-            <img src="/art/imgs/blue.jfif" alt="Art Piece 8" onclick="openModal('art8')">
-            <img src="/art/imgs/horizonal1.jfif" alt="Art Piece 9" onclick="openModal('art9')">
+            <!-- Example for Vertical Art -->
+            <div class="gallery-item" onclick="openModal('art1')">
+                <img src="/art/imgs/background.png" alt="Art Piece 1" class="vertical">
+                <div class="description">"Art Piece 1" - Created in 2024</div>
+            </div>
+            <!-- Example for Horizontal Art -->
+            <div class="gallery-item" onclick="openModal('art2')">
+                <img src="/art/imgs/horizonal2.jfif" alt="Art Piece 2" class="horizontal">
+                <div class="description">"Art Piece 2" - Created in 2024</div>
+            </div>
+            <!-- Add more images with descriptions and vertical/horizontal classes -->
+            <div class="gallery-item" onclick="openModal('art3')">
+                <img src="/art/imgs/background5.png" alt="Art Piece 3" class="vertical">
+                <div class="description">"Art Piece 3" - Created in 2024</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('art4')">
+                <img src="/art/imgs/vertical1.png" alt="Art Piece 4" class="vertical">
+                <div class="description">"Art Piece 4" - Created in 2024</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('art5')">
+                <img src="/art/imgs/background 3.png" alt="Art Piece 5" class="horizontal">
+                <div class="description">"Art Piece 5" - Created in 2024</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('art6')">
+                <img src="/art/imgs/vertical2.png" alt="Art Piece 6" class="vertical">
+                <div class="description">"Art Piece 6" - Created in 2024</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('art7')">
+                <img src="/art/imgs/horizontal3.jfif" alt="Art Piece 7" class="horizontal">
+                <div class="description">"Art Piece 7" - Created in 2024</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('art8')">
+                <img src="/art/imgs/blue.jfif" alt="Art Piece 8" class="horizontal">
+                <div class="description">"Art Piece 8" - Created in 2024</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('art9')">
+                <img src="/art/imgs/horizonal1.jfif" alt="Art Piece 9" class="horizontal">
+                <div class="description">"Art Piece 9" - Created in 2024</div>
+            </div>
         </div>
     </div>
 
@@ -203,31 +268,31 @@
                     break;
                 case 'art3':
                     modalImage.src = '/art/imgs/background5.png';
-                    modalVideo.src = '/art/vids/oneyear_1.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/oneyear_1.mp4';
                     break;
                 case 'art4':
                     modalImage.src = '/art/imgs/vertical1.png';
-                    modalVideo.src = '/art/vids/video4.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/video4.mp4';
                     break;
                 case 'art5':
                     modalImage.src = '/art/imgs/background 3.png';
-                    modalVideo.src = '/art/vids/video5.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/video5.mp4';
                     break;
                 case 'art6':
                     modalImage.src = '/art/imgs/vertical2.png';
-                    modalVideo.src = '/art/vids/video6.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/video6.mp4';
                     break;
                 case 'art7':
                     modalImage.src = '/art/imgs/horizontal3.jfif';
-                    modalVideo.src = '/art/vids/video7.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/video7.mp4';
                     break;
                 case 'art8':
                     modalImage.src = '/art/imgs/blue.jfif';
-                    modalVideo.src = '/art/vids/video8.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/video8.mp4';
                     break;
                 case 'art9':
                     modalImage.src = '/art/imgs/horizonal1.jfif';
-                    modalVideo.src = '/art/vids/video9.mp4';  // Set the appropriate video
+                    modalVideo.src = '/art/vids/video9.mp4';
                     break;
             }
 
