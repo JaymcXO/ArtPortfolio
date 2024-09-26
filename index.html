@@ -22,7 +22,7 @@
         /* Centered Box for Artist Information */
         .info-box {
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-            padding: 5vw 3vw; /* Responsive padding */
+            padding: 20px 40px; /* Adjust padding for better proportional fit */
             border-radius: 12px;
             text-align: center;
             width: 80%; /* Responsive width */
@@ -31,12 +31,12 @@
         }
 
         .info-box h1 {
-            font-size: 6vw; /* Responsive font size */
+            font-size: 2.5em; /* Adjusted font size */
             margin: 0;
         }
 
         .info-box p {
-            font-size: 4vw; /* Responsive font size */
+            font-size: 1.1em; /* Adjusted font size */
             line-height: 1.6;
             color: #f0f0f0;
         }
@@ -54,14 +54,14 @@
             color: #333;
             background-color: white; /* Default white button */
             text-decoration: none;
-            padding: 3vw 5vw; /* Responsive padding */
+            padding: 12px 24px; /* Standard padding */
             border-radius: 8px;
             transition: background 0.3s, color 0.3s;
             font-weight: bold;
-            font-size: 3.5vw; /* Responsive font size */
+            font-size: 1em; /* Standard button text size */
             border: none;
             text-align: center;
-            min-width: 180px; /* Prevent buttons from shrinking too much */
+            min-width: 150px; /* Prevent buttons from shrinking too much */
         }
 
         .button-container a:hover {
@@ -73,13 +73,12 @@
         .social-media-box {
             display: flex;
             justify-content: center;
-            gap: 5vw; /* Responsive gap */
+            gap: 20px; /* Standard gap between icons */
             margin-top: 20px;
         }
 
         .social-media-box a img {
-            width: 6vw; /* Responsive size for icons */
-            max-width: 50px; /* Set a max size for larger screens */
+            width: 40px; /* Fixed size for icons */
             transition: transform 0.3s ease; /* Smooth hover effect */
         }
 
@@ -91,23 +90,23 @@
         @media (max-width: 768px) {
             .info-box {
                 width: 90%; /* Expand to take up more space on small screens */
+                padding: 15px 30px; /* Reduce padding on small screens */
             }
 
             .info-box h1 {
-                font-size: 8vw; /* Larger font size for smaller screens */
+                font-size: 2em; /* Smaller font size on mobile */
             }
 
             .info-box p {
-                font-size: 5vw; /* Larger text for readability on small screens */
+                font-size: 1em; /* Adjusted text size */
             }
 
             .button-container a {
-                font-size: 4.5vw; /* Increase button text size on small screens */
-                padding: 4vw 6vw; /* Larger padding on small screens */
+                font-size: 1.2em; /* Increase button text size on small screens */
             }
 
             .social-media-box a img {
-                width: 8vw; /* Increase icon size on small screens */
+                width: 50px; /* Larger icons on smaller screens */
             }
         }
 
@@ -115,23 +114,23 @@
         @media (max-width: 480px) {
             .info-box {
                 width: 95%;
+                padding: 10px 20px; /* Further reduced padding */
             }
 
             .info-box h1 {
-                font-size: 10vw;
+                font-size: 1.8em;
             }
 
             .info-box p {
-                font-size: 6vw;
+                font-size: 0.9em;
             }
 
             .button-container a {
-                font-size: 5vw;
-                padding: 5vw 7vw;
+                font-size: 1.1em;
             }
 
             .social-media-box a img {
-                width: 9vw;
+                width: 45px; /* Adjust icon size */
             }
         }
     </style>
