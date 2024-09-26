@@ -52,7 +52,7 @@
             flex-wrap: wrap;  /* Allows elements to wrap on smaller screens */
             justify-content: center;
             align-items: center;
-            padding: 100px 20px 20px;  /* Adjust padding to fit the screen */
+            padding: 80px 20px 20px;  /* Adjust padding to fit the screen */
             gap: 40px;
             max-width: 1200px;
             width: 100%;
@@ -66,14 +66,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
-            min-width: 280px;
+            max-height: 75vh; /* Limits the height to avoid overflow on larger screens */
+            min-width: 280px;  /* Ensure the artwork has a minimum width */
         }
 
         .artwork img {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
+            max-width: 100%;  /* Ensure it doesn’t overflow */
+            max-height: 100%;
             object-fit: cover;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -165,11 +164,11 @@
         @media (max-width: 768px) {
             .landing-container {
                 flex-direction: column;
-                padding: 100px 15px 20px;
+                padding: 80px 15px 20px;
             }
 
             .artwork {
-                height: auto;
+                max-height: 40vh;  /* Reduce height for mobile */
                 padding: 10px 0;
             }
 
@@ -204,7 +203,7 @@
 
         @media (max-width: 480px) {
             .artwork {
-                height: auto;
+                max-height: 35vh; /* Adjust height for smaller mobile screens */
             }
 
             .profile-container h1 {
