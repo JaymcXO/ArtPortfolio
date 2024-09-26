@@ -71,9 +71,9 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Three columns for the grid */
             grid-gap: 20px; /* Gap between artworks */
-            width: 100%;
-            height: 100%;
-            max-width: 1200px;
+            width: 100%; /* Full width of the screen */
+            height: 100%; /* Full height of the container */
+            max-width: 100vw; /* Full width including large screens */
         }
 
         .gallery-item {
@@ -299,14 +299,14 @@
             // Show modal
             modal.classList.add('show');
 
-            // Show image first
+            // Show image first with a fade-in effect
             modalImage.style.display = 'block';
             modalImage.style.opacity = '1';
             modalVideo.style.opacity = '0';
 
-            // Transition from image to video after 2 seconds
+            // Fade-out effect for the image and transition to video after 2 seconds
             setTimeout(() => {
-                modalImage.style.opacity = '0';
+                modalImage.style.opacity = '0'; // Fade out image
                 setTimeout(() => {
                     modalImage.style.display = 'none';
                     modalVideo.style.display = 'block'; // Show video
