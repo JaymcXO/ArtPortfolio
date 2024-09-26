@@ -8,7 +8,7 @@
     <title>Ryunekoru - Artist Portfolio</title>
 
     <style>
-    
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -19,29 +19,42 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            position: relative; 
+            position: relative; /* To allow for the overlay */
             overflow: hidden;
         }
 
+        /* Pattern Overlay with Animation */
         .pattern-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/pics/pattern.png'); 
-            opacity: 0.2; 
-            background-size: cover; 
-            z-index: 1; 
+            background-image: url('/pics/newpattern.png'); /* Replace with your seamless pattern PNG */
+            opacity: 0.2; /* Slight transparency */
+            background-size: cover; /* Ensures it covers the entire screen */
+            z-index: 1; /* Place it above the background but below the content */
+            animation: movePattern 30s linear infinite; /* Infinite movement animation */
         }
 
+        /* Keyframes for the moving effect */
+        @keyframes movePattern {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 1000px 1000px; /* Adjust this value for speed and direction */
+            }
+        }
+
+        /* Profile Section Centered with Transparent Box and Separated White Outline */
         .profile-container {
-            z-index: 2; 
+            z-index: 2; /* Ensure it's above the overlay */
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.5); 
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
             padding: 30px;
             border-radius: 12px;
             max-width: 600px;
@@ -49,9 +62,10 @@
             box-sizing: border-box;
             min-width: 280px;
             position: relative;
-            outline: 6px solid white;
-            outline-offset: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            /* Add white outline with separation */
+            outline: 6px solid white; /* White outline */
+            outline-offset: 10px; /* Creates the space between the box and the white outline */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Subtle shadow to give a floating effect */
         }
 
         .profile-container img {
@@ -97,10 +111,11 @@
         }
 
         .button-container a:hover {
-            background: linear-gradient(135deg, #3b82f6, #9333ea); 
+            background: linear-gradient(135deg, #3b82f6, #9333ea); /* Gradient on hover */
             color: white;
         }
 
+        /* Social Media Icons */
         .social-media {
             margin-top: 30px;
             display: flex;
@@ -119,6 +134,7 @@
             transform: scale(1.1);
         }
 
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .profile-container {
                 padding: 20px;
@@ -180,8 +196,10 @@
 </head>
 <body>
 
+    <!-- Pattern Overlay with Animation -->
     <div class="pattern-overlay"></div>
 
+    <!-- Centered Profile Section with Transparent Box and Separated White Outline -->
     <div class="profile-container">
             <img src="/pics/socials.jpg" alt="Profile Picture">
             <h1>Ryunekoru</h1>
