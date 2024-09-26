@@ -77,19 +77,14 @@
             margin-top: 20px;
         }
 
-        .social-media-box a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
+        .social-media-box a img {
+            width: 6vw; /* Responsive size for icons */
+            max-width: 50px; /* Set a max size for larger screens */
+            transition: transform 0.3s ease; /* Smooth hover effect */
         }
 
-        .social-media-box a:hover {
-            color: #f0f0f0; /* Lighter on hover */
-        }
-
-        /* Icons - Using Font Awesome */
-        .social-media-box i {
-            font-size: 6vw; /* Responsive icon size */
+        .social-media-box a img:hover {
+            transform: scale(1.1); /* Slight zoom on hover */
         }
 
         /* Media Queries for Smaller Devices */
@@ -111,8 +106,8 @@
                 padding: 4vw 6vw; /* Larger padding on small screens */
             }
 
-            .social-media-box i {
-                font-size: 8vw; /* Increase icon size on small screens */
+            .social-media-box a img {
+                width: 8vw; /* Increase icon size on small screens */
             }
         }
 
@@ -135,13 +130,11 @@
                 padding: 5vw 7vw;
             }
 
-            .social-media-box i {
-                font-size: 9vw;
+            .social-media-box a img {
+                width: 9vw;
             }
         }
     </style>
-    <!-- Load Font Awesome for icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -159,19 +152,19 @@
         <a href="https://ryunekoru.com/contact">Contact the Artist</a>
     </div>
 
-    <!-- Social Media Links -->
+    <!-- Social Media Links with Image Icons -->
     <div class="social-media-box">
         <a href="https://twitter.com/yourtwitter" target="_blank" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
+            <img src="path-to-your-twitter-icon.png" alt="Twitter">
         </a>
         <a href="https://instagram.com/yourinstagram" target="_blank" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
+            <img src="path-to-your-instagram-icon.png" alt="Instagram">
         </a>
         <a href="https://tiktok.com/@yourtiktok" target="_blank" aria-label="TikTok">
-            <i class="fab fa-tiktok"></i>
+            <img src="path-to-your-tiktok-icon.png" alt="TikTok">
         </a>
         <a href="https://youtube.com/youryoutube" target="_blank" aria-label="YouTube">
-            <i class="fab fa-youtube"></i>
+            <img src="path-to-your-youtube-icon.png" alt="YouTube">
         </a>
     </div>
 
