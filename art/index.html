@@ -24,19 +24,24 @@
         .navbar {
             width: 100%;
             padding: 20px;
-            background-color: white; /* White background for navbar */
+            background-color: rgba(255, 255, 255, 0.95); /* Slight transparency */
             display: flex;
             justify-content: center;
             align-items: center;
             position: absolute;
             top: -100px; /* Start off-screen */
-            transition: top 0.5s ease-in-out; /* Smooth slide-in */
+            transition: top 0.5s ease-in-out, background-color 0.3s ease-in-out; /* Smooth slide-in */
             z-index: 1000;
         }
 
         /* Show navbar when hovering near the top third of the page */
         body:hover .navbar {
             top: 0; /* Slide down to visible */
+        }
+
+        /* Transparent background on hover */
+        .navbar:hover {
+            background-color: rgba(255, 255, 255, 0.85); /* More transparency on hover */
         }
 
         /* Centered Navbar Buttons with FontAwesome Icons */
@@ -50,10 +55,10 @@
             font-weight: bold;
             border: none;
             transition: background 0.3s, color 0.3s;
-            text-align: center;
-            min-width: 120px; /* Set a minimum button width for consistent size */
             display: flex;
-            align-items: center; /* Align icon and text vertically */
+            justify-content: center; /* Center text horizontally */
+            align-items: center; /* Center text vertically */
+            min-width: 120px; /* Set a minimum button width for consistent size */
         }
 
         .navbar a i {
