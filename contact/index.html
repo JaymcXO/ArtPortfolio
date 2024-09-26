@@ -17,18 +17,19 @@
             flex-direction: column;
         }
 
+        /* Fixed Navbar */
         .navbar {
             width: 100%;
             height: 60px;
-            background-color: white; 
+            background-color: white;
             display: flex;
             justify-content: center;
-            align-items: center; 
+            align-items: center;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .navbar a {
@@ -43,46 +44,49 @@
             text-align: center;
             min-width: 120px;
             display: flex;
-            align-items: center; 
+            align-items: center;
             justify-content: center;
         }
 
         .navbar a:hover {
-            background: linear-gradient(135deg, #3b82f6, #9333ea); 
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
         }
 
-        .contact-container {
+        /* Contact and Pricing Container */
+        .content-container {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100vw;
-            height: calc(100vh - 60px); 
+            height: calc(100vh - 60px);
             padding: 20px;
             box-sizing: border-box;
-            margin-top: 60px; 
+            margin-top: 60px;
+            gap: 40px;
         }
 
-        .contact-form {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 40px;
+        /* Styling for Both Boxes */
+        .box {
+            flex: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
+            max-width: 500px;
             width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .contact-form h2 {
+        .box h2 {
             margin-bottom: 20px;
-            color: #333;
+            color: white;
         }
 
-        .contact-form label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-            color: #333;
+        .box p, .box label, .box input, .box textarea {
+            color: white;
+            margin-bottom: 20px;
         }
 
         .contact-form input,
@@ -91,8 +95,9 @@
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 8px;
-            border: 1px solid #ccc;
+            border: none;
             font-size: 1em;
+            color: #333;
         }
 
         .contact-form button {
@@ -110,6 +115,21 @@
             background-color: #9333ea;
         }
 
+        .pricing-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .pricing-box ul li {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            color: white;
+        }
+
+        /* Responsive Adjustments with Clean Padding */
         @media (max-width: 768px) {
             .navbar a {
                 padding: 8px 16px;
@@ -117,8 +137,14 @@
                 min-width: 100px;
             }
 
-            .contact-form {
-                padding: 30px;
+            .content-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .box {
+                max-width: 100%;
+                padding: 20px;
             }
         }
 
@@ -129,7 +155,13 @@
                 min-width: 90px;
             }
 
-            .contact-form {
+            .content-container {
+                padding-left: 10px;
+                padding-right: 10px;
+                gap: 10px;
+            }
+
+            .box {
                 padding: 20px;
             }
         }
@@ -142,20 +174,32 @@
         <a href="https://ryunekoru.com/contact">Contact</a>
     </div>
 
-    <div class="contact-container">
-        <form class="contact-form" action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+    <div class="content-container">
+        <div class="box contact-form">
             <h2>Contact the Artist</h2>
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required>
+            <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
 
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required>
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required>
 
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
 
-            <button type="submit">Send Message</button>
-        </form>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <div class="box pricing-box">
+            <h2>Pricing Information</h2>
+            <ul>
+                <li>Commission Piece (Digital) - $100</li>
+                <li>Commission Piece (Traditional) - $200</li>
+                <li>Portrait Art - $150</li>
+                <li>Custom Art Requests - Contact for Pricing</li>
+            </ul>
+        </div>
     </div>
 
 </body>
