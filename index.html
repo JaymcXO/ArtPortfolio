@@ -30,251 +30,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('path-to-your-pattern.png'); /* Replace with your PNG path */
-            opacity: 0.2; /* Slightly transparent */
-            background-size: cover; /* Ensures it covers the entire screen */
-            z-index: 1; /* Place it above the background but below the content */
-        }
-
-        /* Hanging PNGs */
-        .hanging-png {
-            position: absolute;
-            top: 0;
-            width: 100px; /* Set the size of the hanging PNG */
-            z-index: 3; /* Ensure it's above the content */
-        }
-
-        .hanging-png.left {
-            left: 0;
-            transform: rotate(-10deg); /* Slight rotation to give it a hanging effect */
-        }
-
-        .hanging-png.right {
-            right: 0;
-            transform: rotate(10deg); /* Slight rotation to give it a hanging effect */
-        }
-
-        /* Profile Section Centered with Transparent Box and Separated White Outline */
-        .profile-container {
-            z-index: 2; /* Ensure it's above the overlay */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 600px;
-            width: 90%;
-            box-sizing: border-box;
-            min-width: 280px;
-            position: relative;
-            /* Add white outline with separation */
-            outline: 6px solid white; /* White outline */
-            outline-offset: 10px; /* Creates the space between the box and the white outline */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Subtle shadow to give a floating effect */
-        }
-
-        .profile-container img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 4px solid white;
-        }
-
-        .profile-container h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        .profile-container p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: #f0f0f0;
-            margin-top: 10px;
-        }
-
-        .button-container {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .button-container a {
-            color: #333;
-            background-color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            transition: background 0.3s, color 0.3s;
-            font-weight: bold;
-            font-size: 1em;
-            border: none;
-            text-align: center;
-            min-width: 150px;
-        }
-
-        .button-container a:hover {
-            background: linear-gradient(135deg, #3b82f6, #9333ea); /* Gradient on hover */
-            color: white;
-        }
-
-        /* Social Media Icons */
-        .social-media {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-media a img {
-            width: 30px;
-            height: 30px;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .social-media a img:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .hanging-png {
-                width: 80px; /* Smaller PNG size for tablets */
-            }
-
-            .profile-container {
-                padding: 20px;
-            }
-
-            .profile-container h1 {
-                font-size: 2em;
-            }
-
-            .profile-container p {
-                font-size: 1em;
-            }
-
-            .profile-container img {
-                width: 120px;
-                height: 120px;
-            }
-
-            .button-container a {
-                font-size: 0.9em;
-                min-width: 120px;
-            }
-
-            .social-media a img {
-                width: 25px;
-                height: 25px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hanging-png {
-                width: 60px; /* Even smaller PNG size for mobile */
-            }
-
-            .profile-container {
-                padding: 15px;
-            }
-
-            .profile-container h1 {
-                font-size: 1.8em;
-            }
-
-            .profile-container p {
-                font-size: 0.9em;
-            }
-
-            .profile-container img {
-                width: 100px;
-                height: 100px;
-            }
-
-            .button-container a {
-                font-size: 0.8em;
-                padding: 10px 18px;
-            }
-
-            .social-media a img {
-                width: 20px;
-                height: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Pattern Overlay -->
-    <div class="pattern-overlay"></div>
-
-    <!-- Hanging PNGs (Top Left and Right) -->
-    <img src="path-to-your-top-left-png.png" alt="Hanging PNG Left" class="hanging-png left">
-    <img src="path-to-your-top-right-png.png" alt="Hanging PNG Right" class="hanging-png right">
-
-    <!-- Centered Profile Section with Transparent Box and Separated White Outline -->
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Ryunekoru - Artist Portfolio</title>
-
-    <style>
-        /* General Styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #3b82f6, #9333ea);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            position: relative; /* To allow for the overlay */
-            overflow: hidden;
-        }
-
-        /* Pattern Overlay */
-        .pattern-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background-image: url('/pics/pattern.png'); /* Replace with your PNG path */
             opacity: 0.2; /* Slightly transparent */
             background-size: cover; /* Ensures it covers the entire screen */
             z-index: 1; /* Place it above the background but below the content */
         }
 
-        /* Hanging PNGs */
-        .hanging-png {
-            position: absolute;
-            top: 0;
-            width: 100px; /* Set the size of the hanging PNG */
-            z-index: 3; /* Ensure it's above the content */
-        }
-
-        .hanging-png.left {
-            left: 0;
-            transform: rotate(-10deg); /* Slight rotation to give it a hanging effect */
-        }
-
-        .hanging-png.right {
-            right: 0;
-            transform: rotate(10deg); /* Slight rotation to give it a hanging effect */
-        }
-
         /* Profile Section Centered with Transparent Box and Separated White Outline */
         .profile-container {
             z-index: 2; /* Ensure it's above the overlay */
@@ -364,10 +125,6 @@
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .hanging-png {
-                width: 80px; /* Smaller PNG size for tablets */
-            }
-
             .profile-container {
                 padding: 20px;
             }
@@ -397,10 +154,6 @@
         }
 
         @media (max-width: 480px) {
-            .hanging-png {
-                width: 60px; /* Even smaller PNG size for mobile */
-            }
-
             .profile-container {
                 padding: 15px;
             }
@@ -435,42 +188,34 @@
     <!-- Pattern Overlay -->
     <div class="pattern-overlay"></div>
 
-    <!-- Hanging PNGs (Top Left and Right) -->
-    <img src="/pics/star1.png" alt="Hanging PNG Left" class="hanging-png left">
-    <img src="/pics/star2.png" alt="Hanging PNG Right" class="hanging-png right">
-
     <!-- Centered Profile Section with Transparent Box and Separated White Outline -->
     <div class="profile-container">
-        <img src="path-to-your-profile-picture.jpg" alt="Profile Picture">
-        <h1>Ryunekoru</h1>
-        <p>
-            Welcome to Ryunekoru’s world of captivating art. Dive into a collection that fuses imagination, emotion, and technical brilliance. Each piece tells a unique story, inviting you to explore and experience the creativity behind the craft.
-        </p>
+            <img src="/pics/socials.jpg" alt="Profile Picture">
+            <h1>Ryunekoru</h1>
+            <p>
+                Welcome to Ryunekoru’s world of captivating art. Dive into a collection that fuses imagination, emotion, and technical brilliance. Each piece tells a unique story, inviting you to explore and experience the creativity behind the craft.
+            </p>
 
-        <div class="button-container">
-            <a href="https://ryunekoru.com/art">Enter Portfolio</a>
-            <a href="https://ryunekoru.com/contact">Contact the Artist</a>
+            <div class="button-container">
+                <a href="https://ryunekoru.com/art">Enter Portfolio</a>
+                <a href="https://ryunekoru.com/contact">Contact the Artist</a>
+            </div>
+
+            <div class="social-media">
+                <a href="https://tiktok.com/@ryunekoru" target="_blank" aria-label="TikTok">
+                    <img src="/pics/tiktok.png" alt="TikTok">
+                </a>
+                <a href="https://x.com/ryunekoru" target="_blank" aria-label="Twitter">
+                    <img src="/pics/twitter.png" alt="Twitter">
+                </a>
+                <a href="https://instagram.com/yourinstagram" target="_blank" aria-label="Instagram">
+                    <img src="/pics/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/channel/UC_2mIraP_Ksh4cM1SrKcjsA" target="_blank" aria-label="YouTube">
+                    <img src="/pics/youtube.png" alt="YouTube">
+                </a>
+            </div>
         </div>
-
-        <div class="social-media">
-            <a href="https://tiktok.com/@yourtiktok" target="_blank" aria-label="TikTok">
-                <img src="path-to-your-tiktok-icon.png" alt="TikTok">
-            </a>
-            <a href="https://twitter.com/yourtwitter" target="_blank" aria-label="Twitter">
-                <img src="path-to-your-twitter-icon.png" alt="Twitter">
-            </a>
-            <a href="https://instagram.com/yourinstagram" target="_blank" aria-label="Instagram">
-                <img src="path-to-your-instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://youtube.com/youryoutube" target="_blank" aria-label="YouTube">
-                <img src="path-to-your-youtube-icon.png" alt="YouTube">
-            </a>
-        </div>
-    </div>
-
-</body>
-</html>
-
 
 </body>
 </html>
