@@ -36,7 +36,7 @@
             z-index: 1; /* Place it above the background but below the content */
         }
 
-        /* Profile Section Centered with Transparent Box and White Outline */
+        /* Profile Section Centered with Transparent Box and Separated White Outline */
         .profile-container {
             z-index: 2; /* Ensure it's above the overlay */
             display: flex;
@@ -50,8 +50,11 @@
             width: 90%;
             box-sizing: border-box;
             min-width: 280px;
-            /* White outline effect with more spacing */
-            box-shadow: 0 0 0 10px white, 0 0 20px rgba(0, 0, 0, 0.4); /* Increased spacing from the box */
+            position: relative;
+            /* Add white outline with separation */
+            outline: 6px solid white; /* White outline */
+            outline-offset: 10px; /* Creates the space between the box and the white outline */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Subtle shadow to give a floating effect */
         }
 
         .profile-container img {
@@ -185,7 +188,7 @@
     <!-- Pattern Overlay -->
     <div class="pattern-overlay"></div>
 
-    <!-- Centered Profile Section with Transparent Box and White Outline -->
+    <!-- Centered Profile Section with Transparent Box and Separated White Outline -->
     <div class="profile-container">
             <img src="/pics/socials.jpg" alt="Profile Picture">
             <h1>Ryunekoru</h1>
