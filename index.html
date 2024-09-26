@@ -52,13 +52,13 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            padding: 60px 20px; /* Add padding to prevent touching the edges */
+            padding: 60px 20px;
             gap: 40px;
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
             box-sizing: border-box;
-            height: calc(100vh - 120px); /* Adjust height to accommodate spacing */
+            height: calc(100vh - 120px); /* Adjust height */
         }
 
         /* Artwork (Left Side) */
@@ -67,7 +67,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            max-height: 75vh; /* Ensure the artwork doesn't exceed 75% of the viewport height */
+            max-width: 40%; /* Limit the width to make it smaller */
+            max-height: 60vh; /* Limit the height for better sizing */
             min-width: 280px;
             margin-bottom: 20px; /* Add margin to create space from the bottom */
         }
@@ -75,7 +76,6 @@
         .artwork img {
             width: 100%;
             height: auto;
-            max-width: 100%;
             object-fit: cover;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -91,8 +91,7 @@
             background-color: rgba(0, 0, 0, 0.5);
             padding: 30px;
             border-radius: 12px;
-            max-width: 500px;
-            width: 100%;
+            max-width: 50%; /* Ensuring the profile box has a similar width to the artwork */
             box-sizing: border-box;
             min-width: 280px;
         }
@@ -173,7 +172,8 @@
 
             .artwork {
                 height: auto;
-                margin-bottom: 20px; /* Add bottom margin */
+                max-width: 60%; /* Adjust width for smaller screens */
+                margin-bottom: 20px;
             }
 
             .profile-container {
@@ -208,6 +208,7 @@
         @media (max-width: 480px) {
             .artwork {
                 height: auto;
+                max-width: 80%; /* Further reduce size on mobile */
             }
 
             .profile-container h1 {
