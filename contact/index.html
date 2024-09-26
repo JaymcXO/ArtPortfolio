@@ -4,34 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Contact Ryunekoru</title>
 
-    <title>Ryunekoru - Artist Portfolio and Custom Art Commissions</title>
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Contact Ryunekoru for custom art commissions or inquiries. Explore the unique collection of digital and traditional artwork.">
 
-    <meta name="description" content="Contact Ryunekoru for custom art commissions or inquiries about the captivating art collection. Reach out today.">
-
+    <!-- Favicon for Browser Tab -->
     <link rel="icon" href="images/favicon.png" type="image/png">
 
-    <meta property="og:title" content="Ryunekoru - Captivating Digital and Traditional Art">
-    <meta property="og:description" content="Explore Ryunekoru's unique art collection. Commission your own custom piece of digital or traditional artwork.">
-    <meta property="og:image" content="https://ryunekoru.com/images/art-preview.jpg">
-    <meta property="og:url" content="https://ryunekoru.com">
+    <!-- Open Graph Tags for Social Sharing -->
+    <meta property="og:title" content="Contact Ryunekoru - Custom Art Commissions">
+    <meta property="og:description" content="Get in touch with Ryunekoru for custom art commissions. Explore the unique art portfolio and inquire about work opportunities.">
+    <meta property="og:image" content="https://ryunekoru.com/images/contact-preview.jpg">
+    <meta property="og:url" content="https://ryunekoru.com/contact">
     <meta property="og:type" content="website">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Ryunekoru",
-      "jobTitle": "Artist",
-      "url": "https://ryunekoru.com",
-      "sameAs": [
-        "https://x.com/ryunekoru",
-        "https://www.instagram.com/ryunekoru/?hl=en",
-        "https://www.youtube.com/channel/UC_2mIraP_Ksh4cM1SrKcjsA"
-        "https://tiktok.com/@ryunekoru"
-      ]
-    }
-    </script>
     <style>
         /* General Styling */
         body {
@@ -52,9 +40,8 @@
             height: 60px;
             background-color: white;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Center the buttons horizontally */
             align-items: center;
-            padding: 0 20px;
             position: fixed;
             top: 0;
             left: 0;
@@ -62,69 +49,50 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .navbar-logo h1 {
-            font-size: 1.5em;
-            color: #333;
-            margin: 0;
-        }
-
-        .navbar-links a {
+        .navbar a {
             color: #333;
             text-decoration: none;
+            margin: 0 15px;
             padding: 10px 20px;
             border-radius: 8px;
             font-weight: bold;
             transition: background 0.3s, color 0.3s;
+            display: inline-block;
         }
 
-        .navbar-links a:hover {
+        .navbar a:hover {
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
         }
 
-        /* Contact and Pricing Section */
+        /* Contact Page Content */
         .content-container {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            padding: 100px 20px 20px; /* Adjusted padding to avoid overlap with navbar */
-            gap: 40px;
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            box-sizing: border-box;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 100px; /* Ensure content is not hidden by the navbar */
+            flex-grow: 1;
         }
 
-        /* Styling for Both Boxes */
+        /* Box Styling */
         .box {
-            flex: 1;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);
             padding: 30px;
-            border-radius: 12px;
-            max-width: 500px;
+            border-radius: 8px;
+            margin: 20px;
             width: 100%;
-            box-sizing: border-box;
-            min-width: 280px;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
 
         .box h2 {
             margin-bottom: 20px;
-            color: white;
         }
 
-        .contact-form input,
-        .contact-form textarea {
+        .box input,
+        .box textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -134,7 +102,7 @@
             color: #333;
         }
 
-        .contact-form button {
+        .box button {
             background-color: #3b82f6;
             color: white;
             padding: 12px 24px;
@@ -145,36 +113,19 @@
             transition: background 0.3s;
         }
 
-        .contact-form button:hover {
+        .box button:hover {
             background-color: #9333ea;
-        }
-
-        .pricing-box ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .pricing-box ul li {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            color: white;
         }
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .content-container {
-                flex-direction: column;
-                align-items: center;
-                padding: 100px 15px 20px;
-                gap: 20px;
+            .navbar a {
+                padding: 8px 16px;
+                font-size: 0.9em;
             }
 
             .box {
-                max-width: 100%;
-                padding: 20px;
+                width: 90%; /* Reduce the width on smaller screens */
             }
         }
 
@@ -182,25 +133,14 @@
             .navbar a {
                 padding: 6px 12px;
                 font-size: 0.8em;
-                min-width: 90px;
-            }
-
-            .content-container {
-                padding-left: 10px;
-                padding-right: 10px;
             }
 
             .box {
-                padding: 15px;
+                width: 100%; /* Full width on very small screens */
             }
 
-            .contact-form button {
-                font-size: 1em;
-            }
-
-            .pricing-box ul li {
-                font-size: 1em;
-                padding: 8px;
+            .content-container {
+                padding-top: 80px;
             }
         }
     </style>
@@ -209,45 +149,30 @@
 
     <!-- Navbar -->
     <div class="navbar">
-        <div class="navbar-logo">
-            <img src="path-to-your-logo.png" alt="Logo">
-            <h1>Ryunekoru</h1>
-        </div>
-        <div class="navbar-links">
-            <a href="https://ryunekoru.com">Home</a>
-            <a href="https://ryunekoru.com/art">Gallery</a>
-            <a href="https://ryunekoru.com/contact">Contact</a>
-        </div>
+        <a href="https://ryunekoru.com">Home</a>
+        <a href="https://ryunekoru.com/art">Gallery</a>
+        <a href="https://ryunekoru.com/contact">Contact</a>
     </div>
 
-    <!-- Contact and Pricing Section -->
+    <!-- Contact Page Content -->
     <div class="content-container">
         <!-- Contact Form Box -->
-        <div class="box contact-form">
+        <div class="box">
             <h2>Contact the Artist</h2>
             <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Your Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </div>
 
         <!-- Pricing Information Box -->
-        <div class="box pricing-box">
+        <div class="box">
             <h2>Pricing Information</h2>
-            <ul>
-                <li>Commission Piece (Digital) - $100</li>
-                <li>Commission Piece (Traditional) - $200</li>
-                <li>Portrait Art - $150</li>
-                <li>Custom Art Requests - Contact for Pricing</li>
-            </ul>
+            <p>Commission Piece (Digital) - $100</p>
+            <p>Commission Piece (Traditional) - $200</p>
+            <p>Custom Requests - Contact for Pricing</p>
         </div>
     </div>
 
