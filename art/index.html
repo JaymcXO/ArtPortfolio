@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Art Portfolio</title>
+    <!-- Load Font Awesome from CDN -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,23 +19,26 @@
             flex-direction: column;
         }
 
-        /* White Navbar */
+        /* Navbar (Hidden initially, appears on hover) */
         .navbar {
             width: 100%;
             padding: 20px;
             background-color: white; /* White background for navbar */
             display: flex;
-            justify-content: center; /* Center items horizontally */
-            align-items: center;     /* Center items vertically */
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -100px; /* Start off-screen */
+            transition: top 0.5s ease-in-out; /* Smooth slide-in */
             z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better separation */
         }
 
-        /* Centered Navbar Buttons */
+        /* Show navbar when hovering near the top third of the page */
+        body:hover .navbar {
+            top: 0; /* Slide down to visible */
+        }
+
+        /* Centered Navbar Buttons with FontAwesome Icons */
         .navbar a {
             color: #333; /* Dark color for text */
             background-color: white; /* Match button background */
@@ -46,6 +51,12 @@
             transition: background 0.3s, color 0.3s;
             text-align: center;
             min-width: 120px; /* Set a minimum button width for consistent size */
+            display: flex;
+            align-items: center; /* Align icon and text vertically */
+        }
+
+        .navbar a i {
+            margin-right: 8px; /* Space between icon and text */
         }
 
         .navbar a:hover {
@@ -202,11 +213,11 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navbar that appears on hover near the top of the screen -->
     <div class="navbar">
-        <a href="https://ryunekoru.com">Home</a>
-        <a href="https://ryunekoru.com/art">Gallery</a>
-        <a href="https://ryunekoru.com/contact">Contact</a>
+        <a href="https://ryunekoru.com"><i class="fas fa-home"></i> Home</a>
+        <a href="https://ryunekoru.com/art"><i class="fas fa-images"></i> Gallery</a>
+        <a href="https://ryunekoru.com/contact"><i class="fas fa-envelope"></i> Contact</a>
     </div>
 
     <!-- Gallery Section -->
@@ -268,7 +279,7 @@
         <video id="modalVideo" src="" controls></video>
     </div>
 
-   <script>
+    <script>
         const modal = document.getElementById('modal');
         const modalImage = document.getElementById('modalImage');
         const modalVideo = document.getElementById('modalVideo');
