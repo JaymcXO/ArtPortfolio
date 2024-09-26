@@ -36,7 +36,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh; /* Maintain a proportionally large size */
+            height: 80vh;
         }
 
         .artwork img {
@@ -54,24 +54,22 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 30px;
             border-radius: 12px;
             max-width: 500px;
             width: 100%;
         }
 
-        /* Profile Image */
         .profile-container img {
             width: 150px;
             height: 150px;
-            border-radius: 50%; /* Circular image */
+            border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
-            border: 4px solid white; /* White border around the image */
+            border: 4px solid white;
         }
 
-        /* Artist Information */
         .profile-container h1 {
             font-size: 2.5em;
             margin: 0;
@@ -84,7 +82,6 @@
             margin-top: 10px;
         }
 
-        /* Buttons for Enter Portfolio and Contact */
         .button-container {
             margin-top: 20px;
             display: flex;
@@ -111,26 +108,25 @@
             color: white;
         }
 
-        /* Social Media Icons */
         .social-media {
-            margin-top: 20px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 15px; /* Smaller gap between icons */
+            gap: 20px;
         }
 
         .social-media a img {
-            width: 30px; /* Reduced size */
-            height: 30px; /* Reduced size */
+            width: 30px;
+            height: 30px;
             object-fit: contain;
-            transition: transform 0.3s ease; /* Smooth hover effect */
+            transition: transform 0.3s ease;
         }
 
         .social-media a img:hover {
-            transform: scale(1.1); /* Slight zoom on hover */
+            transform: scale(1.1);
         }
 
-        /* Responsive Layout for smaller screens */
+        /* Responsive Layout with Clean Padding for smaller screens */
         @media (max-width: 768px) {
             .landing-container {
                 flex-direction: column;
@@ -141,10 +137,13 @@
 
             .artwork {
                 height: 50vh;
+                padding-left: 10px;
+                padding-right: 10px;
             }
 
             .profile-container {
                 max-width: 100%;
+                padding: 20px;
             }
 
             .profile-container h1 {
@@ -166,7 +165,7 @@
             }
 
             .social-media a img {
-                width: 25px; /* Smaller icons for tablets */
+                width: 25px;
                 height: 25px;
             }
         }
@@ -184,17 +183,21 @@
                 font-size: 0.9em;
             }
 
+            .profile-container {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
             .button-container a {
                 font-size: 0.8em;
                 padding: 10px 18px;
             }
 
             .social-media a img {
-                width: 20px; /* Even smaller icons for mobile */
+                width: 20px;
                 height: 20px;
             }
         }
-
     </style>
 </head>
 <body>
@@ -226,13 +229,13 @@
                 <a href="https://tiktok.com/@ryunekoru" target="_blank" aria-label="TikTok">
                     <img src="/pics/tiktok.png" alt="TikTok">
                 </a>
-                <a href="https://x.com/ryunekoru" target="_blank" aria-label="Twitter">
+                <a href="https://twitter.com/yourtwitter" target="_blank" aria-label="Twitter">
                     <img src="/pics/twitter.png" alt="Twitter">
                 </a>
-                <a href="https://www.instagram.com/ryunekoru/?hl=en" target="_blank" aria-label="Instagram">
+                <a href="https://instagram.com/yourinstagram" target="_blank" aria-label="Instagram">
                     <img src="/pics/instagram.png" alt="Instagram">
                 </a>
-                <a href="https://www.youtube.com/channel/UC_2mIraP_Ksh4cM1SrKcjsA" target="_blank" aria-label="YouTube">
+                <a href="https://youtube.com/youryoutube" target="_blank" aria-label="YouTube">
                     <img src="/pics/youtube.png" alt="YouTube">
                 </a>
             </div>
