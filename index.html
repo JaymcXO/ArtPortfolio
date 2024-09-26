@@ -52,7 +52,7 @@
             flex-wrap: wrap;  /* Allows elements to wrap on smaller screens */
             justify-content: center;
             align-items: center;
-            padding: 80px 20px 20px;  /* Add top padding here */
+            padding: 100px 20px; /* Add top and bottom padding here */
             gap: 40px;
             max-width: 1200px;
             width: 100%;
@@ -66,8 +66,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
+            max-height: 75vh; /* Limits height to avoid touching the bottom */
             min-width: 280px;
+            margin-bottom: 40px; /* Add bottom margin */
         }
 
         .artwork img {
@@ -236,7 +237,7 @@
     <!-- Landing Page Content -->
     <div class="landing-container">
 
-       <div class="artwork">
+        <div class="artwork">
             <img src="/pics/wanderer.jfif" alt="Artist Vertical Artwork">
         </div>
 
