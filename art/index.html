@@ -16,7 +16,8 @@
             color: white;
             height: 100vh; /* Full viewport height */
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Navbar (Hidden initially, appears on hover) */
@@ -64,26 +65,24 @@
             color: white; /* White text on hover */
         }
 
-        /* Gallery Container */
+        /* Full-Screen Gallery Grid */
         .gallery-container {
-            flex-grow: 1; /* Make the gallery container take up remaining space */
+            width: 100vw;  /* Full viewport width */
+            height: 100vh; /* Full viewport height */
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100vw;  /* Full width */
-            height: 100%; /* Full height */
-            padding: 20px; /* Add padding around the edges of the container */
+            padding: 20px;
             box-sizing: border-box;
-            margin-top: 80px; /* Add margin to avoid overlap with fixed navbar */
         }
 
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
             grid-template-rows: repeat(3, 1fr);    /* 3 rows */
-            grid-gap: 20px;                        /* Increased gap between grid items */
+            grid-gap: 20px;                        /* Space between grid items */
             width: 100%;
-            height: 100%;
+            height: 100%; /* Full height grid */
             box-sizing: border-box;
         }
 
