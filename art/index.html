@@ -116,32 +116,6 @@
             opacity: 1;
         }
 
-        /* Play Button Styling */
-        .play-button {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 10px;
-            border-radius: 50%;
-            font-size: 1.2em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s ease;
-            opacity: 0; /* Initially hidden */
-        }
-
-        .gallery-item:hover .play-button {
-            opacity: 1;
-        }
-
-        .play-button.clicked {
-            opacity: 0; /* Fade out once clicked */
-        }
-
         .modal {
             position: fixed;
             top: 0;
@@ -168,6 +142,31 @@
 
         .modal video {
             display: none;
+        }
+
+        /* Play Button in Modal */
+        .play-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background 0.3s ease, opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .play-button.clicked {
+            opacity: 0; /* Fades out once clicked */
         }
 
         .close-btn {
@@ -213,7 +212,7 @@
     <!-- Navigation Bar -->
     <div class="navbar">
         <div class="logo">
-            <img src="/pics/logo.png" alt="Logo">
+            <img src="path-to-your-logo.png" alt="Logo">
         </div>
 
         <div class="nav-links">
@@ -225,96 +224,313 @@
 
     <div class="gallery-container">
         <div class="gallery">
-            <!-- Artworks with Play Button -->
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <!-- Artworks with Modal functionality -->
+            <div class="gallery-item" onclick="openModal('art1')">
                 <img src="/art/imgs/RyunekoruHalloween.jpg" alt="Art Piece 1">
                 <div class="description">"Art Piece 1" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art1', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art2')">
                 <img src="/art/imgs/Gold.png" alt="Art Piece 2">
                 <div class="description">"Art Piece 2" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art2', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gallery - Ryunekoru Artist Portfolio</title>
+
+    <link rel="icon" href="/pics/socials.png" type="image/png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
+            background-size: cover;
+            color: white;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 70px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 0 20px;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .navbar .nav-links {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
+            color: white;
+        }
+
+        .gallery-container {
+            margin-top: 70px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            height: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 1em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+        }
+
+        .gallery-item:hover .description {
+            opacity: 1;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal img, .modal video {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            margin: auto;
+        }
+
+        .modal video {
+            display: none;
+        }
+
+        /* Play Button in Modal */
+        .play-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background 0.3s ease, opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .play-button.clicked {
+            opacity: 0; /* Fades out once clicked */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .navbar .logo img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar .logo img {
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="path-to-your-logo.png" alt="Logo">
+        </div>
+
+        <div class="nav-links">
+            <a href="https://ryunekoru.com">Home</a>
+            <a href="https://ryunekoru.com/art">Gallery</a>
+            <a href="https://ryunekoru.com/contact">Contact</a>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <!-- Artworks with Modal functionality -->
+            <div class="gallery-item" onclick="openModal('art1')">
+                <img src="/art/imgs/RyunekoruHalloween.jpg" alt="Art Piece 1">
+                <div class="description">"Art Piece 1" - Created in 2024</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('art2')">
+                <img src="/art/imgs/Gold.png" alt="Art Piece 2">
+                <div class="description">"Art Piece 2" - Created in 2024</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('art3')">
                 <img src="/art/imgs/oneyear.png" alt="Art Piece 3">
                 <div class="description">"Art Piece 3" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art3', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art4')">
                 <img src="/art/imgs/Joker.png" alt="Art Piece 4">
                 <div class="description">"Art Piece 4" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art4', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art5')">
                 <img src="/art/imgs/Neru.png" alt="Art Piece 5">
                 <div class="description">"Art Piece 5" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art5', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art6')">
                 <img src="/art/imgs/HAPPYBIRTHDAYANNIEKFJNS-min.png" alt="Art Piece 6">
                 <div class="description">"Art Piece 6" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art6', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art7')">
                 <img src="/art/imgs/Cres sheet.png" alt="Art Piece 7">
                 <div class="description">"Art Piece 7" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art7', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art8')">
                 <img src="/art/imgs/Rue sheet.png" alt="Art Piece 8">
                 <div class="description">"Art Piece 8" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art8', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art9')">
                 <img src="/art/imgs/Ryuko sheet.png" alt="Art Piece 9">
                 <div class="description">"Art Piece 9" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art9', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art10')">
                 <img src="/art/imgs/Blue.png" alt="Art Piece 10">
                 <div class="description">"Art Piece 10" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art10', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art11')">
                 <img src="/art/imgs/Kuyoko heart.png" alt="Art Piece 11">
                 <div class="description">"Art Piece 11" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art11', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art12')">
                 <img src="/art/imgs/Ryukov2.png" alt="Art Piece 12">
                 <div class="description">"Art Piece 12" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art12', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art13')">
                 <img src="/art/imgs/Vanitas.png" alt="Art Piece 13">
                 <div class="description">"Art Piece 13" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art13', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art14')">
                 <img src="/art/imgs/Wanderer.png" alt="Art Piece 14">
                 <div class="description">"Art Piece 14" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art14', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art15')">
                 <img src="/art/imgs/autumn-ryu.png" alt="Art Piece 15">
                 <div class="description">"Art Piece 15" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art15', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art16')">
                 <img src="/art/imgs/ren.png" alt="Art Piece 16">
                 <div class="description">"Art Piece 16" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art16', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art17')">
                 <img src="/art/imgs/surprise.png" alt="Art Piece 17">
                 <div class="description">"Art Piece 17" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art17', this)">▶</div>
             </div>
-            <div class="gallery-item" onclick="showPlayButton(this)">
+            <div class="gallery-item" onclick="openModal('art18')">
                 <img src="/art/imgs/background 3.png" alt="Art Piece 18">
                 <div class="description">"Art Piece 18" - Created in 2024</div>
-                <div class="play-button" onclick="playVideo('art18', this)">▶</div>
             </div>
         </div>
     </div>
@@ -323,27 +539,23 @@
         <div class="close-btn" onclick="closeModal()">×</div>
         <img id="modalImage" src="" alt="Full Art Piece">
         <video id="modalVideo" controls></video>
+        <!-- Play Button inside Modal -->
+        <div class="play-button" onclick="playVideo()">▶</div>
     </div>
 
     <script>
         const modal = document.getElementById('modal');
         const modalImage = document.getElementById('modalImage');
         const modalVideo = document.getElementById('modalVideo');
+        const playButton = document.querySelector('.play-button');
 
-        function showPlayButton(element) {
-            // Optional: additional logic to handle clicking on the image to show the play button
-        }
-
-        function playVideo(artId, buttonElement) {
-            // Hide the play button
-            buttonElement.classList.add('clicked');
-
-            // Reset the video and modal state
+        function openModal(artId) {
             modalVideo.style.display = 'none';
             modalVideo.pause();
             modalVideo.currentTime = 0;
 
-            // Switch to the correct art and video
+            playButton.classList.remove('clicked'); // Reset play button state
+
             switch (artId) {
                 case 'art1':
                     modalImage.src = '/art/imgs/RyunekoruHalloween.jpg';
@@ -419,22 +631,91 @@
                     break;
             }
 
-            // Show modal with image first, then video
             modal.classList.add('show');
             modalImage.style.display = 'block';
             modalImage.style.opacity = '1';
-            modalVideo.style.opacity = '0';
+            modalVideo.style.display = 'none';
+            playButton.style.display = 'flex';
+        }
 
-            // Delay video appearance after image fades out
+        function playVideo() {
+            playButton.classList.add('clicked'); // Fade out the play button
+            modalImage.style.opacity = '0';
+
             setTimeout(() => {
-                modalImage.style.opacity = '0';
-                setTimeout(() => {
-                    modalImage.style.display = 'none';
-                    modalVideo.style.display = 'block';
-                    modalVideo.style.opacity = '1';
-                    modalVideo.play();
-                }, 500);
-            }, 2000);
+                modalImage.style.display = 'none';
+                modalVideo.style.display = 'block';
+                modalVideo.style.opacity = '1';
+                modalVideo.play();
+            }, 500);
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            modalImage.style.display = 'block';
+            modalImage.style.opacity = '1';
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+        }
+    </script>
+
+</body>
+</html>
+
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="close-btn" onclick="closeModal()">×</div>
+        <img id="modalImage" src="" alt="Full Art Piece">
+        <video id="modalVideo" controls></video>
+        <!-- Play Button inside Modal -->
+        <div class="play-button" onclick="playVideo()">▶</div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
+        const playButton = document.querySelector('.play-button');
+
+        function openModal(artId) {
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+
+            playButton.classList.remove('clicked'); // Reset play button state
+
+            switch (artId) {
+                case 'art1':
+                    modalImage.src = '/art/imgs/RyunekoruHalloween.jpg';
+                    modalVideo.src = '/art/vids/video1.mp4';
+                    break;
+                case 'art2':
+                    modalImage.src = '/art/imgs/Gold.png';
+                    modalVideo.src = '/art/vids/flower.mp4';
+                    break;
+                // Add cases for other art pieces as needed
+            }
+
+            modal.classList.add('show');
+            modalImage.style.display = 'block';
+            modalImage.style.opacity = '1';
+            modalVideo.style.display = 'none';
+            playButton.style.display = 'flex';
+        }
+
+        function playVideo() {
+            playButton.classList.add('clicked'); // Fade out the play button
+            modalImage.style.opacity = '0';
+
+            setTimeout(() => {
+                modalImage.style.display = 'none';
+                modalVideo.style.display = 'block';
+                modalVideo.style.opacity = '1';
+                modalVideo.play();
+            }, 500);
         }
 
         function closeModal() {
