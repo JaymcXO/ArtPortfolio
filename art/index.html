@@ -17,8 +17,7 @@
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
+            overflow-y: scroll; /* Enable scrolling */
         }
 
         .navbar {
@@ -71,24 +70,15 @@
         }
 
         .gallery-container {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100vw;
-            height: calc(100vh - 70px); /* Adjusted for the new nav bar height */
+            margin-top: 100px; /* Adjusted for fixed nav bar */
             padding: 20px;
             box-sizing: border-box;
-            margin-top: 70px;
         }
 
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Three columns for the grid */
-            grid-gap: 20px;
-            width: 100%;
-            height: 100%; 
-            max-width: 100vw;
+            grid-gap: 20px; 
         }
 
         .gallery-item {
@@ -183,7 +173,7 @@
 
         @media (max-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(2, 1fr); 
+                grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
             }
 
             .navbar .logo img {
@@ -193,7 +183,7 @@
 
         @media (max-width: 480px) {
             .gallery {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* One column for mobile screens */
             }
 
             .navbar .logo img {
@@ -221,6 +211,7 @@
 
     <div class="gallery-container">
         <div class="gallery">
+            <!-- Add more artwork items here -->
             <div class="gallery-item" onclick="openModal('art1')">
                 <img src="/art/imgs/background.png" alt="Art Piece 1" class="vertical">
                 <div class="description">"Art Piece 1" - Created in 2024</div>
@@ -257,6 +248,7 @@
                 <img src="/art/imgs/horizonal1.jfif" alt="Art Piece 9" class="horizontal">
                 <div class="description">"Art Piece 9" - Created in 2024</div>
             </div>
+            <!-- Add more items as needed for additional rows -->
         </div>
     </div>
 
