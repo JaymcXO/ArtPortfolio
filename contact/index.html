@@ -5,20 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Contact Ryunekoru</title>
-
-    <!-- Meta Description for SEO -->
-    <meta name="description" content="Contact Ryunekoru for custom art commissions or inquiries. Explore the unique collection of digital and traditional artwork.">
-
-    <!-- Favicon for Browser Tab -->
-    <link rel="icon" href="images/favicon.png" type="image/png">
-
-    <!-- Open Graph Tags for Social Sharing -->
-    <meta property="og:title" content="Contact Ryunekoru - Custom Art Commissions">
-    <meta property="og:description" content="Get in touch with Ryunekoru for custom art commissions. Explore the unique art portfolio and inquire about work opportunities.">
-    <meta property="og:image" content="https://ryunekoru.com/images/contact-preview.jpg">
-    <meta property="og:url" content="https://ryunekoru.com/contact">
-    <meta property="og:type" content="website">
+    <title>Contact Ryunekoru - Artist Portfolio</title>
 
     <style>
         /* General Styling */
@@ -29,151 +16,155 @@
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
             display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Navbar Styling */
-        .navbar {
-            width: 100%;
-            height: 60px;
-            background-color: white;
-            display: flex;
-            justify-content: center; /* Center the buttons horizontally */
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .navbar a {
-            color: #333;
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s, color 0.3s;
-            display: inline-block;
-        }
-
-        .navbar a:hover {
-            background: linear-gradient(135deg, #3b82f6, #9333ea);
-            color: white;
-        }
-
-        /* Contact Page Content */
-        .content-container {
-            display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            position: relative; /* To allow for the overlay */
+            overflow: hidden;
+        }
+
+        /* Pattern Overlay with Animation */
+        .pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/pics/FINALpattern.png'); /* Replace with your seamless pattern PNG */
+            opacity: 0.2; /* Slight transparency */
+            background-size: cover; /* Ensures it covers the entire screen */
+            z-index: 1; /* Place it above the background but below the content */
+            animation: movePattern 30s linear infinite; /* Infinite movement animation */
+        }
+
+        /* Keyframes for the moving effect */
+        @keyframes movePattern {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 1000px 1000px; /* Adjust this value for speed and direction */
+            }
+        }
+
+        /* Contact Form Container */
+        .profile-container {
+            z-index: 2; /* Ensure it's above the overlay */
+            display: flex;
             flex-direction: column;
-            padding-top: 100px; /* Ensure content is not hidden by the navbar */
-            flex-grow: 1;
-        }
-
-        /* Box Styling */
-        .box {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 8px;
-            margin: 20px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            align-items: center;
             text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            box-sizing: border-box;
+            min-width: 280px;
+            position: relative;
+            /* Add white outline with separation */
+            outline: 6px solid white; /* White outline */
+            outline-offset: 10px; /* Creates the space between the box and the white outline */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Subtle shadow to give a floating effect */
         }
 
-        .box h2 {
+        .profile-container h1 {
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
 
-        .box input,
-        .box textarea {
+        /* Form Elements */
+        .contact-form {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
             border-radius: 8px;
             border: none;
             font-size: 1em;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contact-form button {
+            background-color: white;
             color: #333;
-        }
-
-        .box button {
-            background-color: #3b82f6;
-            color: white;
             padding: 12px 24px;
-            border: none;
             border-radius: 8px;
-            font-size: 1.1em;
+            border: none;
+            font-weight: bold;
+            font-size: 1em;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
 
-        .box button:hover {
-            background-color: #9333ea;
+        .contact-form button:hover {
+            background: linear-gradient(135deg, #3b82f6, #9333ea); /* Gradient on hover */
+            color: white;
         }
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .navbar a {
-                padding: 8px 16px;
+            .profile-container {
+                padding: 20px;
+            }
+
+            .profile-container h1 {
+                font-size: 2em;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
                 font-size: 0.9em;
             }
 
-            .box {
-                width: 90%; /* Reduce the width on smaller screens */
+            .contact-form button {
+                font-size: 0.9em;
             }
         }
 
         @media (max-width: 480px) {
-            .navbar a {
-                padding: 6px 12px;
+            .profile-container {
+                padding: 15px;
+            }
+
+            .profile-container h1 {
+                font-size: 1.8em;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
                 font-size: 0.8em;
             }
 
-            .box {
-                width: 100%; /* Full width on very small screens */
-            }
-
-            .content-container {
-                padding-top: 80px;
+            .contact-form button {
+                font-size: 0.8em;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <a href="https://ryunekoru.com">Home</a>
-        <a href="https://ryunekoru.com/art">Gallery</a>
-        <a href="https://ryunekoru.com/contact">Contact</a>
-    </div>
+    <!-- Pattern Overlay with Animation -->
+    <div class="pattern-overlay"></div>
 
-    <!-- Contact Page Content -->
-    <div class="content-container">
-        <!-- Contact Form Box -->
-        <div class="box">
-            <h2>Contact the Artist</h2>
-            <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
+    <!-- Contact Form Container with Separated White Outline -->
+    <div class="profile-container">
+        <h1>Contact Ryunekoru</h1>
 
-        <!-- Pricing Information Box -->
-        <div class="box">
-            <h2>Pricing Information</h2>
-            <p>Commission Piece (Digital) - $100</p>
-            <p>Commission Piece (Traditional) - $200</p>
-            <p>Custom Requests - Contact for Pricing</p>
-        </div>
+        <form action="mailto:youremail@domain.com" method="post" enctype="text/plain" class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message or Description" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     </div>
 
 </body>
