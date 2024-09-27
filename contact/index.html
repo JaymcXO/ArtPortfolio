@@ -23,20 +23,37 @@
             overflow: hidden;
         }
 
-        /* Nav Bar Styling */
+        /* Nav Bar Styling with Logo */
         .navbar {
             width: 100%;
             height: 60px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: white; /* Solid background */
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease;
+            padding: 0 20px; /* Add some padding for spacing */
+        }
+
+        /* Logo Styling */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px; /* Adjust the logo size */
+            width: auto;
+        }
+
+        /* Navigation Links */
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
         }
 
         .navbar a {
@@ -178,6 +195,10 @@
             .description-box {
                 font-size: 1em;
             }
+
+            .navbar .logo img {
+                height: 30px; /* Adjust logo size for smaller screens */
+            }
         }
 
         @media (max-width: 480px) {
@@ -201,6 +222,10 @@
             .description-box {
                 font-size: 0.9em;
             }
+
+            .navbar .logo img {
+                height: 25px; /* Adjust logo size for smaller screens */
+            }
         }
     </style>
 </head>
@@ -208,9 +233,19 @@
 
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="https://ryunekoru.com">Home</a>
-        <a href="https://ryunekoru.com/art">Gallery</a>
-        <a href="https://ryunekoru.com/contact">Contact</a>
+        <!-- Logo on the left -->
+        <div class="logo">
+            <a href="https://ryunekoru.com">
+                <img src="path-to-your-logo.png" alt="Logo"> <!-- Replace with your logo path -->
+            </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+            <a href="https://ryunekoru.com">Home</a>
+            <a href="https://ryunekoru.com/art">Gallery</a>
+            <a href="https://ryunekoru.com/contact">Contact</a>
+        </div>
     </div>
 
     <!-- Pattern Overlay with Animation -->
