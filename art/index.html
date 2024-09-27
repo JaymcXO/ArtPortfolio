@@ -17,13 +17,13 @@
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
             height: 100vh;
-            overflow-y: scroll; /* Enable scrolling */
+            overflow-y: scroll;
         }
 
         .navbar {
             width: 100%;
-            height: 70px; /* Adjusted height */
-            background-color: white; /* Solid background */
+            height: 70px;
+            background-color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -32,25 +32,23 @@
             left: 0;
             z-index: 1000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 0 20px; /* Add some padding for spacing */
+            padding: 0 20px;
         }
 
-        /* Left-aligned logo */
         .navbar .logo {
             display: flex;
             align-items: center;
         }
 
         .navbar .logo img {
-            height: 50px; /* Logo size */
+            height: 50px;
             width: auto;
         }
 
-        /* Centered navigation links */
         .navbar .nav-links {
             flex: 1;
             display: flex;
-            justify-content: center; /* Center the navigation links */
+            justify-content: center;
             align-items: center;
         }
 
@@ -70,15 +68,16 @@
         }
 
         .gallery-container {
-            margin-top: 100px; /* Adjusted for fixed nav bar */
+            margin-top: 100px; 
             padding: 20px;
             box-sizing: border-box;
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Three columns for the grid */
-            grid-gap: 20px; 
+            grid-template-columns: repeat(3, 1fr); /* 3x3 grid layout */
+            grid-auto-rows: 1fr; /* Each row takes up equal space */
+            grid-gap: 20px;
         }
 
         .gallery-item {
@@ -87,12 +86,13 @@
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s;
+            height: 300px; /* All images have the same height */
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* This ensures images fit within their boxes while maintaining aspect ratio */
             transition: transform 0.3s;
         }
 
@@ -118,14 +118,6 @@
             opacity: 1;
         }
 
-        .gallery img.horizontal {
-            aspect-ratio: 4/3; 
-        }
-
-        .gallery img.vertical {
-            aspect-ratio: 3/4;
-        }
-
         .modal {
             position: fixed;
             top: 0;
@@ -140,7 +132,7 @@
         }
 
         .modal.show {
-            display: flex; 
+            display: flex;
         }
 
         .modal img, .modal video {
@@ -173,21 +165,21 @@
 
         @media (max-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .navbar .logo img {
-                height: 40px; /* Adjust logo size for smaller screens */
+                height: 40px;
             }
         }
 
         @media (max-width: 480px) {
             .gallery {
-                grid-template-columns: 1fr; /* One column for mobile screens */
+                grid-template-columns: 1fr;
             }
 
             .navbar .logo img {
-                height: 30px; /* Adjust logo size for smaller screens */
+                height: 30px;
             }
         }
     </style>
@@ -196,12 +188,10 @@
 
     <!-- Navigation Bar -->
     <div class="navbar">
-        <!-- Logo (Left-aligned) -->
         <div class="logo">
-            <img src="/pics/logo.png" alt="Logo"> <!-- Replace with your logo path -->
+            <img src="path-to-your-logo.png" alt="Logo"> <!-- Replace with your logo path -->
         </div>
 
-        <!-- Centered Navigation Links -->
         <div class="nav-links">
             <a href="https://ryunekoru.com">Home</a>
             <a href="https://ryunekoru.com/art">Gallery</a>
@@ -211,45 +201,45 @@
 
     <div class="gallery-container">
         <div class="gallery">
-            <!-- Add more artwork items here -->
+            <!-- Add your artwork items here -->
             <div class="gallery-item" onclick="openModal('art1')">
-                <img src="/art/imgs/RyunekoruHalloween.jpg" alt="Art Piece 1" class="vertical">
+                <img src="/art/imgs/RyunekoruHalloween.jpg" alt="Art Piece 1">
                 <div class="description">"Art Piece 1" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art2')">
-                <img src="/art/imgs/Gold.png" alt="Art Piece 2" class="horizontal">
+                <img src="/art/imgs/Gold.png" alt="Art Piece 2">
                 <div class="description">"Art Piece 2" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art3')">
-                <img src="/art/imgs/oneyear.png" alt="Art Piece 3" class="vertical">
+                <img src="/art/imgs/oneyear.png" alt="Art Piece 3">
                 <div class="description">"Art Piece 3" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art4')">
-                <img src="/art/imgs/Joker.png" alt="Art Piece 4" class="vertical">
+                <img src="/art/imgs/Joker.png" alt="Art Piece 4">
                 <div class="description">"Art Piece 4" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art5')">
-                <img src="/art/imgs/Neru.png" alt="Art Piece 5" class="horizontal">
+                <img src="/art/imgs/Neru.png" alt="Art Piece 5">
                 <div class="description">"Art Piece 5" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art6')">
-                <img src="/art/imgs/HAPPYBIRTHDAYANNIEKFJNS-min.png" alt="Art Piece 6" class="vertical">
+                <img src="/art/imgs/HAPPYBIRTHDAYANNIEKFJNS-min.png" alt="Art Piece 6">
                 <div class="description">"Art Piece 6" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art7')">
-                <img src="/art/imgs/Cres sheet.png" alt="Art Piece 7" class="horizontal">
+                <img src="/art/imgs/Cres sheet.png" alt="Art Piece 7">
                 <div class="description">"Art Piece 7" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art8')">
-                <img src="/art/imgs/Rue sheet.png" alt="Art Piece 8" class="horizontal">
+                <img src="/art/imgs/Rue sheet.png" alt="Art Piece 8">
                 <div class="description">"Art Piece 8" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art9')">
-                <img src="/art/imgs/Ryuko sheet.png" alt="Art Piece 9" class="horizontal">
+                <img src="/art/imgs/Ryuko sheet.png" alt="Art Piece 9">
                 <div class="description">"Art Piece 9" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art10')">
-                <img src="/art/imgs/Blue.png" alt="Art Piece 9" class="horizontal">
+                <img src="/art/imgs/Blue.png" alt="Art Piece 10">
                 <div class="description">"Art Piece 10" - Created in 2024</div>
             </div>
             <div class="gallery-item" onclick="openModal('art11')">
