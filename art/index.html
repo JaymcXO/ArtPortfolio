@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Ryunekoru Gallery</title>
+    <title>Gallery - Ryunekoru Artist Portfolio</title>
 
     <link rel="icon" href="/pics/socials.png" type="image/png">
 
@@ -26,6 +26,7 @@
             height: 70px; /* Adjusted height */
             background-color: white; /* Solid background */
             display: flex;
+            justify-content: space-between;
             align-items: center;
             position: fixed;
             top: 0;
@@ -35,21 +36,22 @@
             padding: 0 20px; /* Add some padding for spacing */
         }
 
-        /* Logo Styling */
+        /* Left-aligned logo */
         .navbar .logo {
             display: flex;
             align-items: center;
-            margin-right: 20px; /* Space between logo and buttons */
         }
 
         .navbar .logo img {
-            height: 50px; /* Increased logo size */
+            height: 50px; /* Logo size */
             width: auto;
         }
 
-        /* Navigation Links */
+        /* Centered navigation links */
         .navbar .nav-links {
+            flex: 1;
             display: flex;
+            justify-content: center; /* Center the navigation links */
             align-items: center;
         }
 
@@ -77,13 +79,13 @@
             height: calc(100vh - 70px); /* Adjusted for the new nav bar height */
             padding: 20px;
             box-sizing: border-box;
-            margin-top: 70px; 
+            margin-top: 70px;
         }
 
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Three columns for the grid */
-            grid-gap: 20px; 
+            grid-gap: 20px;
             width: 100%;
             height: 100%; 
             max-width: 100vw;
@@ -204,12 +206,12 @@
 
     <!-- Navigation Bar -->
     <div class="navbar">
-        <!-- Logo (Not clickable) -->
+        <!-- Logo (Left-aligned) -->
         <div class="logo">
             <img src="/pics/logo.png" alt="Logo"> <!-- Replace with your logo path -->
         </div>
 
-        <!-- Navigation Links -->
+        <!-- Centered Navigation Links -->
         <div class="nav-links">
             <a href="https://ryunekoru.com">Home</a>
             <a href="https://ryunekoru.com/art">Gallery</a>
