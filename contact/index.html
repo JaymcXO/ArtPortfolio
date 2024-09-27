@@ -30,7 +30,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/pics/patternFINAL.png'); /* Replace with your seamless pattern PNG */
+            background-image: url('patternFINAL.png'); /* Replace with your seamless pattern PNG */
             opacity: 0.2; /* Slight transparency */
             background-size: cover; /* Ensures it covers the entire screen */
             z-index: 1; /* Place it above the background but below the content */
@@ -76,16 +76,21 @@
         /* Form Elements */
         .contact-form {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the form elements */
         }
 
         .contact-form input,
         .contact-form textarea {
-            width: 100%;
+            width: 90%; /* Slight margin inside the box */
+            max-width: 500px; /* Set a max-width to keep form elements centered and consistent */
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 8px;
             border: none;
             font-size: 1em;
+            text-align: center; /* Centers text in input fields */
         }
 
         .contact-form textarea {
@@ -110,6 +115,15 @@
             color: white;
         }
 
+        /* Textbox Description */
+        .description-box {
+            margin-top: 20px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #f0f0f0;
+            text-align: center; /* Center the description text */
+        }
+
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .profile-container {
@@ -127,6 +141,10 @@
 
             .contact-form button {
                 font-size: 0.9em;
+            }
+
+            .description-box {
+                font-size: 1em;
             }
         }
 
@@ -147,6 +165,10 @@
             .contact-form button {
                 font-size: 0.8em;
             }
+
+            .description-box {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -165,6 +187,11 @@
             <textarea name="message" placeholder="Your Message or Description" required></textarea>
             <button type="submit">Send Message</button>
         </form>
+
+        <!-- Textbox Description below the form -->
+        <div class="description-box">
+            Feel free to reach out with any commission requests, art inquiries, or just to say hello. Looking forward to hearing from you!
+        </div>
     </div>
 
 </body>
