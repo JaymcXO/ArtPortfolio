@@ -8,7 +8,6 @@
     <title>Contact Ryunekoru - Artist Portfolio</title>
 
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -19,15 +18,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            position: relative; /* To allow for the overlay */
+            position: relative; 
             overflow: hidden;
         }
 
-        /* Nav Bar Styling with Logo */
         .navbar {
             width: 100%;
-            height: 70px; /* Adjusted height */
-            background-color: white; /* Solid background */
+            height: 70px; 
+            background-color: white;
             display: flex;
             align-items: center;
             position: fixed;
@@ -35,22 +33,20 @@
             left: 0;
             z-index: 1000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 0 20px; /* Add some padding for spacing */
+            padding: 0 20px; 
         }
 
-        /* Logo Styling */
         .navbar .logo {
             display: flex;
             align-items: center;
-            margin-right: 20px; /* Space between logo and buttons */
+            margin-right: 20px; 
         }
 
         .navbar .logo img {
-            height: 50px; /* Increased logo size */
+            height: 50px; 
             width: auto;
         }
 
-        /* Navigation Links */
         .navbar .nav-links {
             display: flex;
             align-items: center;
@@ -59,7 +55,7 @@
         .navbar a {
             color: #333;
             text-decoration: none;
-            margin: 0 10px; /* Adjust margin */
+            margin: 0 10px; 
             padding: 10px 20px;
             border-radius: 8px;
             font-weight: bold;
@@ -71,38 +67,35 @@
             color: white;
         }
 
-        /* Pattern Overlay with Animation */
         .pattern-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/pics/patternFINAL.png'); /* Replace with your seamless pattern PNG */
-            opacity: 0.2; /* Slight transparency */
-            background-size: cover; /* Ensures it covers the entire screen */
-            z-index: 1; /* Place it above the background but below the content */
-            animation: movePattern 30s linear infinite; /* Infinite movement animation */
+            background-image: url('/pics/patternFINAL.png'); 
+            opacity: 0.2;
+            background-size: cover; 
+            z-index: 1; 
+            animation: movePattern 30s linear infinite;
         }
 
-        /* Keyframes for the moving effect */
         @keyframes movePattern {
             0% {
                 background-position: 0 0;
             }
             100% {
-                background-position: 1000px 1000px; /* Adjust this value for speed and direction */
+                background-position: 1000px 1000px;
             }
         }
 
-        /* Contact Form Container */
         .profile-container {
-            z-index: 2; /* Ensure it's above the overlay */
+            z-index: 2; 
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 30px;
             border-radius: 12px;
             max-width: 600px;
@@ -110,11 +103,10 @@
             box-sizing: border-box;
             min-width: 280px;
             position: relative;
-            margin-top: 100px; /* Adjusted for the fixed navbar */
-            /* Add white outline with separation */
-            outline: 6px solid white; /* White outline */
-            outline-offset: 10px; /* Creates the space between the box and the white outline */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Subtle shadow to give a floating effect */
+            margin-top: 100px; 
+            outline: 6px solid white; 
+            outline-offset: 10px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
         }
 
         .profile-container h1 {
@@ -122,24 +114,23 @@
             margin-bottom: 20px;
         }
 
-        /* Form Elements */
         .contact-form {
             width: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centers the form elements */
+            align-items: center; 
         }
 
         .contact-form input,
         .contact-form textarea {
-            width: 90%; /* Slight margin inside the box */
-            max-width: 500px; /* Set a max-width to keep form elements centered and consistent */
+            width: 90%; 
+            max-width: 500px; 
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 8px;
             border: none;
             font-size: 1em;
-            text-align: center; /* Centers text in input fields */
+            text-align: center;
         }
 
         .contact-form textarea {
@@ -160,20 +151,18 @@
         }
 
         .contact-form button:hover {
-            background: linear-gradient(135deg, #3b82f6, #9333ea); /* Gradient on hover */
+            background: linear-gradient(135deg, #3b82f6, #9333ea); 
             color: white;
         }
 
-        /* Textbox Description */
         .description-box {
             margin-top: 20px;
             font-size: 1.1em;
             line-height: 1.6;
             color: #f0f0f0;
-            text-align: center; /* Center the description text */
+            text-align: center; 
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .profile-container {
                 padding: 20px;
@@ -197,7 +186,7 @@
             }
 
             .navbar .logo img {
-                height: 40px; /* Adjust logo size for smaller screens */
+                height: 40px;
             }
         }
 
@@ -224,21 +213,18 @@
             }
 
             .navbar .logo img {
-                height: 30px; /* Adjust logo size for smaller screens */
+                height: 30px; 
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
     <div class="navbar">
-        <!-- Logo (Not clickable) -->
         <div class="logo">
-            <img src="/pics/logo.png" alt="Logo"> <!-- Replace with your logo path -->
+            <img src="/pics/logo.png" alt="Logo"> 
         </div>
 
-        <!-- Navigation Links -->
         <div class="nav-links">
             <a href="https://ryunekoru.com">Home</a>
             <a href="https://ryunekoru.com/art">Gallery</a>
@@ -246,10 +232,8 @@
         </div>
     </div>
 
-    <!-- Pattern Overlay with Animation -->
     <div class="pattern-overlay"></div>
 
-    <!-- Contact Form Container with Separated White Outline -->
     <div class="profile-container">
         <h1>Contact Ryunekoru</h1>
 
@@ -260,7 +244,6 @@
             <button type="submit">Send Message</button>
         </form>
 
-        <!-- Textbox Description below the form -->
         <div class="description-box">
             Feel free to reach out with any commission requests, art inquiries, or just to say hello. Looking forward to hearing from you!
         </div>
