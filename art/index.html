@@ -231,11 +231,11 @@
     <div class="gallery-container">
         <div class="gallery">
             <!-- Artworks with Modal functionality -->
-            <div class="gallery-item" onclick="openModal('art1', '/art/vids/video1.mp4')">
+            <div class="gallery-item" onclick="openModal('/art/imgs/RyunekoruHalloween.jpg', null)">
                 <img src="/art/imgs/RyunekoruHalloween.jpg" alt="Art Piece 1">
                 <div class="description">"Art Piece 1" - Created in 2024</div>
             </div>
-            <div class="gallery-item" onclick="openModal('art2', null)">
+            <div class="gallery-item" onclick="openModal('/art/imgs/Gold.png', null)">
                 <img src="/art/imgs/Gold.png" alt="Art Piece 2">
                 <div class="description">"Art Piece 2" - Created in 2024</div>
             </div>
@@ -322,7 +322,8 @@
         const modalVideo = document.getElementById('modalVideo');
         const playButton = document.getElementById('playButton');
 
-        function openModal(artId, videoSrc) {
+        function openModal(imageSrc, videoSrc) {
+            modalImage.src = imageSrc;
             modalVideo.style.display = 'none';
             modalVideo.pause();
             modalVideo.currentTime = 0;
@@ -334,63 +335,6 @@
                 modalVideo.src = videoSrc;
             } else {
                 playButton.style.display = 'none'; // Hide the play button if no video
-            }
-
-            switch (artId) {
-                case 'art1':
-                    modalImage.src = '/art/imgs/RyunekoruHalloween.jpg';
-                    break;
-                case 'art2':
-                    modalImage.src = '/art/imgs/Gold.png';
-                    break;
-                case 'art3':
-                    modalImage.src = '/art/imgs/oneyear.png';
-                    break;
-                case 'art4':
-                    modalImage.src = '/art/imgs/Joker.png';
-                    break;
-                case 'art5':
-                    modalImage.src = '/art/imgs/Neru.png';
-                    break;
-                case 'art6':
-                    modalImage.src = '/art/imgs/HAPPYBIRTHDAYANNIEKFJNS-min.png';
-                    break;
-                case 'art7':
-                    modalImage.src = '/art/imgs/Cres sheet.png';
-                    break;
-                case 'art8':
-                    modalImage.src = '/art/imgs/Rue sheet.png';
-                    break;
-                case 'art9':
-                    modalImage.src = '/art/imgs/Ryuko sheet.png';
-                    break;
-                case 'art10':
-                    modalImage.src = '/art/imgs/Blue.png';
-                    break;
-                case 'art11':
-                    modalImage.src = '/art/imgs/Kuyoko heart.png';
-                    break;
-                case 'art12':
-                    modalImage.src = '/art/imgs/Ryukov2.png';
-                    break;
-                case 'art13':
-                    modalImage.src = '/art/imgs/Vanitas.png';
-                    break;
-                case 'art14':
-                    modalImage.src = '/art/imgs/Wanderer.png';
-                    break;
-                case 'art15':
-                    modalImage.src = '/art/imgs/autumn-ryu.png';
-                    break;
-                case 'art16':
-                    modalImage.src = '/art/imgs/ren.png';
-                    break;
-                case 'art17':
-                    modalImage.src = '/art/imgs/surprise.png';
-                    break;
-                case 'art18':
-                    modalImage.src = '/art/imgs/background 3.png';
-                    break;
             }
 
             modal.classList.add('show');
