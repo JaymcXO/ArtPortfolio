@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gallery - Ryunekoru Artist Portfolio</title>
 
-    <link rel="icon" href="/pics/socials.png" type="image/png">
+    <link rel="icon" href="/pics/favicon.png" type="image/png">
 
     <style>
         body {
@@ -218,7 +218,7 @@
     <!-- Navigation Bar -->
     <div class="navbar">
         <div class="logo">
-            <img src="path-to-your-logo.png" alt="Logo">
+            <img src="/pics/logo.png" alt="Logo">
         </div>
 
         <div class="nav-links">
@@ -231,7 +231,7 @@
     <div class="gallery-container">
         <div class="gallery">
             <!-- Artworks with Modal functionality -->
-            <div class="gallery-item" onclick="openModal('/art/imgs/RyunekoruHalloween.jpg', null)">
+            <div class="gallery-item" onclick="openModal('/art/imgs/RyunekoruHalloween.jpg', '/art/vids/video1.mp4')">
                 <img src="/art/imgs/RyunekoruHalloween.jpg" alt="Art Piece 1">
                 <div class="description">"Art Piece 1" - Created in 2024</div>
             </div>
@@ -239,7 +239,7 @@
                 <img src="/art/imgs/Gold.png" alt="Art Piece 2">
                 <div class="description">"Art Piece 2" - Created in 2024</div>
             </div>
-            <div class="gallery-item" onclick="openModal('art3', '/art/vids/oneyear_1.mp4')">
+             <div class="gallery-item" onclick="openModal('/art/imgs/oneyear.png', '/art/vids/oneyear_1.mp4')">
                 <img src="/art/imgs/oneyear.png" alt="Art Piece 3">
                 <div class="description">"Art Piece 3" - Created in 2024</div>
             </div>
@@ -311,7 +311,7 @@
         <img id="modalImage" src="" alt="Full Art Piece">
         <video id="modalVideo" controls></video>
         <!-- Play Button with "Timelapse" text inside Modal -->
-        <div class="play-button" id="playButton">
+        <div class="play-button" id="playButton" onclick="playVideo()">
             ▶ <span>Timelapse</span>
         </div>
     </div>
