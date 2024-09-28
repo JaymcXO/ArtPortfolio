@@ -410,4 +410,32 @@
             }
 
             modal.classList.add('show');
-           
+           modalImage.style.display = 'block';
+            modalImage.style.opacity = '1';
+            modalVideo.style.display = 'none';
+        }
+
+        function playVideo() {
+            playButton.classList.add('clicked'); // Fade out the play button
+            modalImage.style.opacity = '0';
+
+            setTimeout(() => {
+                modalImage.style.display = 'none';
+                modalVideo.style.display = 'block';
+                modalVideo.style.opacity = '1';
+                modalVideo.play();
+            }, 500);
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            modalImage.style.display = 'block';
+            modalImage.style.opacity = '1';
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+        }
+    </script>
+
+</body>
+</html>
