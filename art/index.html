@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gallery - Ryunekoru Artist Portfolio</title>
 
-    <link rel="icon" href="/pics/favicon.png" type="image/png">
+    <link rel="icon" href="/pics/socials.png" type="image/png">
 
     <style>
         body {
@@ -142,6 +142,8 @@
 
         .modal video {
             display: none;
+            opacity: 0; /* Start hidden and invisible */
+            transition: opacity 0.5s ease; /* Smooth fade-in transition for the video */
         }
 
         /* Play Button with Text Styling */
@@ -216,7 +218,7 @@
     <!-- Navigation Bar -->
     <div class="navbar">
         <div class="logo">
-            <img src="/pics/logo.png" alt="Logo">
+            <img src="path-to-your-logo.png" alt="Logo">
         </div>
 
         <div class="nav-links">
@@ -229,7 +231,7 @@
     <div class="gallery-container">
         <div class="gallery">
             <!-- Artworks with Modal functionality -->
-            <div class="gallery-item" onclick="openModal('art1', null)">
+            <div class="gallery-item" onclick="openModal('art1', '/art/vids/video1.mp4')">
                 <img src="/art/imgs/RyunekoruHalloween.jpg" alt="Art Piece 1">
                 <div class="description">"Art Piece 1" - Created in 2024</div>
             </div>
@@ -398,14 +400,15 @@
 
         function playVideo() {
             playButton.classList.add('clicked'); // Fade out the play button
-            modalImage.style.opacity = '0';
+            modalImage.style.transition = 'opacity 0.5s ease'; // Smooth fade-out of the image
+            modalImage.style.opacity = '0'; // Fade out the image
 
             setTimeout(() => {
-                modalImage.style.display = 'none';
-                modalVideo.style.display = 'block';
-                modalVideo.style.opacity = '1';
-                modalVideo.play();
-            }, 500);
+                modalImage.style.display = 'none'; // Hide the image after fade-out completes
+                modalVideo.style.display = 'block'; // Show the video element
+                modalVideo.style.opacity = '1'; // Ensure the video fades in
+                modalVideo.play(); // Start video playback
+            }, 500); // Wait for the image to fade out before showing the video
         }
 
         function closeModal() {
