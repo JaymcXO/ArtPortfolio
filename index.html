@@ -4,164 +4,141 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" href="/pics/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
+    body, html {
       height: 100%;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-      color: white;
+      font-family: 'Roboto', sans-serif;
+      background: #1e1e1e;
+      color: #fff;
     }
 
-    .pattern-overlay {
+    .background {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('/pics/patternFINAL.png');
+      background: linear-gradient(135deg, #00f0ff, #9d00ff);
       background-size: cover;
-      opacity: 0.2;
-      z-index: 1;
-      animation: movePattern 30s linear infinite;
+      z-index: -1;
     }
 
-    @keyframes movePattern {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
-
-    .main-wrapper {
-      position: relative;
-      z-index: 2;
+    .container {
       display: flex;
       flex-direction: column;
       height: 100%;
-      width: 100%;
+      justify-content: space-between;
     }
 
-    /* --- TOP HEADER --- */
     .top-section {
-      height: 60%;
-      background-color: #2a2a2a;
+      height: 55%;
       width: 100%;
-      padding: 30px 40px;
+      background-color: #2a2a2a;
+      padding: 1.5rem;
       display: flex;
       align-items: flex-start;
-      gap: 20px;
     }
 
-    .top-section img.logo {
-      width: 60px;
-      height: 60px;
+    .top-section img {
+      height: 50px;
+      margin-right: 15px;
     }
 
-    .site-title {
-      font-size: 2em;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    /* --- BOTTOM SECTION --- */
-    .bottom-wrapper {
-      flex: 1;
-      padding: 40px;
+    .top-section h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
     }
 
     .bottom-section {
-      height: 100%;
+      height: 45%;
       display: flex;
-      gap: 40px;
+      padding: 0 3rem 2rem;
+      gap: 2rem;
     }
 
-    /* LEFT COLUMN */
     .left-column {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      justify-content: space-between;
     }
 
     .portfolio-box {
-      background-color: #2a2a2a;
       flex: 0 0 60%;
-      padding: 15px;
+      background-color: #1e1e1e;
+      padding: 1rem;
+      border: 4px solid transparent;
+      background-clip: padding-box;
     }
 
-    .social-box-row {
+    .socials-row {
       display: flex;
-      gap: 20px;
-      flex: 0 0 40%;
       justify-content: space-between;
-      align-items: flex-start;
+      flex: 0 0 40%;
+      margin-top: 1rem;
     }
 
     .social-box {
-      background-color: #2a2a2a;
-      flex: 1;
-      aspect-ratio: 1 / 1;
+      background-color: #1e1e1e;
+      flex: 0 0 22%;
+      aspect-ratio: 1;
     }
 
-    /* RIGHT COLUMN */
     .right-column {
       flex: 1;
-      background-color: #2a2a2a;
-      padding: 15px;
-      margin-right: 20px; /* Pull away from right edge */
+      background-color: #1e1e1e;
+      padding: 1rem;
+      border: 4px solid transparent;
+      background-clip: padding-box;
+    }
+
+    .portfolio-box, .social-box, .right-column {
+      border: 4px solid;
+      border-image: linear-gradient(135deg, #00f0ff, #9d00ff) 1;
     }
 
     @media (max-width: 768px) {
-      .top-section {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       .bottom-section {
         flex-direction: column;
+        height: auto;
+        gap: 1.5rem;
       }
 
-      .social-box-row {
-        flex-wrap: wrap;
+      .socials-row {
+        justify-content: space-around;
       }
 
       .social-box {
-        flex: 1 1 45%;
+        flex: 0 0 22%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="pattern-overlay"></div>
-
-  <div class="main-wrapper">
-    <!-- Top Header -->
+  <div class="background"></div>
+  <div class="container">
     <div class="top-section">
-      <img src="/pics/logo.png" alt="Logo" class="logo">
-      <div class="site-title">Ryu's Art Corner</div>
+      <img src="/pics/logo.png" alt="Logo">
+      <h1>Ryu's Art Corner</h1>
     </div>
-
-    <!-- Bottom Section -->
-    <div class="bottom-wrapper">
-      <div class="bottom-section">
-        <!-- Left: Portfolio + Socials -->
-        <div class="left-column">
-          <div class="portfolio-box">PORTFOLIO</div>
-          <div class="social-box-row">
-            <div class="social-box"></div>
-            <div class="social-box"></div>
-            <div class="social-box"></div>
-            <div class="social-box"></div>
-          </div>
+    <div class="bottom-section">
+      <div class="left-column">
+        <div class="portfolio-box">PORTFOLIO</div>
+        <div class="socials-row">
+          <div class="social-box"></div>
+          <div class="social-box"></div>
+          <div class="social-box"></div>
+          <div class="social-box"></div>
         </div>
-
-        <!-- Right: Commissions -->
-        <div class="right-column">COMMISSIONS</div>
+      </div>
+      <div class="right-column">
+        COMMISSIONS
       </div>
     </div>
   </div>
