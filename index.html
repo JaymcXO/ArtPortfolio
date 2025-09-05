@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" href="/pics/logonew.png" type="image/png" />
+  <link rel="icon" href="/pics/logonew.png" type="image/png"/>
 
   <style>
     @font-face {
@@ -84,15 +84,23 @@
       position: relative;
     }
 
+    .logo-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
     .logo {
       width: 80px;
       height: auto;
     }
 
-    .site-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 6px;
+    .logo-text {
+      font-family: 'EngraversGothic', sans-serif;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1.1;
+      margin-top: 4px;
     }
 
     .top-line {
@@ -128,35 +136,31 @@
       object-fit: cover;
     }
 
-    .stars-and-line {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      margin-top: 8px;
-    }
-
     .stars {
-      height: 38px;
-      margin-left: 4px;
-      margin-bottom: 4px;
+      height: 40px;
+      object-fit: contain;
+      margin-bottom: 8px;
     }
 
-    .line-text {
+    .explore-block {
       display: flex;
+      flex-direction: row;
       align-items: flex-start;
+      gap: 16px;
+      margin-top: 0px;
+      max-width: 520px;
     }
 
-    .line {
+    .explore-line {
+      height: 260px;
       width: 2px;
-      height: 300px;
-      background: linear-gradient(180deg, #3b82f6, #9333ea);
-      margin-right: 10px;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      margin-right: 0;
     }
 
-    .description {
-      font-size: 20px;
-      font-weight: bold;
+    .explore-text {
+      font-family: 'EngraversGothic', sans-serif;
+      font-size: 24px;
       line-height: 1.4;
     }
 
@@ -167,7 +171,7 @@
       background: linear-gradient(135deg, #3b82f6, #9333ea);
       top: 126px;
       right: 122px;
-      border-radius: 0;
+      border-radius: 0px;
       z-index: 1;
     }
 
@@ -290,17 +294,19 @@
     <header class="top">
       <!-- LEFT SIDE -->
       <div class="top-left">
-        <img class="logo" src="/pics/logonew.png" alt="Logo">
-        <div class="site-title">Ryu's Art Corner</div>
+        <div class="logo-row">
+          <img class="logo" src="/pics/logonew.png" alt="Logo">
+          <div class="logo-text">Ryu's Art Corner</div>
+        </div>
         <div class="top-line"></div>
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-          <div class="stars-and-line">
+          <div>
             <img class="stars" src="/pics/stars.png" alt="Stars">
-            <div class="line-text">
-              <div class="line"></div>
-              <div class="description">
-                Explore art filled with<br>
+            <div class="explore-block">
+              <div class="explore-line"></div>
+              <div class="explore-text">
+                Explore art filled with<br />
                 emotions and creativity
               </div>
             </div>
