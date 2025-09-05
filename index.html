@@ -7,7 +7,6 @@
 
   <style>
     :root {
-      --outer-gap: 36px;
       --side-pad: 44px;
       --gap: 28px;
       --box: #1f1f1f;
@@ -68,8 +67,8 @@
     }
 
     .bottom {
-      flex: 1 1 auto;
-      padding: var(--outer-gap) var(--side-pad);
+      flex: 1 1 45vh;
+      padding: 0 var(--side-pad); /* no top/bottom padding to allow perfect vertical alignment */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -89,13 +88,20 @@
       gap: var(--gap);
     }
 
+    .right-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
     .box {
       background: var(--box);
     }
 
     .portfolio {
       width: calc((140px * 4) + (var(--gap) * 3));
-      height: 220px;
+      height: 240px;
       padding: 12px;
     }
 
@@ -112,31 +118,28 @@
       flex: 0 0 auto;
     }
 
-    .right-inner {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
     .commissions {
-      height: calc(220px + 140px + var(--gap));
-      width: 300px;
+      height: calc(240px + 140px + var(--gap));
+      width: 320px;
       padding: 12px;
     }
 
     @media (max-width: 920px) {
       :root {
         --side-pad: 28px;
-        --outer-gap: 26px;
         --gap: 18px;
       }
+
       .site-title { font-size: 22px; line-height: 40px; }
       .logo { width: 44px; height: 44px; }
+
       .portfolio {
         width: calc((90px * 4) + (var(--gap) * 3));
         height: 150px;
       }
+
       .social { width: 90px; }
+
       .commissions {
         height: calc(150px + 90px + var(--gap));
         width: 220px;
@@ -148,10 +151,12 @@
         flex-direction: column;
         align-items: center;
       }
+
       .left-inner, .right-inner {
         width: 100%;
         align-items: center;
       }
+
       .commissions { width: auto; }
     }
   </style>
