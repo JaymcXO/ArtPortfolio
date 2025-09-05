@@ -9,7 +9,7 @@
     :root {
       --outer-gap: 36px;
       --side-pad: 44px;
-      --gap: 20px;
+      --gap: 24px;
       --box: #1f1f1f;
     }
 
@@ -93,10 +93,10 @@
       background: var(--box);
     }
 
-    /* Upsized layout */
+    /* Even larger layout */
     .portfolio {
-      width: calc((90px * 4) + (var(--gap) * 3));  /* wider */
-      height: 140px;                                /* taller */
+      width: calc((110px * 4) + (var(--gap) * 3));  /* wider */
+      height: 160px;                                 /* taller */
       padding: 12px;
     }
 
@@ -108,7 +108,7 @@
 
     .social {
       background: var(--box);
-      width: 90px;
+      width: 110px;
       aspect-ratio: 1 / 1;
       flex: 0 0 auto;
     }
@@ -120,8 +120,8 @@
     }
 
     .commissions {
-      height: calc(140px + 90px + var(--gap)); /* match height of portfolio + social row + gap */
-      width: 220px;
+      height: calc(160px + 110px + var(--gap));
+      width: 250px;
       padding: 12px;
     }
 
@@ -134,13 +134,13 @@
       .site-title { font-size: 22px; line-height: 40px; }
       .logo { width: 44px; height: 44px; }
       .portfolio {
-        width: calc((70px * 4) + (var(--gap) * 3));
-        height: 110px;
+        width: calc((80px * 4) + (var(--gap) * 3));
+        height: 120px;
       }
-      .social { width: 70px; }
+      .social { width: 80px; }
       .commissions {
-        height: calc(110px + 70px + var(--gap));
-        width: 180px;
+        height: calc(120px + 80px + var(--gap));
+        width: 200px;
       }
     }
 
