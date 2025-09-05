@@ -4,21 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" href="/pics/logonew.png" type="image/png" />
+  <link rel="icon" type="image/png" href="/pics/logonew.png">
 
   <style>
     @font-face {
-      font-family: 'Engravers Gothic';
+      font-family: 'EngraversGothic';
       src: url('/fonts/EngraversGothicBT-Regular.woff2') format('woff2'),
            url('/fonts/EngraversGothicBT-Regular.woff') format('woff');
       font-weight: normal;
       font-style: normal;
+      font-display: swap;
     }
 
     :root {
       --outer-gap: 36px;
       --side-pad: 44px;
-      --gap: 28px;
+      --gap: 20px;
       --box: #1f1f1f;
       --inner-width: 86%;
     }
@@ -32,7 +33,7 @@
     html, body {
       height: 100%;
       overflow: hidden;
-      font-family: 'Engravers Gothic', Arial, sans-serif;
+      font-family: 'EngraversGothic', Arial, sans-serif;
       color: #fff;
     }
 
@@ -73,7 +74,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      padding: 32px var(--side-pad) 24px var(--side-pad);
+      padding: 24px var(--side-pad);
     }
 
     .top-left {
@@ -83,17 +84,23 @@
       position: relative;
     }
 
+    .logo-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
     .logo {
       width: 80px;
       height: auto;
     }
 
     .logo-text {
-      position: absolute;
-      top: 8px;
-      left: 100px;
+      font-family: 'EngraversGothic', sans-serif;
       font-size: 28px;
-      font-weight: 800;
+      font-weight: normal;
+      line-height: 1.1;
+      margin-top: 4px;
     }
 
     .top-line {
@@ -121,7 +128,6 @@
       align-items: flex-start;
       gap: 16px;
       margin-top: 12px;
-      position: relative;
     }
 
     .barcode {
@@ -131,27 +137,9 @@
     }
 
     .stars {
-      height: 38px;
-      margin-top: 0;
-      margin-left: 8px;
-    }
-
-    .side-line {
-      position: absolute;
-      left: 76px;
-      top: 38px;
-      height: 362px;
-      width: 2px;
-      background: linear-gradient(to bottom, #3b82f6, #9333ea);
-    }
-
-    .block-text {
-      position: absolute;
-      top: 38px;
-      left: 92px;
-      font-size: 22px;
-      line-height: 1.8;
-      max-width: 520px;
+      height: 40px;
+      object-fit: contain;
+      margin-top: 2px;
     }
 
     .cutout {
@@ -206,79 +194,83 @@
 
     .bottom {
       flex: 1 1 auto;
-      padding: 24px var(--side-pad);
+      padding: var(--outer-gap) var(--side-pad);
       display: flex;
       gap: var(--gap);
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
     }
 
     .left, .right {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-    }
-
-    .left-inner {
-      display: flex;
-      flex-direction: column;
       align-items: center;
       gap: var(--gap);
     }
 
-    .right-inner {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
     .box {
       background: var(--box);
+      padding: 12px;
     }
 
     .portfolio {
-      width: calc((140px * 4) + (var(--gap) * 3));
-      height: 240px;
-      padding: 12px;
+      width: 340px;
+      height: 130px;
     }
 
     .socials {
       display: flex;
       gap: var(--gap);
-      justify-content: center;
     }
 
     .social {
       background: var(--box);
-      width: 140px;
+      width: 64px;
       aspect-ratio: 1 / 1;
-      flex: 0 0 auto;
     }
 
     .commissions {
-      height: calc(240px + 140px + var(--gap));
-      width: 320px;
+      background: var(--box);
+      width: 200px;
+      height: 214px;
       padding: 12px;
+    }
+
+    .stars-line-block {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .explore-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .line {
+      width: 2px;
+      height: 240px;
+      background: linear-gradient(to bottom, #3b82f6, #9333ea);
+    }
+
+    .explore-text {
+      font-family: 'EngraversGothic', sans-serif;
+      font-size: 30px;
+      line-height: 1.5;
     }
 
     @media (max-width: 920px) {
       :root {
         --side-pad: 28px;
-        --gap: 18px;
+        --outer-gap: 26px;
+        --gap: 14px;
+        --inner-width: 92%;
       }
-
       .logo { width: 60px; }
-      .logo-text { font-size: 22px; top: 14px; left: 72px; }
-      .portfolio {
-        width: calc((90px * 4) + (var(--gap) * 3));
-        height: 150px;
-      }
-      .social { width: 90px; }
-      .commissions {
-        height: calc(150px + 90px + var(--gap));
-        width: 220px;
-      }
+      .portfolio, .commissions { width: 100%; }
     }
 
     @media (max-width: 680px) {
@@ -302,23 +294,33 @@
   <div class="page">
     <!-- TOP SECTION -->
     <header class="top">
+      <!-- LEFT SIDE -->
       <div class="top-left">
-        <img class="logo" src="/pics/logonew.png" alt="Logo">
-        <div class="logo-text">Ryu's Art Corner</div>
+        <div class="logo-row">
+          <img class="logo" src="/pics/logonew.png" alt="Logo">
+          <div class="logo-text">Ryu's Art Corner</div>
+        </div>
         <div class="top-line"></div>
+
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-          <img class="stars" src="/pics/stars.png" alt="Stars">
-          <div class="side-line"></div>
-          <div class="block-text">Explore art filled with<br>emotions and creativity</div>
+
+          <div class="stars-line-block">
+            <img class="stars" src="/pics/stars.png" alt="Stars" />
+            <div class="explore-row">
+              <div class="line"></div>
+              <div class="explore-text">
+                Explore art filled with<br />
+                emotions and creativity
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Cutout Gradient Behind Chibi -->
       <div class="cutout"></div>
       <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
 
-      <!-- TOP RIGHT NAV -->
       <div class="top-nav-box">
         <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
       </div>
@@ -327,23 +329,19 @@
     <!-- BOTTOM SECTION -->
     <section class="bottom">
       <div class="left">
-        <div class="left-inner">
-          <div class="box portfolio">PORTFOLIO</div>
-          <div class="socials">
-            <div class="social"></div>
-            <div class="social"></div>
-            <div class="social"></div>
-            <div class="social"></div>
-          </div>
+        <div class="box portfolio">PORTFOLIO</div>
+        <div class="socials">
+          <div class="social"></div>
+          <div class="social"></div>
+          <div class="social"></div>
+          <div class="social"></div>
         </div>
       </div>
-
       <div class="right">
-        <div class="right-inner">
-          <div class="box commissions">COMMISSIONS</div>
-        </div>
+        <div class="commissions">COMMISSIONS</div>
       </div>
     </section>
   </div>
 </body>
 </html>
+
