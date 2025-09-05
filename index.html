@@ -72,7 +72,7 @@
       flex: 1 1 auto;
       padding: var(--outer-gap) var(--side-pad);
       display: flex;
-      justify-content: center; /* Center all content horizontally */
+      justify-content: center;
       gap: var(--gap);
       min-height: 0;
     }
@@ -84,10 +84,10 @@
     }
 
     .left-inner {
-      width: var(--inner-width);
       display: flex;
       flex-direction: column;
       gap: var(--gap);
+      align-items: center;
     }
 
     .box {
@@ -95,6 +95,7 @@
     }
 
     .portfolio {
+      width: calc((60px * 4) + (var(--gap) * 3)); /* match width of 4 social squares + 3 gaps */
       height: 110px;
       padding: 12px;
     }
@@ -102,7 +103,7 @@
     .socials {
       display: flex;
       gap: var(--gap);
-      justify-content: space-between;
+      justify-content: center;
     }
 
     .social {
@@ -119,7 +120,8 @@
     }
 
     .commissions {
-      height: calc(110px + 60px + var(--gap)); /* same height as portfolio + squares + gap */
+      height: calc(110px + 60px + var(--gap));
+      width: 180px;
       padding: 12px;
     }
 
@@ -132,11 +134,13 @@
       }
       .site-title { font-size: 22px; line-height: 40px; }
       .logo { width: 44px; height: 44px; }
+      .portfolio { width: calc((60px * 4) + (var(--gap) * 3)); }
     }
 
     @media (max-width: 680px) {
       .bottom { flex-direction: column; align-items: center; }
-      .left-inner, .right-inner { width: 100%; }
+      .left-inner, .right-inner { width: 100%; align-items: center; }
+      .commissions { width: auto; }
     }
   </style>
 </head>
