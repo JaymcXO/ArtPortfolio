@@ -7,30 +7,35 @@
   <style>
     :root {
       --gap: 16px;
-      --pad: 32px;
       --main-bg: #1f1f1f;
       --gradient-bg: linear-gradient(135deg, #3b82f6, #9333ea);
       --overlay-opacity: 0.2;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     html, body {
       height: 100%;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      color: white;
       background: var(--gradient-bg);
+      color: white;
     }
 
-    .pattern-overlay {
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
       background-image: url('/pics/patternFINAL.png');
       background-size: cover;
+      background-repeat: no-repeat;
       opacity: var(--overlay-opacity);
       animation: movePattern 40s linear infinite;
-      z-index: 1;
-      pointer-events: none;
+      z-index: 0;
     }
 
     @keyframes movePattern {
@@ -38,20 +43,20 @@
       100% { background-position: 1000px 1000px; }
     }
 
-    .page {
+    .container {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: var(--gap) var(--pad);
+      padding: var(--gap);
     }
 
+    /* Top header */
     .top {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       flex: 0 0 auto;
     }
 
@@ -65,40 +70,42 @@
       font-weight: bold;
     }
 
+    /* Bottom layout */
     .bottom {
       display: flex;
+      flex: 1 1 auto;
       gap: var(--gap);
-      flex: 0 0 auto;
-      height: 40%; /* Adjusted to allow top and bottom spacing */
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: auto;
     }
 
     .left, .right {
-      height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      height: 65%; /* Total bottom area (not full screen) */
     }
 
     .left {
       flex: 1.2;
-      gap: var(--gap);
+      justify-content: space-between;
     }
 
     .right {
       flex: 1;
+      justify-content: flex-start;
     }
 
     .portfolio {
-      flex: 0 0 55%;
       background: var(--main-bg);
+      flex: 0 0 55%;
       padding: 12px;
     }
 
     .socials {
-      flex: 0 0 45%;
       display: flex;
       justify-content: space-between;
-      align-items: stretch;
+      flex: 0 0 45%;
     }
 
     .social {
@@ -108,31 +115,22 @@
     }
 
     .commissions {
-      height: 100%;
       background: var(--main-bg);
+      height: 100%;
       padding: 12px;
-    }
-
-    @media (max-width: 768px) {
-      .bottom {
-        flex-direction: column;
-        height: auto;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="pattern-overlay"></div>
-  <div class="page">
-    <!-- Top bar -->
+  <div class="container">
+    <!-- ✅ Top block (was missing before) -->
     <div class="top">
       <img class="logo" src="/pics/logo.png" alt="Logo" />
       <div class="title">Ryu's Art Corner</div>
     </div>
 
-    <!-- Bottom section -->
+    <!-- ✅ Bottom area -->
     <div class="bottom">
-      <!-- Left: Portfolio & Socials -->
       <div class="left">
         <div class="portfolio">PORTFOLIO</div>
         <div class="socials">
@@ -143,7 +141,6 @@
         </div>
       </div>
 
-      <!-- Right: Commissions -->
       <div class="right">
         <div class="commissions">COMMISSIONS</div>
       </div>
