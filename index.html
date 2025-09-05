@@ -19,8 +19,9 @@
     :root {
       --outer-gap: 36px;
       --side-pad: 44px;
-      --gap: 28px;
+      --gap: 20px;
       --box: #1f1f1f;
+      --inner-width: 86%;
     }
 
     * {
@@ -96,7 +97,7 @@
 
     .logo-text {
       font-family: 'EngraversGothic', sans-serif;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: normal;
       line-height: 1.1;
       margin-top: 4px;
@@ -163,7 +164,7 @@
       z-index: 2;
     }
 
-    .top-nav-box {
+     .top-nav-box {
       position: absolute;
       right: var(--side-pad);
       top: 0;
@@ -182,18 +183,19 @@
     }
 
     .hamburger {
-      position: absolute;
-      top: 30px;
-      right: 0;
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      filter: brightness(100%);
-    }
+  position: absolute;
+  top: 30px; 
+  right: 0;
+  width: 56px; 
+  height: 56px;
+  object-fit: contain;
+  filter: brightness(100%);
+}
+
 
     .bottom {
       flex: 1 1 auto;
-      padding: 55vh var(--side-pad); /* mirrors top block height for padding */
+      padding: var(--outer-gap) var(--side-pad);
       display: flex;
       gap: var(--gap);
       align-items: flex-end;
@@ -209,14 +211,12 @@
 
     .box {
       background: var(--box);
-      padding: 20px;
-      font-size: 18px;
-      text-align: center;
+      padding: 12px;
     }
 
     .portfolio {
-      width: calc((140px * 4) + (var(--gap) * 3));
-      height: 240px;
+      width: 500px;
+      height: 200px;
     }
 
     .socials {
@@ -226,14 +226,15 @@
 
     .social {
       background: var(--box);
-      width: 140px;
+      width: 128px;
       aspect-ratio: 1 / 1;
     }
 
     .commissions {
       background: var(--box);
-      width: 320px;
-      height: calc(240px + 140px + var(--gap));
+      width: 400px;
+      height: 360px;
+      padding: 12px;
     }
 
     .stars-line-block {
@@ -257,31 +258,20 @@
     }
 
     .explore-text {
-      font-size: 34px;
+      font-family: 'EngraversGothic', sans-serif;
+      font-size: 30px;
       line-height: 1.5;
     }
 
     @media (max-width: 920px) {
       :root {
         --side-pad: 28px;
-        --gap: 18px;
+        --outer-gap: 26px;
+        --gap: 14px;
+        --inner-width: 92%;
       }
-
       .logo { width: 60px; }
-      .logo-text { font-size: 24px; }
-      .hamburger { width: 48px; height: 48px; }
-
-      .portfolio {
-        width: calc((90px * 4) + (var(--gap) * 3));
-        height: 150px;
-      }
-
-      .social { width: 90px; }
-
-      .commissions {
-        height: calc(150px + 90px + var(--gap));
-        width: 220px;
-      }
+      .portfolio, .commissions { width: 100%; }
     }
 
     @media (max-width: 680px) {
@@ -289,12 +279,10 @@
         flex-direction: column;
         align-items: center;
       }
-
       .commissions, .portfolio {
         width: 100%;
         max-width: 400px;
       }
-
       .chibi {
         display: none;
       }
@@ -305,8 +293,9 @@
   <div class="pattern-overlay"></div>
 
   <div class="page">
-
+   
     <header class="top">
+
       <div class="top-left">
         <div class="logo-row">
           <img class="logo" src="/pics/logonew.png" alt="Logo">
@@ -349,9 +338,15 @@
         </div>
       </div>
       <div class="right">
-        <div class="box commissions">COMMISSIONS</div>
+        <div class="commissions">COMMISSIONS</div>
       </div>
     </section>
   </div>
 </body>
 </html>
+
+
+
+
+
+
