@@ -1,176 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ryu's Art Corner</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ryu's Art Corner</title>
 
-<style>
-  :root{
-    --outer-gap: 36px;
-    --side-pad: 44px;
-    --gap: 20px;
-    --box: #1f1f1f;
-    --inner-width: 86%;
-  }
+  <style>
+    :root{
+      --outer-gap: 36px;
+      --side-pad: 44px;
+      --gap: 20px;
+      --box: #1f1f1f;
+      --inner-width: 86%;
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; color: #fff; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; color: #fff; }
 
-  body {
-    background: linear-gradient(135deg,#3b82f6,#9333ea);
-    position: relative;
-  }
-  .pattern-overlay{
-    position: fixed;
-    inset: 0;
-    background-image: url('/pics/patternFINAL.png');
-    background-size: cover;
-    opacity: .2;
-    animation: movePattern 30s linear infinite;
-    z-index: 1;
-    pointer-events: none;
-  }
-  @keyframes movePattern{
-    0% { background-position: 0 0; }
-    100% { background-position: 1000px 1000px; }
-  }
+    body {
+      background: linear-gradient(135deg,#3b82f6,#9333ea);
+      position: relative;
+    }
 
-  .page{
-    position: relative;
-    z-index: 2;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+    .pattern-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: url('/pics/patternFINAL.png');
+      background-size: cover;
+      opacity: .2;
+      animation: movePattern 30s linear infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
 
-  /* TOP BLOCK DESIGN */
-  .top{
-    flex: 0 0 55vh;
-    width: 100vw;
-    background: var(--box);
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 24px var(--side-pad);
-  }
+    @keyframes movePattern {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
 
-  .top-left {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-  }
+    .page {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .logo {
-    width: 80px;
-    height: auto;
-  }
+    /* TOP SECTION */
+    .top {
+      flex: 0 0 55vh;
+      width: 100vw;
+      background: var(--box);
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 24px var(--side-pad);
+    }
 
-  .top-line {
-    width: 100vw;
-    height: 2px;
-    background: #fff;
-    margin-top: 12px;
-    margin-left: calc(var(--side-pad) * -1);
-    margin-right: calc(var(--side-pad) * -1);
-  }
+    .top-left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
 
-  .barcode-block {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin-top: 12px;
-  }
+    .logo {
+      width: 80px;
+      height: auto;
+    }
 
-  .barcode {
-    width: 42px;
-    height: calc(55vh - 110px); /* taller */
-    object-fit: cover;
-  }
+    .top-line {
+      height: 2px;
+      width: 100vw;
+      margin-top: 12px;
+      margin-left: calc(var(--side-pad) * -1);
+      margin-right: calc(var(--side-pad) * -1);
+      background: transparent;
+      position: relative;
+    }
 
-  .stars {
-    height: 20px;
-    object-fit: contain;
-    margin-top: 10px;
-  }
+    .top-line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 2px;
+      width: 100%;
+      background: linear-gradient(135deg,#3b82f6,#9333ea);
+    }
 
-  .chibi {
-    position: absolute;
-    right: 180px;
-    bottom: 0;
-    height: 90%; /* 10% smaller than 100% */
-    object-fit: contain;
-    pointer-events: none;
-  }
+    .barcode-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 12px;
+    }
 
-  /* BOTTOM AREA */
-  .bottom{
-    flex: 1 1 auto;
-    padding: var(--outer-gap) var(--side-pad);
-    display: flex;
-    gap: var(--gap);
-    align-items: flex-end;
-    justify-content: center;
-  }
+    .barcode {
+      width: 52px;
+      height: calc(55vh - 110px);
+      object-fit: cover;
+    }
 
-  .left, .right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--gap);
-  }
+    .stars {
+      height: 28px;
+      object-fit: contain;
+      margin-top: 10px;
+    }
 
-  .box {
-    background: var(--box);
-    padding: 12px;
-  }
+    .chibi {
+      position: absolute;
+      right: 180px;
+      bottom: 10px;
+      height: 90%;
+      transform: translateY(-10px); /* raises slightly */
+      object-fit: contain;
+      pointer-events: none;
+    }
 
-  .portfolio {
-    width: 340px;
-    height: 130px;
-  }
-
-  .socials {
-    display: flex;
-    gap: var(--gap);
-  }
-
-  .social {
-    background: var(--box);
-    width: 64px;
-    aspect-ratio: 1 / 1;
-  }
-
-  .commissions {
-    background: var(--box);
-    width: 200px;
-    height: 214px;
-    padding: 12px;
-  }
-
-  @media (max-width: 920px){
-    :root{ --side-pad: 28px; --outer-gap: 26px; --gap: 14px; --inner-width: 92%; }
-    .logo{ width: 60px; }
-    .portfolio { width: 100%; }
-    .commissions { width: 100%; }
-  }
-
-  @media (max-width: 680px){
+    /* BOTTOM SECTION */
     .bottom {
+      flex: 1 1 auto;
+      padding: var(--outer-gap) var(--side-pad);
+      display: flex;
+      gap: var(--gap);
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .left, .right {
+      display: flex;
       flex-direction: column;
       align-items: center;
+      gap: var(--gap);
     }
-    .commissions, .portfolio {
-      width: 100%;
-      max-width: 400px;
+
+    .box {
+      background: var(--box);
+      padding: 12px;
     }
-    .chibi {
-      display: none;
+
+    .portfolio {
+      width: 340px;
+      height: 130px;
     }
-  }
-</style>
+
+    .socials {
+      display: flex;
+      gap: var(--gap);
+    }
+
+    .social {
+      background: var(--box);
+      width: 64px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .commissions {
+      background: var(--box);
+      width: 200px;
+      height: 214px;
+      padding: 12px;
+    }
+
+    @media (max-width: 920px) {
+      :root{ --side-pad: 28px; --outer-gap: 26px; --gap: 14px; --inner-width: 92%; }
+      .logo { width: 60px; }
+      .portfolio { width: 100%; }
+      .commissions { width: 100%; }
+    }
+
+    @media (max-width: 680px) {
+      .bottom {
+        flex-direction: column;
+        align-items: center;
+      }
+      .commissions, .portfolio {
+        width: 100%;
+        max-width: 400px;
+      }
+      .chibi {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="pattern-overlay"></div>
