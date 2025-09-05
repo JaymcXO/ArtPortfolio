@@ -1,205 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ryu's Art Corner — Wireframe Blocks</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryu's Art Corner</title>
   <style>
     :root{
-      --bg1:#3b82f6; --bg2:#9333ea; /* animated background */
-      --panel:#0b0f14; --white:#fff; --muted:#a9b3be;
-      --gradA:#22d3ee; --gradB:#8b5cf6; /* cyan → violet strip */
+      --bg1:#3b82f6; --bg2:#9333ea;
+      --panel:#0b0f14; --white:#fff;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--white);overflow-x:hidden}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;overflow:hidden;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--white)}
 
-    /* Animated bg (kept from original vibe) */
+
     body::before,body::after{content:"";position:fixed;inset:0;z-index:-2}
     body::before{background:linear-gradient(135deg,var(--bg1),var(--bg2));background-size:200% 200%;animation:grad 18s ease-in-out infinite alternate}
     body::after{z-index:-1;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0 1px,transparent 1px 80px),repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 80px);background-size:160px 160px,160px 160px;animation:grid 60s linear infinite}
     @keyframes grad{to{background-position:100% 100%}}
     @keyframes grid{to{background-position:160px 0,0 160px}}
 
-    /* Page frame */
-    .frame{max-width:1200px;margin:clamp(24px,6vh,48px) auto;padding:clamp(12px,2vw,20px)}
-    .panel{background:rgba(11,15,20,.82);border:1px solid rgba(255,255,255,.14);border-radius:22px;backdrop-filter:blur(6px);box-shadow:0 12px 36px rgba(0,0,0,.35);overflow:hidden}
-
-    /* Top header space — plain black area (no custom art) */
-    .header{padding:28px 32px;background:#0f141a;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
-    .brand{font-size:22px;letter-spacing:.4px}
-
-    /* Main content area with large empty black section like the wireframe */
-    .hero-space{display:grid;grid-template-columns: 1fr 360px;gap:28px;padding:28px}
-    .hero-left, .hero-right{min-height:240px;background:#0f141a;border:1px solid rgba(255,255,255,.10);border-radius:14px}
-
-    /* Bottom gradient strip housing the big blocks */
-    .strip{margin:24px; border-radius:18px; overflow:hidden; background:linear-gradient(135deg,var(--gradA),var(--gradB));}
-    .strip-inner{padding:18px}
-
-    .grid{display:grid;grid-template-columns: 1fr 1fr;gap:18px}
-    .box{background:#0b0f14;border:1px solid rgba(255,255,255,.16);border-radius:12px;min-height:180px;display:flex;align-items:flex-end;padding:18px;text-decoration:none;color:var(--white);box-shadow: inset 0 0 0 1px rgba(255,255,255,.04)}
-    .box h3{margin:0;font-weight:600;letter-spacing:.4px}
-    .box .hint{margin-top:6px;color:var(--muted);font-size:.95rem}
-
-    /* Under-left row: socials placeholders; under-right: commissions label */
-    .lower{display:grid;grid-template-columns: 1fr 1fr;gap:18px;margin-top:18px}
-    .social-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .square{width:56px;height:56px;background:#0b0f14;border:1px solid rgba(255,255,255,.16);border-radius:8px}
-    .cta{display:flex;align-items:center;justify-content:flex-start;padding:14px 16px;background:#0b0f14;border:1px solid rgba(255,255,255,.16);border-radius:10px;min-height:56px;text-decoration:none;color:var(--white)}
-
-    @media (max-width: 960px){
-      .hero-space{grid-template-columns:1fr}
-      .grid,.lower{grid-template-columns:1fr}
-    }
+ 
+    .topbar{width:100%;height:100%;background:#1b1f25;display:flex;align-items:center;padding:0 40px}
+    .brand{display:flex;align-items:center;gap:20px}
+    .brand img{height:64px;width:auto}
+    .brand h1{font-size:1.8rem;font-weight:500;letter-spacing:.5px}
   </style>
 </head>
 <body>
-  <div class="frame">
-    <div class="panel">
-      <!-- Plain header (no logo/art) -->
-      <div class="header">
-        <div class="brand">Ryu's Art Corner</div>
-        <div aria-hidden="true" style="display:grid;gap:6px">
-          <span style="width:28px;height:2px;background:rgba(255,255,255,.7);display:block"></span>
-          <span style="width:28px;height:2px;background:rgba(255,255,255,.7);display:block"></span>
-          <span style="width:28px;height:2px;background:rgba(255,255,255,.7);display:block"></span>
-        </div>
-      </div>
-
-      <!-- Mid black areas from the wireframe (kept empty) -->
-      <section class="hero-space">
-        <div class="hero-left"></div>
-        <div class="hero-right"></div>
-      </section>
-
-      <!-- Bottom gradient band with blocks -->
-      <section class="strip">
-        <div class="strip-inner">
-          <div class="grid">
-            <a class="box" href="#portfolio">
-              <div>
-                <h3>PORTFOLIO</h3>
-                <div class="hint">Opens gallery</div>
-              </div>
-            </a>
-            <a class="box" href="#right-box"></a>
-          </div>
-          <div class="lower">
-            <div class="social-row" aria-label="socials placeholders">
-              <a class="square" href="#tiktok" aria-label="TikTok"></a>
-              <a class="square" href="#twitter" aria-label="Twitter"></a>
-              <a class="square" href="#instagram" aria-label="Instagram"></a>
-              <a class="square" href="#butterfly" aria-label="Extra"></a>
-            </div>
-            <a class="cta" href="#commissions">COMMISSIONS</a>
-          </div>
-        </div>
-      </section>
-
+  <header class="topbar">
+    <div class="brand">
+      <img src="/pics/logo.png" alt="Ryu's Art Corner logo">
+      <h1>Ryu's Art Corner</h1>
     </div>
-  </div>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ryu's Art Corner — Wireframe Blocks</title>
-  <style>
-    :root{
-      --bg1:#3b82f6; --bg2:#9333ea; /* animated background */
-      --panel:#0b0f14; --white:#fff; --muted:#a9b3be;
-      --gradA:#22d3ee; --gradB:#8b5cf6; /* cyan → violet strip */
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--white);overflow-x:hidden}
-
-    /* Animated bg (kept from original vibe) */
-    body::before,body::after{content:"";position:fixed;inset:0;z-index:-2}
-    body::before{background:linear-gradient(135deg,var(--bg1),var(--bg2));background-size:200% 200%;animation:grad 18s ease-in-out infinite alternate}
-    body::after{z-index:-1;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0 1px,transparent 1px 80px),repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 80px);background-size:160px 160px,160px 160px;animation:grid 60s linear infinite}
-    @keyframes grad{to{background-position:100% 100%}}
-    @keyframes grid{to{background-position:160px 0,0 160px}}
-
-    /* Page frame */
-    .frame{max-width:1200px;margin:clamp(24px,6vh,48px) auto;padding:clamp(12px,2vw,20px)}
-    .panel{background:rgba(11,15,20,.82);border:1px solid rgba(255,255,255,.14);border-radius:22px;backdrop-filter:blur(6px);box-shadow:0 12px 36px rgba(0,0,0,.35);overflow:hidden}
-
-    /* Top header space — plain black area (no custom art) */
-    .header{padding:28px 32px;background:#0f141a;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
-    .brand{font-size:22px;letter-spacing:.4px}
-
-    /* Main content area with large empty black section like the wireframe */
-    .hero-space{display:grid;grid-template-columns: 1fr 360px;gap:28px;padding:28px}
-    .hero-left, .hero-right{min-height:240px;background:#0f141a;border:1px solid rgba(255,255,255,.10);border-radius:14px}
-
-    /* Bottom gradient strip housing the big blocks */
-    .strip{margin:24px; border-radius:18px; overflow:hidden; background:linear-gradient(135deg,var(--gradA),var(--gradB));}
-    .strip-inner{padding:18px}
-
-    .grid{display:grid;grid-template-columns: 1fr 1fr;gap:18px}
-    .box{background:#0b0f14;border:1px solid rgba(255,255,255,.16);border-radius:12px;min-height:180px;display:flex;align-items:flex-end;padding:18px;text-decoration:none;color:var(--white);box-shadow: inset 0 0 0 1px rgba(255,255,255,.04)}
-    .box h3{margin:0;font-weight:600;letter-spacing:.4px}
-    .box .hint{margin-top:6px;color:var(--muted);font-size:.95rem}
-
-    /* Under-left row: socials placeholders; under-right: commissions label */
-    .lower{display:grid;grid-template-columns: 1fr 1fr;gap:18px;margin-top:18px}
-    .social-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .square{width:56px;height:56px;background:#0b0f14;border:1px solid rgba(255,255,255,.16);border-radius:8px}
-    .cta{display:flex;align-items:center;justify-content:flex-start;padding:14px 16px;background:#0b0f14;border:1px solid rgba(255,255,255,.16);border-radius:10px;min-height:56px;text-decoration:none;color:var(--white)}
-
-    @media (max-width: 960px){
-      .hero-space{grid-template-columns:1fr}
-      .grid,.lower{grid-template-columns:1fr}
-    }
-  </style>
-</head>
-<body>
-  <div class="frame">
-    <div class="panel">
-      <!-- Plain header (no logo/art) -->
-      <div class="header">
-        <div class="brand">Ryu's Art Corner</div>
-        <div aria-hidden="true" style="display:grid;gap:6px">
-          <span style="width:28px;height:2px;background:rgba(255,255,255,.7);display:block"></span>
-          <span style="width:28px;height:2px;background:rgba(255,255,255,.7);display:block"></span>
-          <span style="width:28px;height:2px;background:rgba(255,255,255,.7);display:block"></span>
-        </div>
-      </div>
-
-      <!-- Mid black areas from the wireframe (kept empty) -->
-      <section class="hero-space">
-        <div class="hero-left"></div>
-        <div class="hero-right"></div>
-      </section>
-
-      <!-- Bottom gradient band with blocks -->
-      <section class="strip">
-        <div class="strip-inner">
-          <div class="grid">
-            <a class="box" href="#portfolio">
-              <div>
-                <h3>PORTFOLIO</h3>
-                <div class="hint">Opens gallery</div>
-              </div>
-            </a>
-            <a class="box" href="#right-box"></a>
-          </div>
-          <div class="lower">
-            <div class="social-row" aria-label="socials placeholders">
-              <a class="square" href="#tiktok" aria-label="TikTok"></a>
-              <a class="square" href="#twitter" aria-label="Twitter"></a>
-              <a class="square" href="#instagram" aria-label="Instagram"></a>
-              <a class="square" href="#butterfly" aria-label="Extra"></a>
-            </div>
-            <a class="cta" href="#commissions">COMMISSIONS</a>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </div>
+  </header>
 </body>
 </html>
