@@ -40,17 +40,17 @@
     .main-wrapper {
       position: relative;
       z-index: 2;
-      height: 100%;
-      width: 100%;
       display: flex;
       flex-direction: column;
+      height: 100%;
+      width: 100%;
     }
 
-    /* --- TOP SECTION --- */
+    /* --- TOP FULL-WIDTH SECTION --- */
     .top-section {
-      height: 55%;
-      width: 100vw; /* Full width */
-      background-color: #1f1f1f;
+      height: 60%;
+      background-color: #2a2a2a;
+      width: 100%;
       padding: 30px 40px;
       display: flex;
       align-items: flex-start;
@@ -68,52 +68,51 @@
       margin-top: 10px;
     }
 
-    /* --- BOTTOM SECTION --- */
+    /* --- BOTTOM GRID --- */
     .bottom-section {
-      height: 45%;
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
+      height: 40%;
       padding: 0 40px 40px 40px;
-      align-items: stretch;
+      display: flex;
+      gap: 30px;
     }
 
-    .left-stack {
+    /* Left Side: Portfolio + Socials */
+    .left-column {
       flex: 3;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 15px;
     }
 
-    .large-horizontal-box {
-      flex: 1;
-      background-color: #1f1f1f;
+    .portfolio-box {
+      background-color: #2a2a2a;
+      height: 55%;
+      padding: 15px;
     }
 
     .social-box-row {
+      height: 45%;
       display: flex;
-      gap: 20px;
-      height: 100%;
-      align-items: flex-end;
+      gap: 15px;
+      justify-content: space-between;
     }
 
     .social-box {
-      background-color: #1f1f1f;
+      background-color: #2a2a2a;
       flex: 1;
       aspect-ratio: 1 / 1;
     }
 
-    .vertical-box {
+    /* Right Side: Commissions */
+    .right-column {
       flex: 1.5;
-      background-color: #1f1f1f;
-      display: flex;
-      flex-direction: column;
+      background-color: #2a2a2a;
+      padding: 15px;
     }
 
     @media (max-width: 768px) {
       .top-section {
         flex-direction: column;
-        align-items: flex-start;
       }
 
       .bottom-section {
@@ -134,20 +133,28 @@
   <div class="pattern-overlay"></div>
 
   <div class="main-wrapper">
-    <!-- Top Gray Box -->
+    <!-- Top Header -->
     <div class="top-section">
       <img src="/pics/logo.png" alt="Logo" class="logo">
       <div class="site-title">Ryu's Art Corner</div>
     </div>
 
-    <!-- Bottom Layout -->
+    <!-- Bottom Boxes -->
     <div class="bottom-section">
-      <!-- Left Section -->
-      <div class="left-stack">
-        <div class="large-horizontal-box"></div>
+      <!-- Left -->
+      <div class="left-column">
+        <div class="portfolio-box">PORTFOLIO</div>
         <div class="social-box-row">
           <div class="social-box"></div>
           <div class="social-box"></div>
           <div class="social-box"></div>
           <div class="social-box"></div>
         </div>
+      </div>
+
+      <!-- Right -->
+      <div class="right-column">COMMISSIONS</div>
+    </div>
+  </div>
+</body>
+</html>
