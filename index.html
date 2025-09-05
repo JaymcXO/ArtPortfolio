@@ -164,7 +164,7 @@
       z-index: 2;
     }
 
-    .top-nav-box {
+     .top-nav-box {
       position: absolute;
       right: var(--side-pad);
       top: 0;
@@ -172,23 +172,25 @@
       height: 100%;
     }
 
-   .top-nav-box {
-  position: absolute;
-  right: var(--side-pad);
-  top: 0;
-  width: 80px;
-  height: 100%;
-  display: flex;
-  align-items: center;  
-  justify-content: center; 
-}
+    .top-nav-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+    }
 
     .hamburger {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  filter: brightness(100%);
-}
+      position: absolute;
+      top: 24px;
+      right: 0;
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: brightness(100%);
+    }
 
     .bottom {
       flex: 1 1 auto;
@@ -341,5 +343,6 @@
   </div>
 </body>
 </html>
+
 
 
