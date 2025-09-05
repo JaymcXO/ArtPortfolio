@@ -46,12 +46,12 @@
       width: 100%;
       display: flex;
       flex-direction: column;
+      padding: 40px; 
+      gap: 30px;
     }
-
-    /* --- TOP SECTION --- */
     .top-section {
       height: 55%;
-      background-color: #1f1f1f; /* grayish black */
+      background-color: #1f1f1f; 
       padding: 30px;
       display: flex;
       align-items: flex-start;
@@ -69,16 +69,13 @@
       margin-top: 10px;
     }
 
-    /* --- BOTTOM SECTION --- */
     .bottom-section {
       height: 45%;
       display: flex;
       flex-direction: row;
-      gap: 20px;
-      padding: 30px;
+      gap: 30px;
     }
 
-    /* Left Area: Big Box + 4 Social Boxes */
     .left-stack {
       flex: 3;
       display: flex;
@@ -92,17 +89,18 @@
     }
 
     .social-box-row {
-      flex: 1;
       display: flex;
       gap: 20px;
+      justify-content: space-between;
     }
 
     .social-box {
-      flex: 1;
       background-color: #1f1f1f;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      flex: 1;
     }
 
-    /* Right Vertical Box */
     .vertical-box {
       flex: 1.5;
       background-color: #1f1f1f;
@@ -118,17 +116,16 @@
         flex-direction: column;
       }
 
-      .left-stack {
-        flex: none;
-      }
-
       .social-box-row {
-        flex-direction: row;
         flex-wrap: wrap;
       }
 
       .social-box {
         flex: 1 1 45%;
+      }
+
+      .site-title {
+        font-size: 1.5em;
       }
     }
   </style>
@@ -137,28 +134,11 @@
   <div class="pattern-overlay"></div>
 
   <div class="main-wrapper">
-    <!-- Top Gray Box with Logo + Title -->
     <div class="top-section">
       <img src="/pics/logo.png" alt="Logo" class="logo">
       <div class="site-title">Ryu's Art Corner</div>
     </div>
 
-    <!-- Bottom Section Layout -->
     <div class="bottom-section">
-      <!-- Left: Horizontal box + 4 socials -->
       <div class="left-stack">
-        <div class="large-horizontal-box"></div>
-        <div class="social-box-row">
-          <div class="social-box"></div>
-          <div class="social-box"></div>
-          <div class="social-box"></div>
-          <div class="social-box"></div>
-        </div>
-      </div>
-
-      <!-- Right: Vertical box -->
-      <div class="vertical-box"></div>
-    </div>
-  </div>
-</body>
-</html>
+        <div class="large-horizontal-box"></d
