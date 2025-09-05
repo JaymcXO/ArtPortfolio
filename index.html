@@ -46,7 +46,6 @@
       flex-direction: column;
     }
 
-    /* TOP header block */
     .top {
       flex: 0 0 55vh;
       width: 100vw;
@@ -69,41 +68,26 @@
       line-height: 56px;
     }
 
-    /* BOTTOM section */
     .bottom {
-      flex: 0 0 40vh;
+      flex: 1 1 auto;
       padding: var(--outer-gap) var(--side-pad);
       display: flex;
+      justify-content: center; /* Center all content horizontally */
       gap: var(--gap);
-      align-items: stretch;
       min-height: 0;
     }
 
     .left, .right {
-      flex: 1 1 0;
-      min-width: 0;
       display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .left-inner {
       width: var(--inner-width);
-      margin-left: 0;
-      margin-right: auto;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       gap: var(--gap);
-      height: 100%;
-    }
-
-    .right-inner {
-      width: var(--inner-width);
-      margin-left: auto;
-      margin-right: 0;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .box {
@@ -111,29 +95,31 @@
     }
 
     .portfolio {
-      flex: 0 0 55%;
+      height: 110px;
       padding: 12px;
     }
 
     .socials {
-      flex: 0 0 40%;
       display: flex;
       gap: var(--gap);
-      align-items: center;
       justify-content: space-between;
-      background: transparent;
     }
 
     .social {
       background: var(--box);
-      width: calc((100% - 3 * var(--gap)) / 4);
+      width: 60px;
       aspect-ratio: 1 / 1;
       flex: 0 0 auto;
     }
 
+    .right-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .commissions {
-      flex: 0 0 auto;
-      height: 90%;
+      height: calc(110px + 60px + var(--gap)); /* same height as portfolio + squares + gap */
       padding: 12px;
     }
 
@@ -149,7 +135,7 @@
     }
 
     @media (max-width: 680px) {
-      .bottom { flex-direction: column; }
+      .bottom { flex-direction: column; align-items: center; }
       .left-inner, .right-inner { width: 100%; }
     }
   </style>
@@ -158,13 +144,13 @@
   <div class="pattern-overlay"></div>
 
   <div class="page">
-    <!-- TOP FULL-WIDTH BLOCK -->
+    <!-- TOP BLOCK -->
     <header class="top">
       <img class="logo" src="/pics/logo.png" alt="Logo">
       <div class="site-title">Ryu's Art Corner</div>
     </header>
 
-    <!-- BOTTOM: LEFT (portfolio + socials) & RIGHT (commissions) -->
+    <!-- BOTTOM -->
     <section class="bottom">
       <div class="left">
         <div class="left-inner">
