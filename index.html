@@ -4,9 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" type="image/png" href="/pics/logonew.png">
+  <link rel="icon" href="/pics/logonew.png" type="image/png" />
 
   <style>
+    @font-face {
+      font-family: 'EngraversGothic';
+      src: url('/fonts/EngraversGothicBT-Regular.woff2') format('woff2'),
+           url('/fonts/EngraversGothicBT-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     :root {
       --outer-gap: 36px;
       --side-pad: 44px;
@@ -24,7 +32,7 @@
     html, body {
       height: 100%;
       overflow: hidden;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'EngraversGothic', Arial, sans-serif;
       color: #fff;
     }
 
@@ -76,20 +84,15 @@
       position: relative;
     }
 
-    .logo-title {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
     .logo {
       width: 80px;
       height: auto;
     }
 
-    .title-text {
-      font-size: 1.3rem;
+    .site-title {
+      font-size: 18px;
       font-weight: bold;
+      margin-top: 6px;
     }
 
     .top-line {
@@ -125,47 +128,46 @@
       object-fit: cover;
     }
 
-    .info-block {
+    .stars-and-line {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: 6px;
-      margin-top: 0;
+      align-items: flex-start;
+      margin-top: 8px;
     }
 
     .stars {
-      height: 42px;
-      object-fit: contain;
-      margin-top: 0;
+      height: 38px;
+      margin-left: 4px;
+      margin-bottom: 4px;
     }
 
-    .vertical-line-text {
+    .line-text {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
     }
 
-    .barcode-line {
+    .line {
       width: 2px;
       height: 300px;
-      background: linear-gradient(to bottom, #3b82f6, #9333ea);
+      background: linear-gradient(180deg, #3b82f6, #9333ea);
+      margin-right: 10px;
     }
 
-    .barcode-text {
-      font-size: 1.6rem;
-      font-weight: 600;
-      line-height: 1.5;
-      max-width: 320px;
+    .description {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.4;
     }
 
     .cutout {
       position: absolute;
-      width: 625px; 
-      height: 400px;    
+      width: 625px;
+      height: 400px;
       background: linear-gradient(135deg, #3b82f6, #9333ea);
       top: 126px;
       right: 122px;
-      border-radius: 0px;
+      border-radius: 0;
       z-index: 1;
     }
 
@@ -180,7 +182,7 @@
       z-index: 2;
     }
 
-    /* === RIGHT NAV BOX === */
+    /* === RIGHT TOP NAV AREA === */
     .top-nav-box {
       position: absolute;
       right: var(--side-pad);
@@ -280,7 +282,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="pattern-overlay"></div>
 
@@ -289,21 +290,17 @@
     <header class="top">
       <!-- LEFT SIDE -->
       <div class="top-left">
-        <div class="logo-title">
-          <img class="logo" src="/pics/logonew.png" alt="Logo">
-          <div class="title-text">Ryu's Art Corner</div>
-        </div>
-
+        <img class="logo" src="/pics/logonew.png" alt="Logo">
+        <div class="site-title">Ryu's Art Corner</div>
         <div class="top-line"></div>
-
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-          <div class="info-block">
+          <div class="stars-and-line">
             <img class="stars" src="/pics/stars.png" alt="Stars">
-            <div class="vertical-line-text">
-              <div class="barcode-line"></div>
-              <div class="barcode-text">
-                Explore art filled with<br />
+            <div class="line-text">
+              <div class="line"></div>
+              <div class="description">
+                Explore art filled with<br>
                 emotions and creativity
               </div>
             </div>
@@ -317,7 +314,7 @@
       <!-- CHIBI -->
       <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
 
-      <!-- RIGHT NAV -->
+      <!-- TOP RIGHT NAV AREA -->
       <div class="top-nav-box">
         <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
       </div>
