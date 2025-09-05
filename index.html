@@ -46,7 +46,7 @@
       width: 100%;
     }
 
-    /* --- TOP FULL-WIDTH SECTION --- */
+    /* --- TOP SECTION --- */
     .top-section {
       height: 60%;
       background-color: #2a2a2a;
@@ -68,15 +68,22 @@
       margin-top: 10px;
     }
 
-    /* --- BOTTOM GRID --- */
-    .bottom-section {
-      height: 40%;
-      padding: 0 40px 40px 40px;
+    /* --- BOTTOM SECTION --- */
+    .bottom-wrapper {
+      flex: 1;
       display: flex;
-      gap: 30px;
+      flex-direction: column;
+      padding: 30px 40px 40px;
+      gap: 20px; /* This adds gap between top and bottom section */
     }
 
-    /* Left Side: Portfolio + Socials */
+    .bottom-section {
+      flex: 1;
+      display: flex;
+      gap: 30px;
+      height: 100%;
+    }
+
     .left-column {
       flex: 3;
       display: flex;
@@ -86,12 +93,11 @@
 
     .portfolio-box {
       background-color: #2a2a2a;
-      height: 55%;
+      flex: 1;
       padding: 15px;
     }
 
     .social-box-row {
-      height: 45%;
       display: flex;
       gap: 15px;
       justify-content: space-between;
@@ -99,11 +105,11 @@
 
     .social-box {
       background-color: #2a2a2a;
-      flex: 1;
+      width: 100%;
       aspect-ratio: 1 / 1;
+      flex: 1;
     }
 
-    /* Right Side: Commissions */
     .right-column {
       flex: 1.5;
       background-color: #2a2a2a;
@@ -113,6 +119,7 @@
     @media (max-width: 768px) {
       .top-section {
         flex-direction: column;
+        align-items: flex-start;
       }
 
       .bottom-section {
@@ -133,27 +140,29 @@
   <div class="pattern-overlay"></div>
 
   <div class="main-wrapper">
-    <!-- Top Header -->
+    <!-- Top Section -->
     <div class="top-section">
       <img src="/pics/logo.png" alt="Logo" class="logo">
       <div class="site-title">Ryu's Art Corner</div>
     </div>
 
-    <!-- Bottom Boxes -->
-    <div class="bottom-section">
-      <!-- Left -->
-      <div class="left-column">
-        <div class="portfolio-box">PORTFOLIO</div>
-        <div class="social-box-row">
-          <div class="social-box"></div>
-          <div class="social-box"></div>
-          <div class="social-box"></div>
-          <div class="social-box"></div>
+    <!-- Bottom Section Wrapper -->
+    <div class="bottom-wrapper">
+      <div class="bottom-section">
+        <!-- Left: Portfolio + Socials -->
+        <div class="left-column">
+          <div class="portfolio-box">PORTFOLIO</div>
+          <div class="social-box-row">
+            <div class="social-box"></div>
+            <div class="social-box"></div>
+            <div class="social-box"></div>
+            <div class="social-box"></div>
+          </div>
         </div>
-      </div>
 
-      <!-- Right -->
-      <div class="right-column">COMMISSIONS</div>
+        <!-- Right: Commissions -->
+        <div class="right-column">COMMISSIONS</div>
+      </div>
     </div>
   </div>
 </body>
