@@ -80,7 +80,7 @@
       gap: 40px;
     }
 
-    /* LEFT SIDE */
+    /* LEFT COLUMN */
     .left-column {
       flex: 1;
       display: flex;
@@ -90,15 +90,16 @@
 
     .portfolio-box {
       background-color: #2a2a2a;
-      flex: 2;
+      flex: 0 0 60%;
       padding: 15px;
     }
 
     .social-box-row {
       display: flex;
       gap: 20px;
+      flex: 0 0 40%;
       justify-content: space-between;
-      flex: 1;
+      align-items: flex-start;
     }
 
     .social-box {
@@ -107,16 +108,18 @@
       aspect-ratio: 1 / 1;
     }
 
-    /* RIGHT SIDE */
+    /* RIGHT COLUMN */
     .right-column {
       flex: 1;
       background-color: #2a2a2a;
       padding: 15px;
+      margin-right: 20px; /* Pull away from right edge */
     }
 
     @media (max-width: 768px) {
       .top-section {
         flex-direction: column;
+        align-items: flex-start;
       }
 
       .bottom-section {
