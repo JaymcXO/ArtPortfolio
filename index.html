@@ -105,6 +105,7 @@
       align-items: flex-start;
       gap: 16px;
       margin-top: 12px;
+      position: relative;
     }
 
     .barcode {
@@ -113,23 +114,30 @@
       object-fit: cover;
     }
 
+    .barcode-line {
+      width: 2px;
+      height: 200px;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      opacity: 1;
+      margin-top: calc((55vh - 110px) / 2 - 100px); /* Center vertically relative to barcode */
+    }
+
     .stars {
       height: 28px;
       object-fit: contain;
       margin-top: 10px;
     }
 
- .cutout {
-  position: absolute;
-  width: 625px; 
-  height: 400px;    
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
-  top: 126px;       
-  right: 122px;        
-  border-radius: 0px;
-  z-index: 1;
-}
-
+    .cutout {
+      position: absolute;
+      width: 625px;
+      height: 400px;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      top: 126px;
+      right: 122px;
+      border-radius: 0px;
+      z-index: 1;
+    }
 
     .chibi {
       position: absolute;
@@ -254,6 +262,7 @@
         <div class="top-line"></div>
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
+          <div class="barcode-line"></div>
           <img class="stars" src="/pics/stars.png" alt="Stars">
         </div>
       </div>
@@ -288,15 +297,3 @@
   </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
