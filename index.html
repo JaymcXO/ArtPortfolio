@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" href="/pics/logonew.png" type="image/png" />
+  <link rel="icon" type="image/png" href="/pics/logonew.png">
 
   <style>
     :root {
@@ -76,10 +76,10 @@
       position: relative;
     }
 
-    .logo-text-container {
+    .logo-title {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
     }
 
     .logo {
@@ -87,8 +87,8 @@
       height: auto;
     }
 
-    .site-title {
-      font-size: 1.4rem;
+    .title-text {
+      font-size: 1.3rem;
       font-weight: bold;
     }
 
@@ -117,7 +117,6 @@
       align-items: flex-start;
       gap: 16px;
       margin-top: 12px;
-      position: relative;
     }
 
     .barcode {
@@ -129,39 +128,40 @@
     .info-block {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      margin-top: 40px;
+      justify-content: flex-start;
+      gap: 6px;
+      margin-top: 0;
     }
 
     .stars {
       height: 42px;
       object-fit: contain;
-      margin-bottom: 8px;
+      margin-top: 0;
     }
 
     .vertical-line-text {
       display: flex;
       align-items: flex-start;
+      gap: 12px;
     }
 
     .barcode-line {
       width: 2px;
-      height: 140px;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-      opacity: 1;
+      height: 300px;
+      background: linear-gradient(to bottom, #3b82f6, #9333ea);
     }
 
     .barcode-text {
-      margin-left: 8px;
-      font-size: 1.1rem;
-      line-height: 1.4;
-      max-width: 220px;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.5;
+      max-width: 320px;
     }
 
     .cutout {
       position: absolute;
-      width: 625px;
-      height: 400px;
+      width: 625px; 
+      height: 400px;    
       background: linear-gradient(135deg, #3b82f6, #9333ea);
       top: 126px;
       right: 122px;
@@ -180,7 +180,7 @@
       z-index: 2;
     }
 
-    /* === RIGHT TOP NAV AREA === */
+    /* === RIGHT NAV BOX === */
     .top-nav-box {
       position: absolute;
       right: var(--side-pad);
@@ -280,6 +280,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="pattern-overlay"></div>
 
@@ -288,16 +289,15 @@
     <header class="top">
       <!-- LEFT SIDE -->
       <div class="top-left">
-        <div class="logo-text-container">
+        <div class="logo-title">
           <img class="logo" src="/pics/logonew.png" alt="Logo">
-          <div class="site-title">Ryu's Art Corner</div>
+          <div class="title-text">Ryu's Art Corner</div>
         </div>
 
         <div class="top-line"></div>
 
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-
           <div class="info-block">
             <img class="stars" src="/pics/stars.png" alt="Stars">
             <div class="vertical-line-text">
@@ -317,7 +317,7 @@
       <!-- CHIBI -->
       <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
 
-      <!-- TOP RIGHT NAV AREA -->
+      <!-- RIGHT NAV -->
       <div class="top-nav-box">
         <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
       </div>
