@@ -1,169 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-
   <style>
-    :root{
-      --pad: 40px;          /* outer page padding for bottom section */
-      --gap: 20px;          /* gaps between boxes */
-      --box: #1f1f1f;       /* grayish-black box fill */
-      --border-w: 2px;      /* box border width */
+    :root {
+      --gap: 20px;
+      --pad: 32px;
+      --main-bg: #1f1f1f;
+      --gradient-bg: linear-gradient(135deg, #3b82f6, #9333ea);
+      --overlay-opacity: 0.2;
     }
 
-    /* Reset / base */
-    *{ box-sizing:border-box; margin:0; padding:0; }
-    html, body{ height:100%; overflow:hidden; font-family: Arial, Helvetica, sans-serif; color:#fff; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; font-family: Arial, sans-serif; color: white; }
 
-    /* Animated gradient background + subtle pattern */
-    body{
-      background: linear-gradient(135deg,#3b82f6,#9333ea);
+    body {
+      background: var(--gradient-bg);
       position: relative;
     }
-    .pattern-overlay{
+
+    .pattern-overlay {
       position: fixed;
       inset: 0;
       background-image: url('/pics/patternFINAL.png');
       background-size: cover;
-      opacity: .2;
-      animation: movePattern 30s linear infinite;
+      opacity: var(--overlay-opacity);
+      animation: movePattern 40s linear infinite;
       z-index: 1;
       pointer-events: none;
     }
-    @keyframes movePattern{
-      0%{ background-position: 0 0; }
-      100%{ background-position: 1000px 1000px; }
+
+    @keyframes movePattern {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
     }
 
-    /* Page layout */
-    .page{
+    .page {
       position: relative;
-      z-index: 2;          /* above pattern */
-      height: 100vh;       /* lock to viewport; no scrolling */
+      z-index: 2;
       display: flex;
       flex-direction: column;
+      height: 100vh;
+      padding: 0 var(--pad);
     }
 
-    /* TOP: full-width header block */
-    .top{
-      flex: 0 0 55vh;              /* ~55% of screen height */
-      width: 100vw;                /* edge-to-edge */
-      background: var(--box);
+    .top {
+      flex: 0 0 55%;
       display: flex;
       align-items: flex-start;
       gap: 16px;
+      background: var(--main-bg);
       padding: 24px var(--pad);
-    }
-    .logo{
-      width: 56px; height: 56px; object-fit: contain;
-    }
-    .site-title{
-      font-size: 28px; font-weight: 800; line-height: 56px;
+      margin: 0 calc(-1 * var(--pad)); /* full bleed */
     }
 
-    /* BOTTOM: two columns */
-    .bottom{
-      flex: 1 1 auto;              /* remainder of viewport */
+    .logo {
+      width: 48px;
+      height: 48px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 48px;
+    }
+
+    .bottom {
+      flex: 1;
       display: flex;
       gap: var(--gap);
-      padding: 0 var(--pad) var(--pad);
-      align-items: stretch;
+      padding-top: var(--gap);
     }
 
-    .left, .right{
-      flex: 1 1 0;
-      min-width: 0; /* keep from overflowing in tight viewports */
+    .left, .right {
+      flex: 1;
       display: flex;
       flex-direction: column;
-    }
-
-    /* LEFT COLUMN: portfolio (top) + socials (bottom) */
-    .left{
       gap: var(--gap);
     }
 
-    /* gradient-bordered solid boxes */
-    .box{
-      background: var(--box);
-      border: var(--border-w) solid;
-      border-image: linear-gradient(135deg,#00e6ff,#8a2be2) 1;
+    .portfolio {
+      flex: 0 0 58%;
+      background: var(--main-bg);
       padding: 12px;
     }
 
-    /* portfolio height = 60% of left column (minus gap), socials row = 40% */
-    .portfolio{
-      flex: 0 0 calc((100% - var(--gap)) * 0.60);
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .socials{
-      flex: 0 0 calc((100% - var(--gap)) * 0.40);
-      /* IMPORTANT: transparent so the animated background shows between squares */
-      background: transparent;
-      border: none;
-      padding: 0;
-
-      /* Lay out 4 perfect squares that NEVER spill off the screen.
-         They align with the bottom of the right column by sharing the same parent height. */
+    .socials {
+      flex: 1;
       display: flex;
       gap: var(--gap);
       align-items: flex-end;
-      justify-content: flex-start;
     }
 
-    /* Each square’s HEIGHT is the controlling dimension:
-       = min( social-row height, width-based size that fits 4 squares + gaps )
-       This guarantees no overflow and perfect alignment with the right box’s bottom. */
-    .social{
-      background: var(--box);
-      border: var(--border-w) solid;
-      border-image: linear-gradient(135deg,#00e6ff,#8a2be2) 1;
-      /* width is derived from height via aspect-ratio so they remain squares */
-      height: min(100%, calc((100% - 3*var(--gap)) / 4));
+    .social {
+      background: var(--main-bg);
+      flex: 1;
       aspect-ratio: 1 / 1;
-      flex: 0 0 auto; /* don’t stretch */
+      max-width: 90px;
     }
 
-    /* RIGHT COLUMN: commissions fills full column height */
-    .right .commissions{
-      flex: 1 1 auto;
+    .commissions {
+      flex: 1;
+      background: var(--main-bg);
+      padding: 12px;
     }
 
-    /* Responsive tightening (keeps proportions, just reduces padding/gaps) */
-    @media (max-width: 900px){
-      :root{ --pad: 20px; --gap: 14px; }
-      .site-title{ font-size: 22px; line-height: 40px; }
-      .logo{ width: 44px; height: 44px; }
-    }
-
-    @media (max-width: 640px){
-      /* Stack columns if it gets too narrow */
-      .bottom{ flex-direction: column; }
-      /* keep squares visible and neat */
-      .social{ height: min(100%, calc((100% - 3*var(--gap)) / 4)); }
+    @media (max-width: 800px) {
+      .bottom {
+        flex-direction: column;
+      }
+      .left, .right {
+        width: 100%;
+      }
+      .social {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="pattern-overlay"></div>
-
   <div class="page">
-    <!-- TOP BLOCK -->
-    <header class="top">
-      <img class="logo" src="/pics/logo.png" alt="Logo">
-      <div class="site-title">Ryu's Art Corner</div>
-    </header>
+    <!-- Top full-width bar -->
+    <div class="top">
+      <img class="logo" src="/pics/logo.png" alt="Logo" />
+      <div class="title">Ryu's Art Corner</div>
+    </div>
 
-    <!-- BOTTOM LAYOUT -->
-    <section class="bottom">
-      <!-- LEFT HALF -->
+    <!-- Bottom section -->
+    <div class="bottom">
+      <!-- Left side: Portfolio + Socials -->
       <div class="left">
-        <div class="box portfolio">PORTFOLIO</div>
-
-        <!-- Social squares row (background shows around/behind them) -->
+        <div class="portfolio">PORTFOLIO</div>
         <div class="socials">
           <div class="social"></div>
           <div class="social"></div>
@@ -172,11 +142,11 @@
         </div>
       </div>
 
-      <!-- RIGHT HALF -->
+      <!-- Right side: Commissions -->
       <div class="right">
-        <div class="box commissions">COMMISSIONS</div>
+        <div class="commissions">COMMISSIONS</div>
       </div>
-    </section>
+    </div>
   </div>
 </body>
 </html>
