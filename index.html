@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" href="/pics/logonew.png" type="image/png"/>
+  <link rel="icon" type="image/png" href="/pics/logonew.png">
 
   <style>
     @font-face {
@@ -13,6 +13,7 @@
            url('/fonts/EngraversGothicBT-Regular.woff') format('woff');
       font-weight: normal;
       font-style: normal;
+      font-display: swap;
     }
 
     :root {
@@ -65,7 +66,6 @@
       flex-direction: column;
     }
 
-    /* === TOP BLOCK === */
     .top {
       flex: 0 0 55vh;
       width: 100vw;
@@ -97,7 +97,7 @@
 
     .logo-text {
       font-family: 'EngraversGothic', sans-serif;
-      font-size: 20px;
+      font-size: 28px;
       font-weight: normal;
       line-height: 1.1;
       margin-top: 4px;
@@ -139,29 +139,7 @@
     .stars {
       height: 40px;
       object-fit: contain;
-      margin-bottom: 8px;
-    }
-
-    .explore-block {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 16px;
-      margin-top: 0px;
-      max-width: 520px;
-    }
-
-    .explore-line {
-      height: 260px;
-      width: 2px;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-      margin-right: 0;
-    }
-
-    .explore-text {
-      font-family: 'EngraversGothic', sans-serif;
-      font-size: 24px;
-      line-height: 1.4;
+      margin-top: 2px;
     }
 
     .cutout {
@@ -171,7 +149,7 @@
       background: linear-gradient(135deg, #3b82f6, #9333ea);
       top: 126px;
       right: 122px;
-      border-radius: 0px;
+      border-radius: 0;
       z-index: 1;
     }
 
@@ -186,7 +164,6 @@
       z-index: 2;
     }
 
-    /* === RIGHT TOP NAV AREA === */
     .top-nav-box {
       position: absolute;
       right: var(--side-pad);
@@ -215,7 +192,6 @@
       filter: brightness(100%);
     }
 
-    /* === BOTTOM SECTION === */
     .bottom {
       flex: 1 1 auto;
       padding: var(--outer-gap) var(--side-pad);
@@ -260,6 +236,32 @@
       padding: 12px;
     }
 
+    .stars-line-block {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .explore-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .line {
+      width: 2px;
+      height: 240px;
+      background: linear-gradient(to bottom, #3b82f6, #9333ea);
+    }
+
+    .explore-text {
+      font-family: 'EngraversGothic', sans-serif;
+      font-size: 30px;
+      line-height: 1.5;
+    }
+
     @media (max-width: 920px) {
       :root {
         --side-pad: 28px;
@@ -299,12 +301,14 @@
           <div class="logo-text">Ryu's Art Corner</div>
         </div>
         <div class="top-line"></div>
+
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-          <div>
-            <img class="stars" src="/pics/stars.png" alt="Stars">
-            <div class="explore-block">
-              <div class="explore-line"></div>
+
+          <div class="stars-line-block">
+            <img class="stars" src="/pics/stars.png" alt="Stars" />
+            <div class="explore-row">
+              <div class="line"></div>
               <div class="explore-text">
                 Explore art filled with<br />
                 emotions and creativity
@@ -314,13 +318,9 @@
         </div>
       </div>
 
-      <!-- Cutout Gradient Behind Chibi -->
       <div class="cutout"></div>
-
-      <!-- CHIBI -->
       <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
 
-      <!-- TOP RIGHT NAV AREA -->
       <div class="top-nav-box">
         <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
       </div>
