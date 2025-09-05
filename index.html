@@ -126,26 +126,36 @@
       object-fit: cover;
     }
 
-    .barcode-line {
-      width: 2px;
-      height: 200px;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-      opacity: 1;
-      margin-top: calc((55vh - 110px) / 2 - 100px); /* Center vertically relative to barcode */
+    .info-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 40px;
     }
 
     .stars {
-      height: 42px; /* Made bigger */
+      height: 42px;
       object-fit: contain;
-      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .vertical-line-text {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .barcode-line {
+      width: 2px;
+      height: 140px;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      opacity: 1;
     }
 
     .barcode-text {
-      margin-left: 16px;
-      margin-top: calc((55vh - 110px) / 2 - 6px);
+      margin-left: 8px;
       font-size: 1.1rem;
       line-height: 1.4;
-      max-width: 200px;
+      max-width: 220px;
     }
 
     .cutout {
@@ -287,9 +297,17 @@
 
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-          <div class="barcode-line"></div>
-          <img class="stars" src="/pics/stars.png" alt="Stars">
-          <div class="barcode-text">Explore art filled with emotions and creativity</div>
+
+          <div class="info-block">
+            <img class="stars" src="/pics/stars.png" alt="Stars">
+            <div class="vertical-line-text">
+              <div class="barcode-line"></div>
+              <div class="barcode-text">
+                Explore art filled with<br />
+                emotions and creativity
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
