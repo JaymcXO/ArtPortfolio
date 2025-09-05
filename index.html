@@ -69,24 +69,26 @@
 
   .barcode-block {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 16px;
     margin-top: 8px;
   }
 
   .barcode {
-    height: 100px;
+    width: 36px; /* wider */
+    height: calc(55vh - 100px); /* stretch to near-bottom of top block */
     object-fit: contain;
   }
 
   .stars {
     height: 20px;
     object-fit: contain;
+    margin-top: 12px;
   }
 
   .chibi {
     position: absolute;
-    right: 40px;
+    right: 180px; /* shift closer to center */
     bottom: 0;
     height: 100%;
     object-fit: contain;
@@ -134,7 +136,7 @@
   .commissions {
     background: var(--box);
     width: 200px;
-    height: 214px; /* Matches top of portfolio to bottom of social */
+    height: 214px;
     padding: 12px;
   }
 
@@ -155,7 +157,7 @@
       max-width: 400px;
     }
     .chibi {
-      display: none; /* hide chibi on small screens */
+      display: none;
     }
   }
 </style>
