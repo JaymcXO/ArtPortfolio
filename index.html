@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
+  <link rel="icon" href="/pics/logonew.png" type="image/png" />
 
   <style>
     :root {
@@ -75,9 +76,20 @@
       position: relative;
     }
 
+    .logo-text-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .logo {
       width: 80px;
       height: auto;
+    }
+
+    .site-title {
+      font-size: 1.4rem;
+      font-weight: bold;
     }
 
     .top-line {
@@ -123,9 +135,17 @@
     }
 
     .stars {
-      height: 28px;
+      height: 42px; /* Made bigger */
       object-fit: contain;
-      margin-top: 10px;
+      margin-top: 8px;
+    }
+
+    .barcode-text {
+      margin-left: 16px;
+      margin-top: calc((55vh - 110px) / 2 - 6px);
+      font-size: 1.1rem;
+      line-height: 1.4;
+      max-width: 200px;
     }
 
     .cutout {
@@ -258,12 +278,18 @@
     <header class="top">
       <!-- LEFT SIDE -->
       <div class="top-left">
-        <img class="logo" src="/pics/logonew.png" alt="Logo">
+        <div class="logo-text-container">
+          <img class="logo" src="/pics/logonew.png" alt="Logo">
+          <div class="site-title">Ryu's Art Corner</div>
+        </div>
+
         <div class="top-line"></div>
+
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
           <div class="barcode-line"></div>
           <img class="stars" src="/pics/stars.png" alt="Stars">
+          <div class="barcode-text">Explore art filled with emotions and creativity</div>
         </div>
       </div>
 
