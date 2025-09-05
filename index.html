@@ -68,7 +68,7 @@
     }
 
     .bottom {
-      flex: 1;
+      flex: 0 0 45%;
       display: flex;
       gap: var(--gap);
       padding-top: var(--gap);
@@ -82,23 +82,21 @@
     }
 
     .portfolio {
-      flex: 0 0 58%;
+      flex: 0 0 60%;
       background: var(--main-bg);
       padding: 12px;
     }
 
     .socials {
-      flex: 1;
+      flex: 0 0 40%;
       display: flex;
-      gap: var(--gap);
-      align-items: flex-end;
+      justify-content: space-between;
     }
 
     .social {
       background: var(--main-bg);
-      flex: 1;
       aspect-ratio: 1 / 1;
-      max-width: 90px;
+      flex: 0 0 calc((100% - 3 * var(--gap)) / 4); /* Even spacing for 4 items */
     }
 
     .commissions {
