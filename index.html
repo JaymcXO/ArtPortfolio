@@ -4,24 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" type="image/png" href="/pics/logonew.png">
 
   <style>
     @font-face {
-      font-family: 'EngraversGothic';
+      font-family: 'Engravers Gothic';
       src: url('/fonts/EngraversGothicBT-Regular.woff2') format('woff2'),
            url('/fonts/EngraversGothicBT-Regular.woff') format('woff');
       font-weight: normal;
       font-style: normal;
-      font-display: swap;
     }
 
     :root {
-      --outer-gap: 36px;
       --side-pad: 44px;
       --gap: 28px;
       --box: #1f1f1f;
-      --inner-width: 86%;
     }
 
     * {
@@ -33,7 +29,7 @@
     html, body {
       height: 100%;
       overflow: hidden;
-      font-family: 'EngraversGothic', Arial, Helvetica, sans-serif;
+      font-family: 'Engravers Gothic', Arial, sans-serif;
       color: #fff;
     }
 
@@ -70,157 +66,28 @@
       flex: 0 0 55vh;
       width: 100vw;
       background: var(--box);
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding: 24px var(--side-pad);
-    }
-
-    .top-left {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      position: relative;
-    }
-
-    .logo-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .logo {
-      width: 80px;
-      height: auto;
-    }
-
-    .logo-text {
-      font-family: 'EngraversGothic', sans-serif;
-      font-size: 34px;
-      font-weight: normal;
-      line-height: 1.1;
-      margin-top: 4px;
-    }
-
-    .top-line {
-      height: 2px;
-      width: 100vw;
-      margin-top: 12px;
-      margin-left: calc(var(--side-pad) * -1);
-      margin-right: calc(var(--side-pad) * -1);
-      background: transparent;
-      position: relative;
-    }
-
-    .top-line::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 2px;
-      width: 100%;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-    }
-
-    .barcode-block {
       display: flex;
       align-items: flex-start;
       gap: 16px;
-      margin-top: 12px;
+      padding: 24px var(--side-pad);
+      padding-top: 32px; /* added spacing at the top */
     }
 
-    .barcode {
-      width: 52px;
-      height: calc(55vh - 110px);
-      object-fit: cover;
-    }
-
-    .stars {
-      height: 40px;
+    .logo {
+      width: 56px;
+      height: 56px;
       object-fit: contain;
-      margin-top: 2px;
     }
 
-    .cutout {
-      position: absolute;
-      width: 625px;
-      height: 400px;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-      top: 126px;
-      right: 122px;
-      border-radius: 0;
-      z-index: 1;
-    }
-
-    .chibi {
-      position: absolute;
-      right: 160px;
-      bottom: 10px;
-      height: 90%;
-      transform: translateY(-10px);
-      object-fit: contain;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .top-nav-box {
-      position: absolute;
-      right: var(--side-pad);
-      top: 0;
-      width: 80px;
-      height: 100%;
-    }
-
-    .top-nav-box::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-    }
-
-    .hamburger {
-      position: absolute;
-      top: 24px;
-      right: 0;
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      filter: brightness(100%);
-    }
-
-    .stars-line-block {
-      display: flex;
-      flex-direction: column;
-      margin-top: 10px;
-      align-items: flex-start;
-      gap: 6px;
-    }
-
-    .explore-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .line {
-      width: 2px;
-      height: 240px;
-      background: linear-gradient(to bottom, #3b82f6, #9333ea);
-    }
-
-    .explore-text {
-      font-family: 'EngraversGothic', sans-serif;
-      font-size: 32px;
-      line-height: 1.5;
+    .site-title {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 56px;
     }
 
     .bottom {
       flex: 1 1 45vh;
-      padding: 0 var(--side-pad);
+      padding: 24px var(--side-pad); /* added top and bottom padding */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -279,18 +146,19 @@
     @media (max-width: 920px) {
       :root {
         --side-pad: 28px;
-        --outer-gap: 26px;
         --gap: 18px;
-        --inner-width: 92%;
       }
 
-      .logo-text { font-size: 24px; }
-      .logo { width: 60px; }
+      .site-title { font-size: 22px; line-height: 40px; }
+      .logo { width: 44px; height: 44px; }
+
       .portfolio {
         width: calc((90px * 4) + (var(--gap) * 3));
         height: 150px;
       }
+
       .social { width: 90px; }
+
       .commissions {
         height: calc(150px + 90px + var(--gap));
         width: 220px;
@@ -309,44 +177,20 @@
       }
 
       .commissions { width: auto; }
-      .chibi { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="pattern-overlay"></div>
+
   <div class="page">
-    <!-- TOP SECTION -->
+    <!-- TOP -->
     <header class="top">
-      <!-- LEFT SIDE -->
-      <div class="top-left">
-        <div class="logo-row">
-          <img class="logo" src="/pics/logonew.png" alt="Logo">
-          <div class="logo-text">Ryu's Art Corner</div>
-        </div>
-        <div class="top-line"></div>
-        <div class="barcode-block">
-          <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-          <div class="stars-line-block">
-            <img class="stars" src="/pics/stars.png" alt="Stars" />
-            <div class="explore-row">
-              <div class="line"></div>
-              <div class="explore-text">
-                Explore art filled with<br />
-                emotions and creativity
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cutout"></div>
-      <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
-      <div class="top-nav-box">
-        <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
-      </div>
+      <img class="logo" src="/pics/logo.png" alt="Logo">
+      <div class="site-title">Ryu's Art Corner</div>
     </header>
 
-    <!-- BOTTOM SECTION -->
+    <!-- BOTTOM -->
     <section class="bottom">
       <div class="left">
         <div class="left-inner">
@@ -359,6 +203,7 @@
           </div>
         </div>
       </div>
+
       <div class="right">
         <div class="right-inner">
           <div class="box commissions">COMMISSIONS</div>
