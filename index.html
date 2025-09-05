@@ -46,7 +46,7 @@
       width: 100%;
     }
 
-    /* --- TOP SECTION --- */
+    /* --- TOP HEADER --- */
     .top-section {
       height: 60%;
       background-color: #2a2a2a;
@@ -71,47 +71,45 @@
     /* --- BOTTOM SECTION --- */
     .bottom-wrapper {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 30px 40px 40px;
-      gap: 20px; /* This adds gap between top and bottom section */
+      padding: 40px;
     }
 
     .bottom-section {
-      flex: 1;
-      display: flex;
-      gap: 30px;
       height: 100%;
+      display: flex;
+      gap: 40px;
     }
 
+    /* LEFT SIDE */
     .left-column {
-      flex: 3;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
     .portfolio-box {
       background-color: #2a2a2a;
-      flex: 1;
+      flex: 2;
       padding: 15px;
     }
 
     .social-box-row {
       display: flex;
-      gap: 15px;
+      gap: 20px;
       justify-content: space-between;
+      flex: 1;
     }
 
     .social-box {
       background-color: #2a2a2a;
-      width: 100%;
-      aspect-ratio: 1 / 1;
       flex: 1;
+      aspect-ratio: 1 / 1;
     }
 
+    /* RIGHT SIDE */
     .right-column {
-      flex: 1.5;
+      flex: 1;
       background-color: #2a2a2a;
       padding: 15px;
     }
@@ -119,7 +117,6 @@
     @media (max-width: 768px) {
       .top-section {
         flex-direction: column;
-        align-items: flex-start;
       }
 
       .bottom-section {
@@ -140,13 +137,13 @@
   <div class="pattern-overlay"></div>
 
   <div class="main-wrapper">
-    <!-- Top Section -->
+    <!-- Top Header -->
     <div class="top-section">
       <img src="/pics/logo.png" alt="Logo" class="logo">
       <div class="site-title">Ryu's Art Corner</div>
     </div>
 
-    <!-- Bottom Section Wrapper -->
+    <!-- Bottom Section -->
     <div class="bottom-wrapper">
       <div class="bottom-section">
         <!-- Left: Portfolio + Socials -->
