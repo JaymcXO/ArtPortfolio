@@ -1,365 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gallery - Ryunekoru Artist Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryu's Art Corner — Ryunekoru</title>
+  <link rel="icon" href="/pics/favicon.png" type="image/png" />
+  <style>
+    :root{
+      --bg1:#3b82f6;/* blue */
+      --bg2:#9333ea;/* purple */
+      --panel:#0b0f14;/* deep slate */
+      --muted:#9aa4af;
+      --white:#ffffff;
+      --accent1:#22d3ee;/* cyan */
+      --accent2:#8b5cf6;/* violet */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--white);
+      overflow-x:hidden;
+    }
 
-    <link rel="icon" href="/pics/favicon.png" type="image/png">
+    /* === Animated background: shifting gradient + drifting grid === */
+    body::before,body::after{
+      content:"";
+      position:fixed;inset:0;z-index:-2;
+    }
+    /* gradient layer */
+    body::before{
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      background-size:200% 200%;
+      animation: gradientShift 20s ease-in-out infinite alternate;
+    }
+    /* subtle grid overlay */
+    body::after{
+      z-index:-1;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(255,255,255,.08) 0 1px, transparent 1px 80px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 80px);
+      background-size:160px 160px,160px 160px;
+      background-position:0 0,0 0;
+      mix-blend-mode: overlay;
+      animation: gridDrift 60s linear infinite;
+    }
+    @keyframes gradientShift{to{background-position:100% 100%}}
+    @keyframes gridDrift{to{background-position:160px 0,0 160px}}
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #3b82f6, #9333ea);
-            background-size: cover;
-            color: white;
-        }
+    /* === Frame / panel === */
+    .frame{
+      max-width:1200px;
+      margin: clamp(24px, 6vh, 48px) auto;
+      padding: clamp(16px,2vw,24px);
+    }
+    .panel{
+      background: rgba(11,15,20,.78);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
+      padding: clamp(20px,4vw,36px);
+    }
 
-        .navbar {
-            width: 100%;
-            height: 70px;
-            background-color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 0 20px;
-        }
+    /* Top bar */
+    .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)}
+    .brand h1{margin:0;font-size:clamp(20px,2.2vw,28px);letter-spacing:.5px}
 
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-        }
+    .menu{display:grid;gap:6px}
+    .menu span{width:28px;height:2px;background:rgba(255,255,255,.7);display:block}
 
-        .navbar .logo img {
-            height: 50px;
-            width: auto;
-        }
+    /* Main zone: left copy + hero art */
+    .main{
+      display:grid;grid-template-columns: 320px 1fr;gap:28px;align-items:stretch;
+    }
+    .left{
+      display:grid;grid-template-rows:auto auto 1fr;gap:20px;
+    }
+    .barcode{
+      height:140px;border-left:0;position:relative;
+      background: repeating-linear-gradient(90deg, rgba(255,255,255,.8) 0 3px, transparent 3px 11px);
+      border-radius:6px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,1) 18%, rgba(0,0,0,1) 82%, rgba(0,0,0,0));
+      opacity:.75;
+    }
+    .diamonds{display:flex;gap:10px}
+    .diamond{width:14px;height:14px;transform:rotate(45deg);background:linear-gradient(135deg,var(--accent1),var(--accent2));border:1px solid rgba(255,255,255,.6)}
 
-        .navbar .nav-links {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .tagline{
+      border-left:4px solid var(--accent1);
+      padding-left:14px;color:#e6ecf3;line-height:1.6
+    }
 
-        .navbar a {
-            color: #333;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s, color 0.3s;
-        }
+    .hero{
+      position:relative;background: linear-gradient(135deg, rgba(34,211,238,.15), rgba(139,92,246,.15));
+      border:1px solid rgba(255,255,255,.15);border-radius:18px;min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    }
+    .hero img{max-width:100%;max-height:360px;object-fit:contain;filter: drop-shadow(0 10px 24px rgba(0,0,0,.4));}
+    .hero::after{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;box-shadow: inset 0 0 0 1px rgba(255,255,255,.06)}
 
-        .navbar a:hover {
-            background: linear-gradient(135deg, #3b82f6, #9333ea);
-            color: white;
-        }
+    /* Bottom nav blocks */
+    .blocks{display:grid;grid-template-columns: repeat(3,1fr);gap:18px;margin-top:28px}
+    .block{
+      position:relative;text-decoration:none;color:var(--white);
+      background: rgba(255,255,255,.04);
+      border-radius:16px; padding:20px; display:flex;align-items:flex-end;min-height:120px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      isolation:isolate;
+    }
+    .block::before{content:"";position:absolute;inset:-1px;border-radius:16px;background:linear-gradient(135deg,var(--accent1),var(--accent2));opacity:.25;filter:blur(20px);z-index:-1;transition:opacity .2s ease}
+    .block:hover{transform: translateY(-3px); box-shadow:0 14px 30px rgba(0,0,0,.35); border-color:rgba(255,255,255,.25)}
+    .block:hover::before{opacity:.4}
+    .block h3{margin:0;font-size:clamp(18px,1.6vw,20px);letter-spacing:.5px}
+    .block .hint{margin-top:6px;color:var(--muted);font-size:.95rem}
 
-        .gallery-container {
-            margin-top: 70px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    /* Social row */
+    .socials{display:flex;gap:14px;justify-content:center;margin-top:22px;opacity:.9}
+    .socials a{display:inline-flex;padding:10px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.04)}
+    .socials svg{width:18px;height:18px;fill:#fff}
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            grid-gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s;
-            height: 300px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .description {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-            font-size: 1em;
-            opacity: 0;
-            transition: opacity 0.3s;
-            text-align: center;
-        }
-
-        .gallery-item:hover .description {
-            opacity: 1;
-        }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal img, .modal video {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            margin: auto;
-        }
-
-        .modal video {
-            display: none;
-            opacity: 0; 
-            transition: opacity 0.5s ease; 
-        }
-
-        .play-button {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background 0.3s ease, opacity 0.3s ease;
-            display: flex;
-            align-items: center;
-            display: none; 
-        }
-
-        .play-button:hover {
-            background: rgba(0, 0, 0, 0.9);
-        }
-
-        .play-button.clicked {
-            opacity: 0; /* Fades out once clicked */
-        }
-
-        .play-button span {
-            margin-left: 8px; 
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .close-btn:hover {
-            background: rgba(0, 0, 0, 0.9);
-        }
-
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .navbar .logo img {
-                height: 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .navbar .logo img {
-                height: 30px;
-            }
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 960px){
+      .main{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      .blocks{grid-template-columns:1fr}
+      .brand img{width:48px;height:48px}
+    }
+  </style>
 </head>
 <body>
+  <div class="frame">
+    <div class="panel">
+      <div class="topbar">
+        <div class="brand">
+          <img src="/pics/logo.png" alt="Ryunekoru logo" />
+          <h1>Ryu's Art Corner</h1>
+        </div>
+        <div class="menu" aria-hidden="true" title="menu icon">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
 
-    <div class="navbar">
-        <div class="logo">
-            <img src="/pics/logo.png" alt="Logo">
+      <div class="main">
+        <div class="left">
+          <div class="barcode" aria-hidden="true"></div>
+          <div class="diamonds" aria-hidden="true">
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+          </div>
+          <p class="tagline">
+            Explore art filled with emotions and creativity
+          </p>
         </div>
 
-        <div class="nav-links">
-            <a href="https://ryunekoru.com">Home</a>
-            <a href="https://ryunekoru.com/art">Gallery</a>
-            <a href="https://ryunekoru.com/contact">Contact</a>
+        <div class="hero" aria-label="feature artwork">
+          <!-- Replace the src below with your hero illustration -->
+          <img src="/pics/logo.png" alt="Featured character illustration placeholder" />
         </div>
+      </div>
+
+      <nav class="blocks" aria-label="primary">
+        <a class="block" href="/art">
+          <div>
+            <h3>Portfolio</h3>
+            <div class="hint">Browse the full gallery</div>
+          </div>
+        </a>
+        <a class="block" href="/socials">
+          <div>
+            <h3>Socials</h3>
+            <div class="hint">Follow updates & timelapses</div>
+          </div>
+        </a>
+        <a class="block" href="/commissions">
+          <div>
+            <h3>Commissions</h3>
+            <div class="hint">Rates, terms, and requests</div>
+          </div>
+        </a>
+      </nav>
+
+      <div class="socials" aria-label="social links">
+        <a href="https://www.tiktok.com/@ryunekoru" aria-label="TikTok" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8.5c1.7 1.3 3.5 1.9 5 2v3.3c-1.8-.2-3.5-.9-5-2v5.3a6.8 6.8 0 1 1-6-6.7v3.5a3.4 3.4 0 1 0 2 3.1V2h4v6.5z"/></svg>
+        </a>
+        <a href="https://twitter.com/ryunekoru" aria-label="X" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h4.3l5.1 6.9L17.4 3H21l-7 9.1L21 21h-4.3l-5.3-7.2L6.6 21H3l7.1-9.2z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/ryunekoru" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.9a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@ryunekoru" aria-label="YouTube" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.7 4.2 12 4.2 12 4.2s-7.7 0-9.4.6A3 3 0 0 0 .5 6.9 31.5 31.5 0 0 0 0 12c0 1.7.1 3.4.5 5.1a3 3 0 0 0 2.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 0 0 2.1-2.1c.4-1.7.5-3.4.5-5.1 0-1.7-.1-3.4-.5-5.1zM9.6 15.5V8.5L16 12l-6.4 3.5z"/></svg>
+        </a>
+      </div>
+
     </div>
-
-    <div class="gallery-container">
-        <div class="gallery">
-            <div class="gallery-item" onclick="openModal('/art/imgs/RyunekoruHalloween.jpg', null)">
-                <img src="/art/imgs/RyunekoruHalloween.jpg" alt="Art Piece 1">
-                <div class="description">"Art Piece 1" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Gold.png', null)">
-                <img src="/art/imgs/Gold.png" alt="Art Piece 2">
-                <div class="description">"Art Piece 2" - Created in 2024</div>
-            </div>
-             <div class="gallery-item" onclick="openModal('/art/imgs/oneyear.png', '/art/vids/oneyear_1.mp4')">
-                <img src="/art/imgs/oneyear.png" alt="Art Piece 3">
-                <div class="description">"Art Piece 3" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Joker.png', '/art/vids/JokerTime.mp4')">
-                <img src="/art/imgs/Joker.png" alt="Art Piece 4">
-                <div class="description">"Art Piece 4" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Neru.png', '/art/vids/flower.mp4')">
-                <img src="/art/imgs/Neru.png" alt="Art Piece 5">
-                <div class="description">"Art Piece 5" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/HAPPYBIRTHDAYANNIEKFJNS-min.png', '/art/vids/annie.mp4')">
-                <img src="/art/imgs/HAPPYBIRTHDAYANNIEKFJNS-min.png" alt="Art Piece 6">
-                <div class="description">"Art Piece 6" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Cres sheet.png', null)">
-                <img src="/art/imgs/Cres sheet.png" alt="Art Piece 7">
-                <div class="description">"Art Piece 7" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Rue sheet.png', null)">
-                <img src="/art/imgs/Rue sheet.png" alt="Art Piece 8">
-                <div class="description">"Art Piece 8" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Ryuko sheet.png', null)">
-                <img src="/art/imgs/Ryuko sheet.png" alt="Art Piece 9">
-                <div class="description">"Art Piece 9" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Blue.png', '/art/vids/Blue.mp4')">
-                <img src="/art/imgs/Blue.png" alt="Art Piece 10">
-                <div class="description">"Art Piece 10" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Kuyoko heart.png', null)">
-                <img src="/art/imgs/Kuyoko heart.png" alt="Art Piece 11">
-                <div class="description">"Art Piece 11" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Ryukov2.png', null)">
-                <img src="/art/imgs/Ryukov2.png" alt="Art Piece 12">
-                <div class="description">"Art Piece 12" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Vanitas.png', null)">
-                <img src="/art/imgs/Vanitas.png" alt="Art Piece 13">
-                <div class="description">"Art Piece 13" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/Wanderer.png', '/art/vids/Wanderer.mp4')">
-                <img src="/art/imgs/Wanderer.png" alt="Art Piece 14">
-                <div class="description">"Art Piece 14" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/autumn-ryu.png', '/art/vids/autumn.mp4')">
-                <img src="/art/imgs/autumn-ryu.png" alt="Art Piece 15">
-                <div class="description">"Art Piece 15" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/ren.png', '/art/vids/rentime.mp4')">
-                <img src="/art/imgs/ren.png" alt="Art Piece 16">
-                <div class="description">"Art Piece 16" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/surprise.png', '/art/vids/surprise.mp4')">
-                <img src="/art/imgs/surprise.png" alt="Art Piece 17">
-                <div class="description">"Art Piece 17" - Created in 2024</div>
-            </div>
-            <div class="gallery-item" onclick="openModal('/art/imgs/background 3.png', '/art/vids/mammon.mp4')">
-                <img src="/art/imgs/background 3.png" alt="Art Piece 18">
-                <div class="description">"Art Piece 18" - Created in 2024</div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal" class="modal">
-        <div class="close-btn" onclick="closeModal()">×</div>
-        <img id="modalImage" src="" alt="Full Art Piece">
-        <video id="modalVideo" controls></video>
-        <div class="play-button" id="playButton" onclick="playVideo()">
-            ▶ <span>Timelapse</span>
-        </div>
-    </div>
-
-    <script>
-        const modal = document.getElementById('modal');
-        const modalImage = document.getElementById('modalImage');
-        const modalVideo = document.getElementById('modalVideo');
-        const playButton = document.getElementById('playButton');
-
-        function openModal(imageSrc, videoSrc) {
-            modalImage.src = imageSrc;
-            modalVideo.style.display = 'none';
-            modalVideo.pause();
-            modalVideo.currentTime = 0;
-
-            playButton.classList.remove('clicked'); 
-
-            if (videoSrc) {
-                playButton.style.display = 'flex'; 
-                modalVideo.src = videoSrc;
-            } else {
-                playButton.style.display = 'none'; 
-            }
-
-            modal.classList.add('show');
-            modalImage.style.display = 'block';
-            modalImage.style.opacity = '1';
-        }
-
-        function playVideo() {
-            playButton.classList.add('clicked'); 
-            modalImage.style.transition = 'opacity 0.5s ease'; 
-            modalImage.style.opacity = '0'; 
-
-            setTimeout(() => {
-                modalImage.style.display = 'none'; 
-                modalVideo.style.display = 'block'; 
-                modalVideo.style.opacity = '1';
-                modalVideo.play();
-            }, 500);
-        }
-
-        function closeModal() {
-            modal.classList.remove('show');
-            modalImage.style.display = 'block';
-            modalImage.style.opacity = '1';
-            modalVideo.style.display = 'none';
-            modalVideo.pause();
-            modalVideo.currentTime = 0;
-        }
-    </script>
-
+  </div>
 </body>
 </html>
