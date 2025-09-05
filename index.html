@@ -7,31 +7,35 @@
   <style>
     :root{
       --bg1:#3b82f6; --bg2:#9333ea;
-      --panel:#0b0f14; --white:#fff;
+      --overlay:#1b1f25; --white:#fff;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;overflow:hidden;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--white)}
 
-
+    /* animated background */
     body::before,body::after{content:"";position:fixed;inset:0;z-index:-2}
     body::before{background:linear-gradient(135deg,var(--bg1),var(--bg2));background-size:200% 200%;animation:grad 18s ease-in-out infinite alternate}
     body::after{z-index:-1;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0 1px,transparent 1px 80px),repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 80px);background-size:160px 160px,160px 160px;animation:grid 60s linear infinite}
     @keyframes grad{to{background-position:100% 100%}}
     @keyframes grid{to{background-position:160px 0,0 160px}}
 
- 
-    .topbar{width:100%;height:100%;background:#1b1f25;display:flex;align-items:center;padding:0 40px}
+    /* overlay box */
+    .overlay{
+      position:absolute;top:0;left:0;width:100%;height:55%; /* 50-60% height */
+      background:var(--overlay);
+      display:flex;align-items:center;padding:0 60px;
+    }
     .brand{display:flex;align-items:center;gap:20px}
-    .brand img{height:64px;width:auto}
-    .brand h1{font-size:1.8rem;font-weight:500;letter-spacing:.5px}
+    .brand img{height:80px;width:auto}
+    .brand h1{font-size:2rem;font-weight:500;letter-spacing:.5px}
   </style>
 </head>
 <body>
-  <header class="topbar">
+  <div class="overlay">
     <div class="brand">
       <img src="/pics/logo.png" alt="Ryu's Art Corner logo">
       <h1>Ryu's Art Corner</h1>
     </div>
-  </header>
+  </div>
 </body>
 </html>
