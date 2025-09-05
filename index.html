@@ -67,21 +67,20 @@
 
     .bottom {
       display: flex;
-      flex-direction: row;
-      flex: 0 0 auto;
-      height: 35%;
       gap: var(--gap);
+      flex: 0 0 auto;
+      height: 40%; /* Adjusted to allow top and bottom spacing */
     }
 
     .left, .right {
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 100%;
     }
 
     .left {
-      flex: 1;
+      flex: 1.2;
       gap: var(--gap);
     }
 
@@ -90,13 +89,13 @@
     }
 
     .portfolio {
-      flex: 0 0 60%;
+      flex: 0 0 55%;
       background: var(--main-bg);
       padding: 12px;
     }
 
     .socials {
-      flex: 0 0 40%;
+      flex: 0 0 45%;
       display: flex;
       justify-content: space-between;
       align-items: stretch;
