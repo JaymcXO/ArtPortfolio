@@ -6,7 +6,7 @@
   <title>Ryu's Art Corner</title>
 
   <style>
-    :root{
+    :root {
       --outer-gap: 36px;
       --side-pad: 44px;
       --gap: 20px;
@@ -14,11 +14,21 @@
       --inner-width: 86%;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; color: #fff; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+    }
 
     body {
-      background: linear-gradient(135deg,#3b82f6,#9333ea);
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
       position: relative;
     }
 
@@ -27,7 +37,7 @@
       inset: 0;
       background-image: url('/pics/patternFINAL.png');
       background-size: cover;
-      opacity: .2;
+      opacity: 0.2;
       animation: movePattern 30s linear infinite;
       z-index: 1;
       pointer-events: none;
@@ -46,7 +56,7 @@
       flex-direction: column;
     }
 
-    /* TOP SECTION */
+    /* === TOP BLOCK === */
     .top {
       flex: 0 0 55vh;
       width: 100vw;
@@ -87,7 +97,7 @@
       top: 0;
       height: 2px;
       width: 100%;
-      background: linear-gradient(135deg,#3b82f6,#9333ea);
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
     }
 
     .barcode-block {
@@ -114,12 +124,41 @@
       right: 180px;
       bottom: 10px;
       height: 90%;
-      transform: translateY(-10px); /* raises slightly */
+      transform: translateY(-10px);
       object-fit: contain;
       pointer-events: none;
     }
 
-    /* BOTTOM SECTION */
+    /* === RIGHT TOP NAV AREA === */
+    .top-nav-box {
+      position: absolute;
+      right: var(--side-pad);
+      top: 24px;
+      width: 80px;
+      height: 80px;
+    }
+
+    .top-nav-box::before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 0;
+      width: 2px;
+      height: calc(100% + 12px);
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+    }
+
+    .hamburger {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: brightness(100%);
+    }
+
+    /* === BOTTOM SECTION === */
     .bottom {
       flex: 1 1 auto;
       padding: var(--outer-gap) var(--side-pad);
@@ -165,10 +204,14 @@
     }
 
     @media (max-width: 920px) {
-      :root{ --side-pad: 28px; --outer-gap: 26px; --gap: 14px; --inner-width: 92%; }
+      :root {
+        --side-pad: 28px;
+        --outer-gap: 26px;
+        --gap: 14px;
+        --inner-width: 92%;
+      }
       .logo { width: 60px; }
-      .portfolio { width: 100%; }
-      .commissions { width: 100%; }
+      .portfolio, .commissions { width: 100%; }
     }
 
     @media (max-width: 680px) {
@@ -192,6 +235,7 @@
   <div class="page">
     <!-- TOP SECTION -->
     <header class="top">
+      <!-- LEFT SIDE -->
       <div class="top-left">
         <img class="logo" src="/pics/logonew.png" alt="Logo">
         <div class="top-line"></div>
@@ -200,7 +244,14 @@
           <img class="stars" src="/pics/stars.png" alt="Stars">
         </div>
       </div>
+
+      <!-- CHIBI -->
       <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
+
+      <!-- TOP RIGHT NAV AREA -->
+      <div class="top-nav-box">
+        <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
+      </div>
     </header>
 
     <!-- BOTTOM SECTION -->
