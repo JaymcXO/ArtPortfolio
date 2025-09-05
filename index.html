@@ -14,21 +14,11 @@
       --inner-width: 86%;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; color: #fff; }
 
     body {
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      background: linear-gradient(135deg,#3b82f6,#9333ea);
       position: relative;
     }
 
@@ -56,138 +46,123 @@
       flex-direction: column;
     }
 
-    /* === TOP BLOCK === */
+    /* --- TOP BLOCK --- */
     .top {
+      position: relative;
       flex: 0 0 55vh;
       width: 100vw;
       background: var(--box);
-      position: relative;
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
       padding: 24px var(--side-pad);
-    }
-
-    .top-left {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      position: relative;
+      overflow: hidden;
     }
 
     .logo {
-      width: 80px;
-      height: auto;
-    }
-
-    .top-line {
-      height: 2px;
-      width: 100vw;
-      margin-top: 12px;
-      margin-left: calc(var(--side-pad) * -1);
-      margin-right: calc(var(--side-pad) * -1);
-      background: transparent;
-      position: relative;
-    }
-
-    .top-line::after {
-      content: "";
       position: absolute;
-      left: 0;
-      top: 0;
-      height: 2px;
-      width: 100%;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-    }
-
-    .barcode-block {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-top: 12px;
+      top: 20px;
+      left: 20px;
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      z-index: 2;
     }
 
     .barcode {
-      width: 52px;
-      height: calc(55vh - 110px);
-      object-fit: cover;
+      position: absolute;
+      top: 96px;
+      left: 36px;
+      width: 44px;
+      height: 70%;
+      object-fit: contain;
+      z-index: 2;
     }
 
     .stars {
-      height: 28px;
+      position: absolute;
+      top: 96px;
+      left: 92px;
+      width: 48px;
+      height: auto;
       object-fit: contain;
-      margin-top: 10px;
+      z-index: 2;
     }
 
     .chibi {
       position: absolute;
-      right: 180px;
       bottom: 10px;
+      right: 100px;
       height: 90%;
-      transform: translateY(-10px);
-      object-fit: contain;
-      pointer-events: none;
+      transform: scale(0.9);
+      z-index: 3;
     }
 
-    /* === RIGHT TOP NAV AREA === */
-    .top-nav-box {
+    .cutout {
       position: absolute;
-      right: var(--side-pad);
-      top: 0;
-      width: 80px;
-      height: 100%;
-    }
-
-    .top-nav-box::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 100%;
       background: linear-gradient(135deg, #3b82f6, #9333ea);
+      width: 260px;
+      height: 300px;
+      right: 200px;
+      top: 30px;
+      z-index: 2;
+      border-radius: 10px;
+    }
+
+    .line-horizontal {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 2;
+    }
+
+    .line-vertical {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 80px;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 2;
     }
 
     .hamburger {
       position: absolute;
       top: 24px;
-      right: 0;
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      filter: brightness(100%);
+      right: 28px;
+      width: 28px;
+      height: 28px;
+      z-index: 3;
     }
 
-    /* === BOTTOM SECTION === */
+    /* --- BOTTOM SECTION --- */
     .bottom {
       flex: 1 1 auto;
       padding: var(--outer-gap) var(--side-pad);
       display: flex;
-      gap: var(--gap);
-      align-items: flex-end;
       justify-content: center;
+      align-items: flex-start;
+      gap: var(--gap);
     }
 
     .left, .right {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: var(--gap);
     }
 
-    .box {
+    .portfolio {
       background: var(--box);
       padding: 12px;
-    }
-
-    .portfolio {
-      width: 340px;
-      height: 130px;
+      width: 320px;
+      height: 120px;
     }
 
     .socials {
       display: flex;
       gap: var(--gap);
+      justify-content: center;
     }
 
     .social {
@@ -198,11 +173,12 @@
 
     .commissions {
       background: var(--box);
-      width: 200px;
-      height: 214px;
       padding: 12px;
+      width: 180px;
+      height: 188px;
     }
 
+    /* Responsive Tweaks */
     @media (max-width: 920px) {
       :root {
         --side-pad: 28px;
@@ -210,8 +186,9 @@
         --gap: 14px;
         --inner-width: 92%;
       }
-      .logo { width: 60px; }
-      .portfolio, .commissions { width: 100%; }
+
+      .logo { width: 48px; height: 48px; }
+      .stars { width: 36px; }
     }
 
     @media (max-width: 680px) {
@@ -219,12 +196,9 @@
         flex-direction: column;
         align-items: center;
       }
-      .commissions, .portfolio {
-        width: 100%;
-        max-width: 400px;
-      }
-      .chibi {
-        display: none;
+
+      .left, .right {
+        align-items: center;
       }
     }
   </style>
@@ -234,30 +208,23 @@
 
   <div class="page">
     <!-- TOP SECTION -->
-    <header class="top">
-      <!-- LEFT SIDE -->
-      <div class="top-left">
-        <img class="logo" src="/pics/logonew.png" alt="Logo">
-        <div class="top-line"></div>
-        <div class="barcode-block">
-          <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-          <img class="stars" src="/pics/stars.png" alt="Stars">
-        </div>
-      </div>
+    <section class="top">
+      <div class="cutout"></div>
 
-      <!-- CHIBI -->
-      <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
+      <img class="logo" src="/pics/logonew.png" alt="Logo" />
+      <img class="barcode" src="/pics/barcode.png" alt="Barcode" />
+      <img class="stars" src="/pics/stars.png" alt="Stars" />
+      <img class="chibi" src="/pics/chibi.png" alt="Chibi" />
+      <img class="hamburger" src="/pics/hamburger.png" alt="Menu" />
 
-      <!-- TOP RIGHT NAV AREA -->
-      <div class="top-nav-box">
-        <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
-      </div>
-    </header>
+      <div class="line-horizontal"></div>
+      <div class="line-vertical"></div>
+    </section>
 
     <!-- BOTTOM SECTION -->
     <section class="bottom">
       <div class="left">
-        <div class="box portfolio">PORTFOLIO</div>
+        <div class="portfolio">PORTFOLIO</div>
         <div class="socials">
           <div class="social"></div>
           <div class="social"></div>
@@ -265,6 +232,7 @@
           <div class="social"></div>
         </div>
       </div>
+
       <div class="right">
         <div class="commissions">COMMISSIONS</div>
       </div>
