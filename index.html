@@ -172,25 +172,23 @@
       height: 100%;
     }
 
-    .top-nav-box::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(135deg, #3b82f6, #9333ea);
-    }
+   .top-nav-box {
+  position: absolute;
+  right: var(--side-pad);
+  top: 0;
+  width: 80px;
+  height: 100%;
+  display: flex;
+  align-items: center;  
+  justify-content: center; 
+}
 
     .hamburger {
-      position: absolute;
-      top: 24px;
-      right: 0;
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      filter: brightness(100%);
-    }
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: brightness(100%);
+}
 
     .bottom {
       flex: 1 1 auto;
@@ -292,9 +290,9 @@
   <div class="pattern-overlay"></div>
 
   <div class="page">
-    <!-- TOP SECTION -->
+   
     <header class="top">
-      <!-- LEFT SIDE -->
+
       <div class="top-left">
         <div class="logo-row">
           <img class="logo" src="/pics/logonew.png" alt="Logo">
@@ -326,7 +324,6 @@
       </div>
     </header>
 
-    <!-- BOTTOM SECTION -->
     <section class="bottom">
       <div class="left">
         <div class="box portfolio">PORTFOLIO</div>
@@ -344,4 +341,5 @@
   </div>
 </body>
 </html>
+
 
