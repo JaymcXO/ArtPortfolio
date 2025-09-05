@@ -11,7 +11,6 @@
       --side-pad: 44px;
       --gap: 20px;
       --box: #1f1f1f;
-      --inner-width: 86%;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,8 +72,8 @@
       padding: var(--outer-gap) var(--side-pad);
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: var(--gap);
-      min-height: 0;
     }
 
     .left, .right {
@@ -86,17 +85,18 @@
     .left-inner {
       display: flex;
       flex-direction: column;
-      gap: var(--gap);
       align-items: center;
+      gap: var(--gap);
     }
 
     .box {
       background: var(--box);
     }
 
+    /* Upsized layout */
     .portfolio {
-      width: calc((60px * 4) + (var(--gap) * 3)); /* match width of 4 social squares + 3 gaps */
-      height: 110px;
+      width: calc((90px * 4) + (var(--gap) * 3));  /* wider */
+      height: 140px;                                /* taller */
       padding: 12px;
     }
 
@@ -108,7 +108,7 @@
 
     .social {
       background: var(--box);
-      width: 60px;
+      width: 90px;
       aspect-ratio: 1 / 1;
       flex: 0 0 auto;
     }
@@ -120,8 +120,8 @@
     }
 
     .commissions {
-      height: calc(110px + 60px + var(--gap));
-      width: 180px;
+      height: calc(140px + 90px + var(--gap)); /* match height of portfolio + social row + gap */
+      width: 220px;
       padding: 12px;
     }
 
@@ -130,16 +130,29 @@
         --side-pad: 28px;
         --outer-gap: 26px;
         --gap: 14px;
-        --inner-width: 92%;
       }
       .site-title { font-size: 22px; line-height: 40px; }
       .logo { width: 44px; height: 44px; }
-      .portfolio { width: calc((60px * 4) + (var(--gap) * 3)); }
+      .portfolio {
+        width: calc((70px * 4) + (var(--gap) * 3));
+        height: 110px;
+      }
+      .social { width: 70px; }
+      .commissions {
+        height: calc(110px + 70px + var(--gap));
+        width: 180px;
+      }
     }
 
     @media (max-width: 680px) {
-      .bottom { flex-direction: column; align-items: center; }
-      .left-inner, .right-inner { width: 100%; align-items: center; }
+      .bottom {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left-inner, .right-inner {
+        width: 100%;
+        align-items: center;
+      }
       .commissions { width: auto; }
     }
   </style>
@@ -148,7 +161,7 @@
   <div class="pattern-overlay"></div>
 
   <div class="page">
-    <!-- TOP BLOCK -->
+    <!-- TOP -->
     <header class="top">
       <img class="logo" src="/pics/logo.png" alt="Logo">
       <div class="site-title">Ryu's Art Corner</div>
