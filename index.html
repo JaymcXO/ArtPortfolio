@@ -1,150 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ryu's Art Corner</title>
-  <style>
-    :root {
-      --gap: 16px;
-      --main-bg: #1f1f1f;
-      --gradient-bg: linear-gradient(135deg, #3b82f6, #9333ea);
-      --overlay-opacity: 0.2;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ryu's Art Corner</title>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+  :root{
+    /* spacing + colors you can tweak */
+    --outer-gap: 36px;       /* gap ABOVE bottom area and at the very bottom (equal) */
+    --side-pad: 44px;        /* left/right padding of the bottom area */
+    --gap: 20px;             /* gaps between boxes */
+    --box: #1f1f1f;          /* grayish-black for boxes */
+    --inner-width: 86%;      /* how “small” the boxes are inside each half */
+  }
 
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      background: var(--gradient-bg);
-      color: white;
-    }
+  /* reset */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; color: #fff; }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url('/pics/patternFINAL.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      opacity: var(--overlay-opacity);
-      animation: movePattern 40s linear infinite;
-      z-index: 0;
-    }
+  /* animated background + pattern */
+  body {
+    background: linear-gradient(135deg,#3b82f6,#9333ea);
+    position: relative;
+  }
+  .pattern-overlay{
+    position: fixed;
+    inset: 0;
+    background-image: url('/pics/patternFINAL.png');
+    background-size: cover;
+    opacity: .2;
+    animation: movePattern 30s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+  @keyframes movePattern{
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 1000px; }
+  }
 
-    @keyframes movePattern {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
+  /* page layout */
+  .page{
+    position: relative;
+    z-index: 2;           /* above pattern */
+    height: 100vh;        /* no scroll */
+    display: flex;
+    flex-direction: column;
+  }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: var(--gap);
-    }
+  /* TOP block (edge-to-edge, no outline) */
+  .top{
+    flex: 0 0 55vh;       /* ~55% of viewport */
+    width: 100vw;
+    background: var(--box);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px var(--side-pad);
+  }
+  .logo{ width: 56px; height: 56px; object-fit: contain; }
+  .site-title{ font-size: 28px; font-weight: 800; line-height: 56px; }
 
-    /* Top header */
-    .top {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 0 0 auto;
-    }
+  /* BOTTOM area: left/right halves */
+  .bottom{
+    flex: 1 1 auto;       /* remainder (~45%) */
+    padding: var(--outer-gap) var(--side-pad) var(--outer-gap); /* equal top/bottom gap */
+    display: flex;
+    gap: var(--gap);
+    align-items: stretch;  /* keep both columns same height */
+    min-height: 0;         /* prevents overflow in flex children */
+  }
 
-    .logo {
-      width: 48px;
-      height: 48px;
-    }
+  .left, .right{
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+  }
 
-    .title {
-      font-size: 24px;
-      font-weight: bold;
-    }
+  /* inner wrappers make boxes “smaller width” with visible background around them */
+  .left-inner{
+    width: var(--inner-width);
+    margin-left: 0;
+    margin-right: auto;    /* hug left */
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    height: 100%;
+  }
+  .right-inner{
+    width: var(--inner-width);
+    margin-left: auto;     /* hug right */
+    margin-right: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-    /* Bottom layout */
-    .bottom {
-      display: flex;
-      flex: 1 1 auto;
-      gap: var(--gap);
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-top: auto;
-    }
+  /* boxes (no outlines/borders) */
+  .box{ background: var(--box); }
 
-    .left, .right {
-      display: flex;
-      flex-direction: column;
-      height: 65%; /* Total bottom area (not full screen) */
-    }
+  /* left column: portfolio 60%, socials 40% */
+  .portfolio{ flex: 0 0 calc((100% - var(--gap)) * 0.60); padding: 12px; }
+  .socials{
+    flex: 0 0 calc((100% - var(--gap)) * 0.40);
+    display: flex;
+    gap: var(--gap);
+    align-items: flex-end;       /* squares sit on the baseline */
+    background: transparent;     /* let animated bg show around squares */
+  }
 
-    .left {
-      flex: 1.2;
-      justify-content: space-between;
-    }
+  /* four perfect squares, evenly spaced, always within portfolio width */
+  .social{
+    background: var(--box);
+    width: calc((100% - 3*var(--gap)) / 4); /* four columns, three gaps */
+    aspect-ratio: 1 / 1;                    /* perfect square */
+    flex: 0 0 auto;
+  }
 
-    .right {
-      flex: 1;
-      justify-content: flex-start;
-    }
+  /* right column: commissions fills its inner height */
+  .commissions{ flex: 1 1 auto; padding: 12px; }
 
-    .portfolio {
-      background: var(--main-bg);
-      flex: 0 0 55%;
-      padding: 12px;
-    }
-
-    .socials {
-      display: flex;
-      justify-content: space-between;
-      flex: 0 0 45%;
-    }
-
-    .social {
-      background: var(--main-bg);
-      flex: 0 0 calc((100% - 3 * var(--gap)) / 4);
-      aspect-ratio: 1 / 1;
-    }
-
-    .commissions {
-      background: var(--main-bg);
-      height: 100%;
-      padding: 12px;
-    }
-  </style>
+  /* responsive tightening */
+  @media (max-width: 920px){
+    :root{ --side-pad: 28px; --outer-gap: 26px; --gap: 14px; --inner-width: 92%; }
+    .site-title{ font-size: 22px; line-height: 40px; }
+    .logo{ width: 44px; height: 44px; }
+  }
+  @media (max-width: 680px){
+    .bottom{ flex-direction: column; }
+    .left-inner, .right-inner{ width: 100%; }
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <!-- ✅ Top block (was missing before) -->
-    <div class="top">
-      <img class="logo" src="/pics/logo.png" alt="Logo" />
-      <div class="title">Ryu's Art Corner</div>
-    </div>
+  <div class="pattern-overlay"></div>
 
-    <!-- ✅ Bottom area -->
-    <div class="bottom">
+  <div class="page">
+    <!-- TOP FULL-WIDTH BLOCK -->
+    <header class="top">
+      <img class="logo" src="/pics/logo.png" alt="Logo">
+      <div class="site-title">Ryu's Art Corner</div>
+    </header>
+
+    <!-- BOTTOM: LEFT (portfolio + socials) & RIGHT (commissions) -->
+    <section class="bottom">
       <div class="left">
-        <div class="portfolio">PORTFOLIO</div>
-        <div class="socials">
-          <div class="social"></div>
-          <div class="social"></div>
-          <div class="social"></div>
-          <div class="social"></div>
+        <div class="left-inner">
+          <div class="box portfolio">PORTFOLIO</div>
+          <div class="socials">
+            <div class="social"></div>
+            <div class="social"></div>
+            <div class="social"></div>
+            <div class="social"></div>
+          </div>
         </div>
       </div>
 
       <div class="right">
-        <div class="commissions">COMMISSIONS</div>
+        <div class="right-inner">
+          <div class="box commissions">COMMISSIONS</div>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </body>
 </html>
