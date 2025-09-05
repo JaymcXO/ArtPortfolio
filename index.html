@@ -6,7 +6,7 @@
   <title>Ryu's Art Corner</title>
   <style>
     :root {
-      --gap: 20px;
+      --gap: 16px;
       --pad: 32px;
       --main-bg: #1f1f1f;
       --gradient-bg: linear-gradient(135deg, #3b82f6, #9333ea);
@@ -14,11 +14,12 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; overflow: hidden; font-family: Arial, sans-serif; color: white; }
-
-    body {
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      color: white;
       background: var(--gradient-bg);
-      position: relative;
     }
 
     .pattern-overlay {
@@ -40,20 +41,18 @@
     .page {
       position: relative;
       z-index: 2;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      padding: 0 var(--pad);
+      justify-content: space-between;
+      padding: var(--gap) var(--pad);
     }
 
     .top {
-      flex: 0 0 55%;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 16px;
-      background: var(--main-bg);
-      padding: 24px var(--pad);
-      margin: 0 calc(-1 * var(--pad)); /* full bleed */
+      flex: 0 0 auto;
     }
 
     .logo {
@@ -64,21 +63,30 @@
     .title {
       font-size: 24px;
       font-weight: bold;
-      line-height: 48px;
     }
 
     .bottom {
-      flex: 0 0 45%;
       display: flex;
+      flex-direction: row;
+      flex: 0 0 auto;
+      height: 35%;
       gap: var(--gap);
-      padding-top: var(--gap);
     }
 
     .left, .right {
-      flex: 1;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .left {
+      flex: 1;
       gap: var(--gap);
+    }
+
+    .right {
+      flex: 1;
     }
 
     .portfolio {
@@ -91,29 +99,25 @@
       flex: 0 0 40%;
       display: flex;
       justify-content: space-between;
+      align-items: stretch;
     }
 
     .social {
       background: var(--main-bg);
+      flex: 0 0 calc((100% - 3 * var(--gap)) / 4);
       aspect-ratio: 1 / 1;
-      flex: 0 0 calc((100% - 3 * var(--gap)) / 4); /* Even spacing for 4 items */
     }
 
     .commissions {
-      flex: 1;
+      height: 100%;
       background: var(--main-bg);
       padding: 12px;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 768px) {
       .bottom {
         flex-direction: column;
-      }
-      .left, .right {
-        width: 100%;
-      }
-      .social {
-        max-width: 100%;
+        height: auto;
       }
     }
   </style>
@@ -121,7 +125,7 @@
 <body>
   <div class="pattern-overlay"></div>
   <div class="page">
-    <!-- Top full-width bar -->
+    <!-- Top bar -->
     <div class="top">
       <img class="logo" src="/pics/logo.png" alt="Logo" />
       <div class="title">Ryu's Art Corner</div>
@@ -129,7 +133,7 @@
 
     <!-- Bottom section -->
     <div class="bottom">
-      <!-- Left side: Portfolio + Socials -->
+      <!-- Left: Portfolio & Socials -->
       <div class="left">
         <div class="portfolio">PORTFOLIO</div>
         <div class="socials">
@@ -140,7 +144,7 @@
         </div>
       </div>
 
-      <!-- Right side: Commissions -->
+      <!-- Right: Commissions -->
       <div class="right">
         <div class="commissions">COMMISSIONS</div>
       </div>
