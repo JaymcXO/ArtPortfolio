@@ -200,10 +200,11 @@
 
 .bottom {
   flex: 0 0 auto;
-  margin-bottom: 24px; 
+  margin-top: 32px;      
+  margin-bottom: 36px;  
   display: flex;
   gap: var(--gap);
-  align-items: flex-end;
+  align-items: flex-start; 
   justify-content: center;
 }
     
@@ -218,24 +219,31 @@
       padding: 12px;
     }
 
-    .portfolio {
+   .portfolio {
   width: 600px;
-  height: 180px; 
+  height: 200px;
+  flex-shrink: 0;
 }
-    .socials {
-      display: flex;
-      gap: var(--gap);
-    }
+    
+   .socials {
+  display: flex;
+  gap: var(--gap);
+  flex-shrink: 0;
+}
 
  .social {
   background: var(--box);
-  width: 130px; 
+  width: 130px;
   aspect-ratio: 1 / 1;
+  flex-shrink: 0;
 }
 
-   .commissions {
+  .commissions {
+  background: var(--box);
   width: 320px;
-  height: 214px; 
+  height: 340px;  
+  flex-shrink: 0;
+  padding: 12px;
 }
     
   </style>
@@ -293,5 +301,6 @@
   </div>
 </body>
 </html>
+
 
 
