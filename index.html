@@ -58,16 +58,16 @@
       100% { background-position: 1000px 1000px; }
     }
 
-    .page {
-      position: relative;
-      z-index: 2;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  .page {
+position: relative;
+z-index: 2;
+height: 100vh;
+display: flex;
+flex-direction: column;
+}
 
     .top {
-      flex: 0 0 55vh;
+      flex: 0 0 54vh;
       width: 100vw;
       background: var(--box);
       position: relative;
@@ -199,20 +199,20 @@
     }
 
 .bottom {
-  flex: 0 0 auto;
-  margin-top: 32px;      
-  margin-bottom: 36px;  
-  display: flex;
-  gap: var(--gap);
-  align-items: flex-start; 
-  justify-content: center;
+flex: 1 1 46vh;
+padding: 16px var(--side-pad);
+display: flex;
+gap: var(--gap);
+align-items: flex-start;
+justify-content: center;
 }
     
     .left, .right {
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap);
-    }
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: var(--gap);
+}
 
     .box {
       background: var(--box);
@@ -220,28 +220,28 @@
     }
 
    .portfolio {
-  width: 600px;
-  height: 200px;
+width: 560px;
+height: 170px;
   flex-shrink: 0;
 }
     
-   .socials {
-  display: flex;
-  gap: var(--gap);
-  flex-shrink: 0;
+  .socials {
+gap: var(--gap);
+display: flex;
+justify-content: center;
 }
 
  .social {
   background: var(--box);
-  width: 130px;
-  aspect-ratio: 1 / 1;
+  width: 100px;
+aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
 
   .commissions {
   background: var(--box);
-  width: 320px;
-  height: 340px;  
+  width: 300px;
+height: 300px;
   flex-shrink: 0;
   padding: 12px;
 }
@@ -301,6 +301,7 @@
   </div>
 </body>
 </html>
+
 
 
 
