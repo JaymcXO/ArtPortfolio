@@ -198,15 +198,15 @@
       height: 56px;
     }
 
-    .bottom {
-      flex: 1 1 auto;
-      padding: 36px var(--side-pad);
-      display: flex;
-      gap: var(--gap);
-      align-items: flex-start;
-      justify-content: center;
-    }
-
+ .bottom {
+  flex: 1 1 auto;
+  padding: var(--outer-gap) var(--side-pad) 64px; 
+  display: flex;
+  gap: var(--gap);
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+}
     .left, .right {
       display: flex;
       flex-direction: column;
@@ -228,11 +228,12 @@
       gap: var(--gap);
     }
 
-    .social {
-      background: var(--box);
-      width: 114px;
-      aspect-ratio: 1 / 1;
-    }
+   .social {
+  background: var(--box);
+  width: 135px;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 auto;
+}
 
     .commissions {
       width: 320px;
@@ -295,3 +296,4 @@
   </div>
 </body>
 </html>
+
