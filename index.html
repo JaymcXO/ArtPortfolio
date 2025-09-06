@@ -198,15 +198,15 @@
       height: 56px;
     }
 
- .bottom {
-  flex: 1 1 auto;
-  padding: var(--outer-gap) var(--side-pad) 64px; 
+.bottom {
+  flex: 0 0 auto;
+  margin-bottom: 24px; 
   display: flex;
   gap: var(--gap);
   align-items: flex-end;
   justify-content: center;
-  flex-wrap: wrap;
 }
+    
     .left, .right {
       display: flex;
       flex-direction: column;
@@ -219,28 +219,25 @@
     }
 
     .portfolio {
-      width: 600px;
-      height: 200px;
-    }
-
+  width: 600px;
+  height: 180px; 
+}
     .socials {
       display: flex;
       gap: var(--gap);
     }
 
-   .social {
+ .social {
   background: var(--box);
-  width: 135px;
+  width: 130px; 
   aspect-ratio: 1 / 1;
-  flex: 0 0 auto;
 }
 
-    .commissions {
-      width: 320px;
-      height: calc(240px + 140px + var(--gap));
-      background: var(--box);
-      padding: 12px;
-    }
+   .commissions {
+  width: 320px;
+  height: 214px; 
+}
+    
   </style>
 </head>
 <body>
@@ -296,4 +293,5 @@
   </div>
 </body>
 </html>
+
 
