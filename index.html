@@ -220,8 +220,8 @@ gap: var(--gap);
     }
 
    .portfolio {
-width: 560px;
-height: 170px;
+width: 640px; /* Keep as is, or slightly adjust */
+  height: 200px;
   flex-shrink: 0;
 }
     
@@ -233,15 +233,15 @@ justify-content: center;
 
  .social {
   background: var(--box);
-  width: 100px;
-aspect-ratio: 1 / 1;
+  width: 140px;
+  aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
 
   .commissions {
   background: var(--box);
-  width: 300px;
-height: 300px;
+ width: 320px;
+  height: calc(200px + 140px + var(--gap)); /* Match layout */
   flex-shrink: 0;
   padding: 12px;
 }
@@ -301,6 +301,7 @@ height: 300px;
   </div>
 </body>
 </html>
+
 
 
 
