@@ -206,10 +206,10 @@
     }
 
     .social {
-      background: var(--box);
-      width: 110px;
-      aspect-ratio: 1 / 1;
-    }
+  background: var(--box);
+  width: 120px; /* changed from 110px */
+  aspect-ratio: 1 / 1;
+}
 
     .main-content {
       display: flex;
@@ -226,13 +226,13 @@
 
     .portfolio {
       width: 640px;
-      height: 160px;
+      flex: 0 0 45%;
     }
 
     .commissions {
-      width: 640px;
-      height: 180px; /* Slightly taller to align perfectly */
-    }
+  width: 640px;
+  height: 200px; /* increased from 180px */
+}
 
     @media (max-width: 920px) {
       :root {
