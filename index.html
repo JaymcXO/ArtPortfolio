@@ -17,11 +17,9 @@
     }
 
     :root {
-      --outer-gap: 36px;
       --side-pad: 44px;
-      --gap: 24px;
+      --gap: 20px;
       --box: #1f1f1f;
-      --inner-width: 86%;
     }
 
     * {
@@ -58,16 +56,17 @@
       100% { background-position: 1000px 1000px; }
     }
 
-  .page {
-position: relative;
-z-index: 2;
-height: 100vh;
-display: flex;
-flex-direction: column;
-}
+    .page {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
+    /* ─── Top Section ─── */
     .top {
-      flex: 0 0 45vh;
+      flex: 0 0 55vh;
       width: 100vw;
       background: var(--box);
       position: relative;
@@ -81,7 +80,6 @@ flex-direction: column;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      position: relative;
     }
 
     .logo-row {
@@ -97,6 +95,7 @@ flex-direction: column;
 
     .logo-text {
       font-size: 28px;
+      line-height: 1.1;
       margin-top: 4px;
     }
 
@@ -106,6 +105,17 @@ flex-direction: column;
       margin-top: 12px;
       margin-left: calc(var(--side-pad) * -1);
       margin-right: calc(var(--side-pad) * -1);
+      background: transparent;
+      position: relative;
+    }
+
+    .top-line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 2px;
+      width: 100%;
       background: linear-gradient(135deg, #3b82f6, #9333ea);
     }
 
@@ -124,6 +134,7 @@ flex-direction: column;
 
     .stars {
       height: 40px;
+      object-fit: contain;
       margin-top: 2px;
     }
 
@@ -147,7 +158,7 @@ flex-direction: column;
     }
 
     .explore-text {
-      font-size: 30px;
+      font-size: 22px;
       line-height: 1.5;
     }
 
@@ -166,7 +177,6 @@ flex-direction: column;
       right: 160px;
       bottom: 10px;
       height: 90%;
-      transform: translateY(-10px);
       object-fit: contain;
       pointer-events: none;
       z-index: 2;
@@ -196,62 +206,65 @@ flex-direction: column;
       right: 0;
       width: 56px;
       height: 56px;
+      object-fit: contain;
+      filter: brightness(100%);
     }
 
-.bottom {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--gap);
-  padding: 5px var(--side-pad); /* Add top/bottom padding here */
-}
-    
-    .left, .right {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: var(--gap);
-}
+    /* ─── Bottom Section ─── */
+    .bottom {
+      flex: 1 1 auto;
+      display: flex;
+      padding: 20px var(--side-pad);
+      gap: var(--gap);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
 
     .box {
       background: var(--box);
       padding: 12px;
     }
 
-   .portfolio {
-width: 580px; /* Keep as is, or slightly adjust */
-  height: 200px;
-  flex-shrink: 0;
-}
-    
-  .socials {
-gap: var(--gap);
-display: flex;
-justify-content: center;
-}
+    .social {
+      width: 120px;
+      aspect-ratio: 1/1;
+    }
 
- .social {
-  background: var(--box);
-  width: 125px;
-  aspect-ratio: 1 / 1;
-  flex-shrink: 0;
-}
+    .portfolio {
+      width: 500px;
+      height: 160px;
+    }
 
-  .commissions {
-  background: var(--box);
- width: 320px;
-  height: calc(200px + 125px + var(--gap)); /* Match layout */
-  flex-shrink: 0;
-  padding: 12px;
-}
-    
+    .commissions {
+      width: 500px;
+      height: 160px;
+    }
+
+    @media (max-width: 920px) {
+      .bottom {
+        flex-direction: column;
+      }
+      .social {
+        width: 90px;
+      }
+      .portfolio, .commissions {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="pattern-overlay"></div>
 
   <div class="page">
+    <!-- ─── TOP SECTION ─── -->
     <header class="top">
       <div class="top-left">
         <div class="logo-row">
@@ -262,7 +275,6 @@ justify-content: center;
 
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
-
           <div class="stars-line-block">
             <img class="stars" src="/pics/stars.png" alt="Stars" />
             <div class="explore-row">
@@ -278,37 +290,31 @@ justify-content: center;
 
       <div class="cutout"></div>
       <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
-
       <div class="top-nav-box">
         <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
       </div>
     </header>
 
+    <!-- ─── BOTTOM SECTION ─── -->
     <section class="bottom">
-      <div class="left">
-        <div class="box portfolio">PORTFOLIO</div>
-        <div class="socials">
-          <div class="social"></div>
-          <div class="social"></div>
-          <div class="social"></div>
-          <div class="social"></div>
-        </div>
+      <!-- Left Socials -->
+      <div class="column">
+        <div class="box social"></div>
+        <div class="box social"></div>
       </div>
-      <div class="right">
-        <div class="commissions">COMMISSIONS</div>
+
+      <!-- Middle Portfolio & Commissions -->
+      <div class="column">
+        <div class="box portfolio">PORTFOLIO</div>
+        <div class="box commissions">COMMISSIONS</div>
+      </div>
+
+      <!-- Right Socials -->
+      <div class="column">
+        <div class="box social"></div>
+        <div class="box social"></div>
       </div>
     </section>
   </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
