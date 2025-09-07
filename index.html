@@ -193,7 +193,7 @@
 }
 
 
-    .bottom {
+  .bottom {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -215,8 +215,9 @@
     }
 
     .portfolio {
-      width: 340px;
-      height: 130px;
+      width: 640px; /* Keep as is, or slightly adjust */
+  height: 200px;
+
     }
 
     .socials {
@@ -226,16 +227,14 @@
 
     .social {
       background: var(--box);
-      width: 64px;
+        width: 130px;
       aspect-ratio: 1 / 1;
     }
 
     .commissions {
-      background: var(--box);
-      width: 200px;
-      height: 214px;
-      padding: 12px;
-    }
+  width: 320px;
+  height: calc(200px + 130px + var(--gap)); /* Match layout */
+}
 
     .stars-line-block {
       display: flex;
@@ -344,6 +343,7 @@
   </div>
 </body>
 </html>
+
 
 
 
