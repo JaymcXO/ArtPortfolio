@@ -196,10 +196,10 @@
   .bottom {
   flex: 1 1 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;       /* Center vertically */
+  justify-content: center;   /* Center horizontally */
   gap: var(--gap);
-  padding: 5px var(--side-pad); /* Add top/bottom padding here */
+  padding: 0 var(--side-pad);
 }
 
     .left, .right {
@@ -215,7 +215,7 @@
     }
 
     .portfolio {
-      width: 640px; /* Keep as is, or slightly adjust */
+   width: 640px; /* Keep as is, or slightly adjust */
   height: 200px;
 
     }
@@ -227,14 +227,14 @@
 
     .social {
       background: var(--box);
-        width: 130px;
-      aspect-ratio: 1 / 1;
+       width: 130px;  /* Slightly smaller if needed */
+  aspect-ratio: 1 / 1;
     }
 
     .commissions {
   background: var(--box);
   width: 320px;
-  height: calc(200px + 130px + var(--gap)); /* Match layout */
+  height: calc(200px + 130px + var(--gap)); /* Adjust to match */
 }
 
     .stars-line-block {
@@ -344,6 +344,7 @@
   </div>
 </body>
 </html>
+
 
 
 
