@@ -66,7 +66,7 @@
     }
 
     .top {
-      flex: 0 0 55vh;
+      flex: 0 0 45vh;
       width: 100vw;
       background: var(--box);
       position: relative;
@@ -188,13 +188,13 @@
 
     /* Bottom Section */
     .bottom {
-      flex: 1 1 auto;
-      display: flex;
-      padding: var(--outer-gap) var(--side-pad);
-      gap: var(--gap);
-      justify-content: center;
-      align-items: center;
-    }
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;       /* Center vertically */
+  justify-content: center;   /* Center horizontally */
+  gap: var(--gap);
+  padding: 0 var(--side-pad);
+}
 
     .social-left,
     .social-right {
@@ -206,8 +206,7 @@
     }
 
     .social {
-  background: var(--box);
-  width: 120px; /* changed from 110px */
+  width: 130px;  /* Slightly smaller if needed */
   aspect-ratio: 1 / 1;
 }
 
@@ -231,7 +230,7 @@
 
     .commissions {
   width: 640px;
-  height: 252px; /* 2 * 120px + 12px gap */
+   height: calc(200px + 130px + var(--gap));
 }
 
     @media (max-width: 920px) {
@@ -305,4 +304,5 @@
   </div>
 </body>
 </html>
+
 
