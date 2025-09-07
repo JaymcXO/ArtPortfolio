@@ -220,16 +220,18 @@
     }
 
     .social-stack {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px; /* Match height of .portfolio and .commissions */
+  gap: var(--gap);
+}
 
-    .social {
-      background: var(--box);
-      width: 140px;
-      aspect-ratio: 1 / 1;
-    }
+.social {
+  background: var(--box);
+  flex: 1;
+  aspect-ratio: unset;
+}
 
     .stars-line-block {
       display: flex;
@@ -341,3 +343,4 @@
   </div>
 </body>
 </html>
+
