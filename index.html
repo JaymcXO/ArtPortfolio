@@ -186,51 +186,41 @@
       filter: brightness(100%);
     }
 
-    /* Bottom Section */
-    .bottom {
-  flex: 1 1 auto;
+   .bottom {
+  flex: 0 0 auto;
+  margin-top: 32px;        /* adds spacing from .top */
+  margin-bottom: 36px;     /* adds clean space at the bottom */
   display: flex;
-  align-items: center;       /* Center vertically */
-  justify-content: center;   /* Center horizontally */
   gap: var(--gap);
-  padding: 0 var(--side-pad);
+  align-items: flex-start; /* changed from flex-end */
+  justify-content: center;
 }
 
-    .social-left,
-    .social-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: var(--gap);
-      height: 100%;
-    }
+.portfolio {
+  width: 600px;
+  height: 200px;
+  flex-shrink: 0;
+}
 
-    .social {
-  width: 130px;  /* Slightly smaller if needed */
+.socials {
+  display: flex;
+  gap: var(--gap);
+  flex-shrink: 0;
+}
+
+.social {
+  background: var(--box);
+  width: 130px;
   aspect-ratio: 1 / 1;
+  flex-shrink: 0;
 }
 
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-      gap: var(--gap);
-    }
-
-    .box {
-      background: var(--box);
-      padding: 12px;
-    }
-
-   .portfolio {
-  width: 640px;
-  height: 252px;
-}
-
-    .commissions {
-  width: 640px;
-   height: calc(200px + 130px + var(--gap));
+.commissions {
+  background: var(--box);
+  width: 320px;
+  height: 340px;  /* Match combined height of .portfolio + .social + gap */
+  flex-shrink: 0;
+  padding: 12px;
 }
 
     @media (max-width: 920px) {
@@ -304,5 +294,6 @@
   </div>
 </body>
 </html>
+
 
 
