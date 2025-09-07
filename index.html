@@ -17,9 +17,11 @@
     }
 
     :root {
+      --outer-gap: 36px;
       --side-pad: 44px;
       --gap: 20px;
       --box: #1f1f1f;
+      --inner-width: 86%;
     }
 
     * {
@@ -64,7 +66,6 @@
       flex-direction: column;
     }
 
-    /* ─── Top Section ─── */
     .top {
       flex: 0 0 55vh;
       width: 100vw;
@@ -80,6 +81,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      position: relative;
     }
 
     .logo-row {
@@ -138,30 +140,6 @@
       margin-top: 2px;
     }
 
-    .stars-line-block {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 6px;
-    }
-
-    .explore-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .line {
-      width: 2px;
-      height: 240px;
-      background: linear-gradient(to bottom, #3b82f6, #9333ea);
-    }
-
-    .explore-text {
-      font-size: 22px;
-      line-height: 1.5;
-    }
-
     .cutout {
       position: absolute;
       width: 625px;
@@ -177,6 +155,7 @@
       right: 160px;
       bottom: 10px;
       height: 90%;
+      transform: translateY(-10px);
       object-fit: contain;
       pointer-events: none;
       z-index: 2;
@@ -210,19 +189,18 @@
       filter: brightness(100%);
     }
 
-    /* ─── Bottom Section ─── */
     .bottom {
       flex: 1 1 auto;
+      padding: var(--outer-gap) var(--side-pad);
       display: flex;
-      padding: 20px var(--side-pad);
-      gap: var(--gap);
-      align-items: center;
       justify-content: center;
+      gap: var(--gap);
     }
 
     .column {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       gap: var(--gap);
     }
 
@@ -231,31 +209,75 @@
       padding: 12px;
     }
 
-    .social {
-      width: 120px;
-      aspect-ratio: 1/1;
-    }
-
     .portfolio {
-      width: 500px;
-      height: 160px;
+      width: 600px;
+      height: 200px;
     }
 
     .commissions {
-      width: 500px;
-      height: 160px;
+      width: 600px;
+      height: 200px;
+    }
+
+    .social-stack {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .social {
+      background: var(--box);
+      width: 140px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .stars-line-block {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .explore-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .line {
+      width: 2px;
+      height: 240px;
+      background: linear-gradient(to bottom, #3b82f6, #9333ea);
+    }
+
+    .explore-text {
+      font-size: 30px;
+      line-height: 1.5;
     }
 
     @media (max-width: 920px) {
+      :root {
+        --side-pad: 28px;
+        --outer-gap: 26px;
+        --gap: 14px;
+        --inner-width: 92%;
+      }
+      .logo { width: 60px; }
+      .portfolio, .commissions { width: 100%; }
+    }
+
+    @media (max-width: 680px) {
       .bottom {
         flex-direction: column;
+        align-items: center;
       }
-      .social {
-        width: 90px;
-      }
-      .portfolio, .commissions {
+      .commissions, .portfolio {
         width: 100%;
-        max-width: 500px;
+        max-width: 400px;
+      }
+      .chibi {
+        display: none;
       }
     }
   </style>
@@ -264,7 +286,7 @@
   <div class="pattern-overlay"></div>
 
   <div class="page">
-    <!-- ─── TOP SECTION ─── -->
+    <!-- TOP SECTION -->
     <header class="top">
       <div class="top-left">
         <div class="logo-row">
@@ -290,27 +312,28 @@
 
       <div class="cutout"></div>
       <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
+
       <div class="top-nav-box">
         <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
       </div>
     </header>
 
-    <!-- ─── BOTTOM SECTION ─── -->
+    <!-- BOTTOM SECTION -->
     <section class="bottom">
-      <!-- Left Socials -->
-      <div class="column">
+      <!-- Left stacked social blocks -->
+      <div class="column social-stack">
         <div class="box social"></div>
         <div class="box social"></div>
       </div>
 
-      <!-- Middle Portfolio & Commissions -->
+      <!-- Center Portfolio + Commissions -->
       <div class="column">
         <div class="box portfolio">PORTFOLIO</div>
         <div class="box commissions">COMMISSIONS</div>
       </div>
 
-      <!-- Right Socials -->
-      <div class="column">
+      <!-- Right stacked social blocks -->
+      <div class="column social-stack">
         <div class="box social"></div>
         <div class="box social"></div>
       </div>
