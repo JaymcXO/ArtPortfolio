@@ -67,7 +67,7 @@ flex-direction: column;
 }
 
     .top {
-      flex: 0 0 54vh;
+      flex: 0 0 50vh;
       width: 100vw;
       background: var(--box);
       position: relative;
@@ -199,12 +199,12 @@ flex-direction: column;
     }
 
 .bottom {
-flex: 1 1 46vh;
-padding: 16px var(--side-pad);
-display: flex;
-gap: var(--gap);
-align-items: flex-start;
-justify-content: center;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;       /* Center vertically */
+  justify-content: center;   /* Center horizontally */
+  gap: var(--gap);
+  padding: 0 var(--side-pad);
 }
     
     .left, .right {
@@ -233,7 +233,7 @@ justify-content: center;
 
  .social {
   background: var(--box);
-  width: 140px;
+  width: 130px;
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
@@ -241,7 +241,7 @@ justify-content: center;
   .commissions {
   background: var(--box);
  width: 320px;
-  height: calc(200px + 140px + var(--gap)); /* Match layout */
+  height: calc(200px + 130px + var(--gap)); /* Match layout */
   flex-shrink: 0;
   padding: 12px;
 }
@@ -301,6 +301,7 @@ justify-content: center;
   </div>
 </body>
 </html>
+
 
 
 
