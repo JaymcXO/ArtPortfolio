@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" type="image/png" href="/pics/logonew.png" />
+  <link rel="icon" type="image/png" href="/pics/logonew.png">
 
   <style>
     @font-face {
@@ -21,6 +21,7 @@
       --side-pad: 44px;
       --gap: 20px;
       --box: #1f1f1f;
+      --inner-width: 86%;
     }
 
     * {
@@ -66,7 +67,7 @@
     }
 
     .top {
-      flex: 0 0 45vh;
+      flex: 0 0 55vh;
       width: 100vw;
       background: var(--box);
       position: relative;
@@ -95,7 +96,10 @@
     }
 
     .logo-text {
+      font-family: 'EngraversGothic', sans-serif;
       font-size: 28px;
+      font-weight: normal;
+      line-height: 1.1;
       margin-top: 4px;
     }
 
@@ -105,6 +109,7 @@
       margin-top: 12px;
       margin-left: calc(var(--side-pad) * -1);
       margin-right: calc(var(--side-pad) * -1);
+      background: transparent;
       position: relative;
     }
 
@@ -144,6 +149,7 @@
       background: linear-gradient(135deg, #3b82f6, #9333ea);
       top: 126px;
       right: 122px;
+      border-radius: 0;
       z-index: 1;
     }
 
@@ -158,7 +164,7 @@
       z-index: 2;
     }
 
-    .top-nav-box {
+     .top-nav-box {
       position: absolute;
       right: var(--side-pad);
       top: 0;
@@ -177,65 +183,105 @@
     }
 
     .hamburger {
-      position: absolute;
-      top: 30px;
-      right: 0;
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      filter: brightness(100%);
+  position: absolute;
+  top: 30px; 
+  right: 0;
+  width: 56px; 
+  height: 56px;
+  object-fit: contain;
+  filter: brightness(100%);
+}
+
+
+    .bottom {
+      flex: 1 1 auto;
+      padding: var(--outer-gap) var(--side-pad);
+      display: flex;
+      gap: var(--gap);
+      align-items: flex-end;
+      justify-content: center;
     }
 
-   .bottom {
-  flex: 0 0 auto;
-  margin-top: 32px;        /* adds spacing from .top */
-  margin-bottom: 36px;     /* adds clean space at the bottom */
-  display: flex;
-  gap: var(--gap);
-  align-items: flex-start; /* changed from flex-end */
-  justify-content: center;
-}
+    .left, .right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--gap);
+    }
 
-.portfolio {
-  width: 600px;
-  height: 200px;
-  flex-shrink: 0;
-}
+    .box {
+      background: var(--box);
+      padding: 12px;
+    }
 
-.socials {
-  display: flex;
-  gap: var(--gap);
-  flex-shrink: 0;
-}
+    .portfolio {
+      width: 340px;
+      height: 130px;
+    }
 
-.social {
-  background: var(--box);
-  width: 130px;
-  aspect-ratio: 1 / 1;
-  flex-shrink: 0;
-}
+    .socials {
+      display: flex;
+      gap: var(--gap);
+    }
 
-.commissions {
-  background: var(--box);
-  width: 320px;
-  height: 340px;  /* Match combined height of .portfolio + .social + gap */
-  flex-shrink: 0;
-  padding: 12px;
-}
+    .social {
+      background: var(--box);
+      width: 64px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .commissions {
+      background: var(--box);
+      width: 200px;
+      height: 214px;
+      padding: 12px;
+    }
+
+    .stars-line-block {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .explore-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .line {
+      width: 2px;
+      height: 240px;
+      background: linear-gradient(to bottom, #3b82f6, #9333ea);
+    }
+
+    .explore-text {
+      font-family: 'EngraversGothic', sans-serif;
+      font-size: 30px;
+      line-height: 1.5;
+    }
 
     @media (max-width: 920px) {
       :root {
         --side-pad: 28px;
         --outer-gap: 26px;
         --gap: 14px;
+        --inner-width: 92%;
       }
       .logo { width: 60px; }
+      .portfolio, .commissions { width: 100%; }
     }
 
     @media (max-width: 680px) {
       .bottom {
         flex-direction: column;
         align-items: center;
+      }
+      .commissions, .portfolio {
+        width: 100%;
+        max-width: 400px;
       }
       .chibi {
         display: none;
@@ -247,15 +293,19 @@
   <div class="pattern-overlay"></div>
 
   <div class="page">
+   
     <header class="top">
+
       <div class="top-left">
         <div class="logo-row">
           <img class="logo" src="/pics/logonew.png" alt="Logo">
           <div class="logo-text">Ryu's Art Corner</div>
         </div>
         <div class="top-line"></div>
+
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
+
           <div class="stars-line-block">
             <img class="stars" src="/pics/stars.png" alt="Stars" />
             <div class="explore-row">
@@ -268,32 +318,35 @@
           </div>
         </div>
       </div>
+
       <div class="cutout"></div>
-      <img class="chibi" src="/pics/chibi.png" alt="Chibi Character" />
+      <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
+
       <div class="top-nav-box">
-        <img class="hamburger" src="/pics/menu.png" alt="Menu Icon" />
+        <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
       </div>
     </header>
 
     <section class="bottom">
-      <div class="social-left">
-        <div class="social"></div>
-        <div class="social"></div>
-      </div>
-
-      <div class="main-content">
+      <div class="left">
         <div class="box portfolio">PORTFOLIO</div>
-        <div class="box commissions">COMMISSIONS</div>
+        <div class="socials">
+          <div class="social"></div>
+          <div class="social"></div>
+          <div class="social"></div>
+          <div class="social"></div>
+        </div>
       </div>
-
-      <div class="social-right">
-        <div class="social"></div>
-        <div class="social"></div>
+      <div class="right">
+        <div class="commissions">COMMISSIONS</div>
       </div>
     </section>
   </div>
 </body>
 </html>
+
+
+
 
 
 
