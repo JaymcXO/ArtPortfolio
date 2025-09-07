@@ -67,7 +67,7 @@
     }
 
     .top {
-      flex: 0 0 55vh;
+      flex: 0 0 45vh;
       width: 100vw;
       background: var(--box);
       position: relative;
@@ -194,13 +194,13 @@
 
 
     .bottom {
-      flex: 1 1 auto;
-      padding: var(--outer-gap) var(--side-pad);
-      display: flex;
-      gap: var(--gap);
-      align-items: flex-end;
-      justify-content: center;
-    }
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+  padding: 5px var(--side-pad); /* Add top/bottom padding here */
+}
 
     .left, .right {
       display: flex;
@@ -344,6 +344,7 @@
   </div>
 </body>
 </html>
+
 
 
 
