@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ryu's Art Corner</title>
-  <link rel="icon" type="image/png" href="/pics/logonew.png">
+  <link rel="icon" type="image/png" href="/pics/logonew.png" />
 
   <style>
     @font-face {
@@ -21,7 +21,6 @@
       --side-pad: 44px;
       --gap: 20px;
       --box: #1f1f1f;
-      --inner-width: 86%;
     }
 
     * {
@@ -97,7 +96,6 @@
 
     .logo-text {
       font-size: 28px;
-      line-height: 1.1;
       margin-top: 4px;
     }
 
@@ -107,7 +105,6 @@
       margin-top: 12px;
       margin-left: calc(var(--side-pad) * -1);
       margin-right: calc(var(--side-pad) * -1);
-      background: transparent;
       position: relative;
     }
 
@@ -189,18 +186,36 @@
       filter: brightness(100%);
     }
 
+    /* Bottom Section */
     .bottom {
       flex: 1 1 auto;
-      padding: var(--outer-gap) var(--side-pad);
       display: flex;
-      justify-content: center;
+      padding: var(--outer-gap) var(--side-pad);
       gap: var(--gap);
+      justify-content: center;
+      align-items: center;
     }
 
-    .column {
+    .social-left,
+    .social-right {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: var(--gap);
+      height: 100%;
+    }
+
+    .social {
+      background: var(--box);
+      width: 100px;
+      flex: 1;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
       gap: var(--gap);
     }
 
@@ -210,52 +225,13 @@
     }
 
     .portfolio {
-      width: 600px;
-      height: 200px;
+      width: 640px;
+      flex: 0 0 45%;
     }
 
     .commissions {
-      width: 600px;
-      height: 200px;
-    }
-
-    .social-stack {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 200px; /* Match height of .portfolio and .commissions */
-  gap: var(--gap);
-}
-
-.social {
-  background: var(--box);
-  flex: 1;
-  aspect-ratio: unset;
-}
-
-    .stars-line-block {
-      display: flex;
-      flex-direction: column;
-      margin-top: 10px;
-      align-items: flex-start;
-      gap: 6px;
-    }
-
-    .explore-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .line {
-      width: 2px;
-      height: 240px;
-      background: linear-gradient(to bottom, #3b82f6, #9333ea);
-    }
-
-    .explore-text {
-      font-size: 30px;
-      line-height: 1.5;
+      width: 640px;
+      flex: 0 0 35%;
     }
 
     @media (max-width: 920px) {
@@ -263,20 +239,14 @@
         --side-pad: 28px;
         --outer-gap: 26px;
         --gap: 14px;
-        --inner-width: 92%;
       }
       .logo { width: 60px; }
-      .portfolio, .commissions { width: 100%; }
     }
 
     @media (max-width: 680px) {
       .bottom {
         flex-direction: column;
         align-items: center;
-      }
-      .commissions, .portfolio {
-        width: 100%;
-        max-width: 400px;
       }
       .chibi {
         display: none;
@@ -288,7 +258,6 @@
   <div class="pattern-overlay"></div>
 
   <div class="page">
-    <!-- TOP SECTION -->
     <header class="top">
       <div class="top-left">
         <div class="logo-row">
@@ -296,7 +265,6 @@
           <div class="logo-text">Ryu's Art Corner</div>
         </div>
         <div class="top-line"></div>
-
         <div class="barcode-block">
           <img class="barcode" src="/pics/barcode.png" alt="Barcode">
           <div class="stars-line-block">
@@ -311,36 +279,29 @@
           </div>
         </div>
       </div>
-
       <div class="cutout"></div>
-      <img class="chibi" src="/pics/chibi.png" alt="Chibi Character">
-
+      <img class="chibi" src="/pics/chibi.png" alt="Chibi Character" />
       <div class="top-nav-box">
-        <img class="hamburger" src="/pics/menu.png" alt="Menu Icon">
+        <img class="hamburger" src="/pics/menu.png" alt="Menu Icon" />
       </div>
     </header>
 
-    <!-- BOTTOM SECTION -->
     <section class="bottom">
-      <!-- Left stacked social blocks -->
-      <div class="column social-stack">
-        <div class="box social"></div>
-        <div class="box social"></div>
+      <div class="social-left">
+        <div class="social"></div>
+        <div class="social"></div>
       </div>
 
-      <!-- Center Portfolio + Commissions -->
-      <div class="column">
+      <div class="main-content">
         <div class="box portfolio">PORTFOLIO</div>
         <div class="box commissions">COMMISSIONS</div>
       </div>
 
-      <!-- Right stacked social blocks -->
-      <div class="column social-stack">
-        <div class="box social"></div>
-        <div class="box social"></div>
+      <div class="social-right">
+        <div class="social"></div>
+        <div class="social"></div>
       </div>
     </section>
   </div>
 </body>
 </html>
-
